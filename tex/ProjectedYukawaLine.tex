@@ -1,0 +1,268 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{doi}
+
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\JPi}{J_{\Pi}}
+\newcommand{\Jthree}{J_{3}}
+\newcommand{\Rmix}{R_{\mathrm{mix}}}
+\newcommand{\Cgen}{\mathbb{C}^{3}_{\mathrm{gen}}}
+\newcommand{\Epi}{E_{\Pi}}
+\newcommand{\Sbundle}{\mathcal{S}_{\Pi}}
+\newcommand{\Vr}{\mathcal{V}_{\mathbb{R}}}
+\newcommand{\LY}{L_{Y}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\adC}{\mathrm{ad}_{\mathbb{C}}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\UU}{\mathrm{U}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Spin}{\mathrm{Spin}}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+
+\title{
+  Projected Yukawa Line and Generation-Level Assignment:\\
+  Functorial Closure of $\LY = \wedge^{2}(\Sbundle)$ and Spectral Ordering on $\Cgen$
+}
+
+\author{J. Beau\\
+Independent Researcher, France\\
+\texttt{jerome.beau@cosmochrony.org}}
+
+\date{2026}
+
+\begin{document}
+
+  \maketitle
+
+  \begin{abstract}
+    This note opens the mass-sector frontier of the fermionic-matter sub-programme of Cosmochrony, and closes only its
+    first stage.
+    It does not derive the three-generation masses, the Yukawa couplings, or the mixing.
+    It isolates two structural results that the admissible spinor carrier already determines, and separates them sharply
+    from the mass normalisation that does not yet follow.
+    First, on the rank-two admissible spinor bundle $\Sbundle$ produced by the Lorentzian complexification of the
+    metaplectic Weil carrier~\cite{Beau2026q14}, the determinant line $\LY := \wedge^{2}(\Sbundle)$ is the unique
+    functorial line of $\Sbundle$ that is invisible to the adjoint sector $\Sym^{2}(\Sbundle) \simeq \adC(P_{\Pi})$, and
+    it is the carrier of the abelian electroweak weight; the projected Yukawa sector is therefore the determinant-line
+    sector of the admissible spinor functorial closure, not an external bundle datum.
+    Second, on the gauge-singlet generation triplet $\Cgen = \mathrm{span}(e_{0}, e_{+}, e_{-})$ the squared projective
+    residue takes the closed normal form $\Epi^{2}|_{\Cgen} = \diag(1, \tfrac12 + u, \tfrac12 - u)$~\cite{Beau2026prs},
+    whose exit deficits $\{0, \tfrac12 - u, \tfrac12 + u\}$ order the three generation levels~\cite{Beau2026q14}.
+    The single split coefficient $u$ fixes the dimensionless level structure but not the absolute scale: the projected
+    Yukawa operator, its norm, the sign of $u$, and the complex mixing phase remain downstream open data, so no mass
+    value is claimed.
+    All representation-theoretic and spectral identities are verified by exact symbolic computation, with no sampling.
+  \end{abstract}
+
+  \noindent\textbf{Keywords:}
+  projected Yukawa sector; determinant line; admissible spinor bundle; tensor functors; hypercharge line; generation
+  ordering; exit deficit; squared projective residue; spectral level assignment; non-injective projection.
+
+  \newpage
+
+  \tableofcontents
+
+  \newpage
+
+  \section{Position and purpose}
+    \label{sec:position}
+
+    The fermionic-matter sub-programme identifies the electroweak and generation structure of matter from the admissible
+    spinor bundle $\Sbundle$ alone, without an external matter bundle.
+    Three identifications are already established in the constituent paper~\cite{Beau2026q14}: the tensor functors of
+    $\Sbundle$ reproduce the $\SU(2)_{L} \times \UU(1)_{Y}$ electroweak bundle (Theorem~A), the projected Dirac residue
+    $\Epi$ enforces the $V-A$ chirality and fixes hypercharge as a spectral coherence datum (Theorem~B), and the
+    saturation invariant forces a gauge-singlet three-generation factor $\Cgen$ (Theorem~C).
+    The split coefficient of $\Cgen$ has since been reduced to a single real number $u$, with its existence $u \neq 0$
+    closed in the projective-residue Schur reduction~\cite{Beau2026prs} and the radial factor of its modulus closed in the
+    Born--Infeld margin note~\cite{Beau2026bim}.
+    The sub-programme note states plainly that the mass spectrum and the Yukawa couplings are not yet derived, and lists
+    them among the open deliverables~\cite{Beau2026fmnote}.
+
+    This note takes up the first stage of that open deliverable, and only the first stage.
+    It does not compute a mass.
+    It closes two structural statements that the carrier already determines --- the functorial Yukawa line and the
+    generation-level ordering --- and it isolates, as the genuinely open downstream object, the projected Yukawa operator
+    whose norm and phase carry the absolute mass scale and the mixing.
+    The method lock is stated once and held throughout: the determinant line $\LY$ fixes the coupling line, the squared
+    residue $\Epi^{2}|_{\Cgen}$ fixes the generation levels, and the mass comes after.
+
+  \section{The determinant line $\LY$}
+    \label{sec:line}
+
+    The carrier is the rank-two admissible spinor bundle $\Sbundle$, the fundamental bundle of
+    $\Spin(3,1) \simeq \SL(2,\mathbb{C})$ obtained from the metaplectic lift of the Weil module $\Vr$ under the Lorentzian
+    complexification $\mathrm{mp}(2,\mathbb{R})_{\mathbb{C}} \simeq \mathfrak{sl}_{2}(\mathbb{C})$ forced by
+    $g^{\mu\nu} = 2\eta^{\mu\nu}$~\cite{Beau2026q14}.
+    The tensor functors of $\Sbundle$ are taken on the rank-two fibre, not on the doubled Dirac space
+    $\mathcal{S}_{L} \oplus \mathcal{S}_{R}$, so that no cross-chiral components are manufactured.
+
+    \begin{proposition}[Projected Yukawa line]
+      \label{prop:yukawa-line}
+      Let $\Sbundle$ be the rank-two admissible spinor bundle obtained from the Lorentzian complexification of the
+      metaplectic Weil carrier.
+      Then the determinant line
+      \[
+        \LY := \wedge^{2}(\Sbundle)
+      \]
+      is the unique functorial line produced by $\Sbundle$ that is invisible to the $\SU(2)_{L}$ adjoint sector
+      $\Sym^{2}(\Sbundle) \simeq \adC(P_{\Pi})$, and it carries the abelian electroweak weight.
+      Consequently the projected Yukawa sector is not an additional external bundle datum, but the determinant-line sector
+      of the admissible spinor functorial closure.
+    \end{proposition}
+
+    \begin{proof}
+      On the rank-two fibre $\mathbb{C}^{2}$ the polynomial functors are the symmetric and exterior powers $\Sym^{k}$ and
+      $\wedge^{k}$.
+      Their dimensions are $\dim \Sym^{2}(\mathbb{C}^{2}) = 3$ and $\dim \wedge^{2}(\mathbb{C}^{2}) = 1$, and
+      $\wedge^{2}(\mathbb{C}^{2})$ is the only nontrivial one-dimensional instance, so $\LY = \wedge^{2}(\Sbundle)$ is the
+      unique functorial line of $\Sbundle$.
+      The symmetric sector matches the complex adjoint, $\Sym^{2}(\mathbb{C}^{2}) \simeq \mathfrak{sl}_{2}(\mathbb{C})$ of
+      dimension $3$, whose compact real form is the $\SU(2)_{L}$ gauge sector~\cite{Beau2026q14}.
+      For any $g \in \SL(2,\mathbb{C})$, and in particular for the compact real form $\SU(2)_{L} \subset \SL(2,\mathbb{C})$
+      selected from $\Sym^{2}(\Sbundle)$, the induced action on the line $\wedge^{2}(\mathbb{C}^{2})$ is multiplication by
+      $\det(g) = 1$.
+      Hence $\LY$ carries no $\SU(2)_{L}$ charge: it is invisible to the adjoint sector.
+      The induced action of a diagonal abelian generator $\diag(y_{1}, y_{2})$ on $\wedge^{2}(\mathbb{C}^{2})$ is
+      multiplication by the trace $y_{1} + y_{2}$, so the determinant line is the carrier of the abelian weight, with
+      $\UU(1)_{Y}$ realised as the structure group $\GL(1)$ of the line.
+      The identification $\wedge^{2}(\Sbundle) = \LY$ is Theorem~A of~\cite{Beau2026q14}, and no electroweak matter bundle
+      is introduced beyond the functors of $\Sbundle$.
+    \end{proof}
+
+    The determinant line is thus intrinsic to the carrier.
+    It is the abelian half of the same functorial closure whose symmetric half is the non-abelian gauge sector, and it
+    requires no separate hypercharge bundle.
+
+  \section{Separation from the Yukawa operator}
+    \label{sec:separation}
+
+    Proposition~\ref{prop:yukawa-line} fixes a line, not a mass matrix.
+    The line $\LY$ is the weight datum of the Yukawa coupling; the mass matrix is a distinct object, a projected morphism
+    of the admissible spinor sectors of the schematic form
+    \begin{equation}
+      \label{eq:yukawa-operator}
+      Y_{\Pi}:\ \mathcal{S}_{L,\Pi} \otimes \LY \longrightarrow \mathcal{S}_{R,\Pi},
+    \end{equation}
+    or equivalently its spectral avatar after compression by the projective residue $\Epi$.
+    The line fixes which abelian weight the coupling carries; the operator $Y_{\Pi}$ fixes how strongly, and in which
+    generation directions, the chiralities are tied.
+    This separation is the central guardrail of the note: the closure of the coupling line does not close the operator.
+    The norm of $Y_{\Pi}$, the orientation (sign) of the split coefficient $u$, and the complex metaplectic mixing phase
+    are downstream data, recorded as open in the sub-programme inventory~\cite{Beau2026fmnote}; none of them is supplied
+    here.
+
+  \section{Generation-level assignment}
+    \label{sec:levels}
+
+    The internal structure of the gauge-singlet triplet $\Cgen$ is read from the squared projective residue $\Epi^{2}$,
+    the zero-order spectral residue of non-injective projection in the spinorial sector~\cite{Beau2026q14, Beau2026prs}.
+    On $\Cgen = \mathrm{span}(e_{0}, e_{+}, e_{-})$ with Cartan generator $\Jthree = \diag(0, 1, -1)$, the Schur reduction
+    fixes the normal form $\Epi^{2}|_{\Cgen} = (C_{2} - \Jthree^{2})/C_{2} + u\,\Jthree + v\,\Rmix$ with spin-one Casimir
+    $C_{2} = 2$~\cite{Beau2026prs}.
+    The CP-even real sector imposes $v = 0$, and the even part is closed analytically by Born--Infeld parity on the
+    equatorial admissible fibre, $(C_{2} - \Jthree^{2})/C_{2} = \diag(1, \tfrac12, \tfrac12)$~\cite{Beau2026a34}.
+
+    \begin{proposition}[Generation-level assignment]
+      \label{prop:generation-level-assignment}
+      On the gauge-singlet generation triplet $\Cgen = \mathrm{span}(e_{0}, e_{+}, e_{-})$, the projected Yukawa levels
+      are ordered by the spectral levels of
+      \[
+        \Epi^{2}\big|_{\Cgen}
+        =
+        \diag\!\left(1,\ \tfrac12 + u,\ \tfrac12 - u\right).
+      \]
+      With the central $\JPi$-fixed level $s_{0} = 1$, the exit deficits $d_{\mathrm{exit}}(e_{i}) := s_{0} - s_{i}$ are
+      \[
+        d_{\mathrm{exit}}(e_{0}) = 0,
+        \qquad
+        d_{\mathrm{exit}}(e_{+}) = \tfrac12 - u,
+        \qquad
+        d_{\mathrm{exit}}(e_{-}) = \tfrac12 + u,
+      \]
+      so for $u > 0$ the ordering $0 < d_{\mathrm{exit}}(e_{+}) < d_{\mathrm{exit}}(e_{-})$ assigns $e_{0}$ the lightest and
+      $e_{-}$ the heaviest generation level.
+      The assignment determines the three generation levels structurally.
+      It does not by itself determine the physical mass normalisation, which still depends on the projected Yukawa norm
+      and the upstream dictionary data.
+    \end{proposition}
+
+    \begin{proof}
+      The normal form is~\cite{Beau2026prs} with $v = 0$ and the even closure~\cite{Beau2026a34}; its eigenvalues on
+      $(e_{0}, e_{+}, e_{-})$ are $(1, \tfrac12 + u, \tfrac12 - u)$.
+      The exit deficits follow from the support-exit definition relative to the non-exiting central level
+      $s_{0} = 1$~\cite{Beau2026q14, Beau2026a4}.
+      The ordering for $u > 0$ follows from $d_{\mathrm{exit}}(e_{-}) - d_{\mathrm{exit}}(e_{+}) = 2u > 0$, which places
+      the central direction $e_{0}$ at zero deficit (lightest, non-exiting) and $e_{-}$ at the largest deficit (heaviest).
+    \end{proof}
+
+    The level structure is dimensionless and fixed by $u$ alone: the ratio $(\tfrac12 + u)/(\tfrac12 - u)$ is invariant
+    under the spectral rescaling $\Epi^{2} \mapsto \lambda\,\Epi^{2}$~\cite{Beau2026prs}, so the generation ordering does
+    not depend on the absolute spectral normalisation.
+    The numerical value of $u$ is itself dictionary-bound through the chiral-frontier normalisation
+    $\mathcal{N}_{A}$~\cite{Beau2026aar}, and is not fixed in this note; what is fixed here is the assignment map
+    $e_{0}, e_{+}, e_{-} \mapsto$ three ordered generation levels, prior to any identification with the physical
+    $e, \mu, \tau$.
+
+  \section{Status of results}
+    \label{sec:status}
+
+    \paragraph{Derived (this note).}
+      The functorial Yukawa line $\LY = \wedge^{2}(\Sbundle)$ is the unique line of the carrier, invisible to the
+      $\SU(2)_{L}$ adjoint sector and carrying the abelian weight (Proposition~\ref{prop:yukawa-line}).
+      The generation-level assignment on $\Cgen$ is fixed by the spectral levels of
+      $\Epi^{2}|_{\Cgen} = \diag(1, \tfrac12 + u, \tfrac12 - u)$ through the exit deficits
+      (Proposition~\ref{prop:generation-level-assignment}).
+      Both are structural and unconditional given the carrier identifications of~\cite{Beau2026q14, Beau2026prs,
+      Beau2026a34}.
+
+    \paragraph{Open.}
+      The projected Yukawa operator $Y_{\Pi}$ of~\eqref{eq:yukawa-operator}, its norm, the orientation (sign) of $u$, and
+      the complex metaplectic mixing phase are not supplied here.
+      Hence the absolute masses, the mass ratios beyond the dimensionless level structure, and the generation mixing
+      remain open, in agreement with the open deliverables of~\cite{Beau2026fmnote}.
+
+    \paragraph{Summary.}
+      Front~3a is closed as a structural result: the Yukawa line and the generation ordering, not the mass values.
+      The determinant line $\LY$ fixes the coupling line; the squared residue $\Epi^{2}|_{\Cgen}$ fixes the levels; the
+      mass comes after.
+
+  \section{Reproducibility}
+    \label{sec:repro}
+
+    All representation-theoretic and spectral identities are verified by exact symbolic computation, with no
+    floating-point sampling, in \texttt{simulation/fermionic-matter/front3\_yukawa\_line.py}.
+    The functorial dimensions $\dim \Sym^{2}(\mathbb{C}^{2}) = 3$ and $\dim \wedge^{2}(\mathbb{C}^{2}) = 1$, the
+    $\SL(2,\mathbb{C})$ action on the line $\wedge^{2}(\mathbb{C}^{2})$ as $\det = 1$, and the abelian weight as the trace
+    $y_{1} + y_{2}$ are checked symbolically (Proposition~\ref{prop:yukawa-line}).
+    The normal form $\Epi^{2}|_{\Cgen} = \diag(1, \tfrac12 + u, \tfrac12 - u)$, its even-sector reduction to
+    $\diag(1, \tfrac12, \tfrac12)$ at $u = 0$, the exit deficits, the ordering for $u > 0$, and the scale invariance of the
+    level ratio are checked symbolically (Proposition~\ref{prop:generation-level-assignment}).
+
+  \newpage
+
+  \bibliographystyle{plain}
+  \bibliography{cosmochrony-bibliography}
+
+\end{document}
