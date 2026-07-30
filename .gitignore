@@ -11,3 +11,10 @@ out/
 pdfs/
 .idea/
 .DS_Store
+
+# Common build-artefact baseline
+**/.DS_Store
+.venv/
+media/
+**/__pycache__/
+*.py[cod]
