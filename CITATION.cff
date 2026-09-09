@@ -1,7 +1,8 @@
 cff-version: 1.2.0
 message: "If you cite this work, please use the metadata from this file."
-title: "Projected Yukawa Line and Generation-Level Assignment Functorial Closure of = ^2( ) and Spectral Ordering on"
-type: software
+title: "Projected Yukawa Line and Generation-Level Assignment: Functorial Closure of L_Y = ∧²(S_Π) and Spectral Ordering on C³_gen"
+type: article
+version: "2.0"
 authors:
   - family-names: "Beau"
     given-names: "Jérôme"
@@ -11,7 +12,7 @@ doi: "10.5281/zenodo.20767265"
 license: "CC-BY-4.0"
 preferred-citation:
   type: article
-  title: "Projected Yukawa Line and Generation-Level Assignment Functorial Closure of = ^2( ) and Spectral Ordering on"
+  title: "Projected Yukawa Line and Generation-Level Assignment: Functorial Closure of L_Y = ∧²(S_Π) and Spectral Ordering on C³_gen"
   authors:
     - family-names: "Beau"
       given-names: "Jérôme"

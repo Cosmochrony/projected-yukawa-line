@@ -1,5 +1,15 @@
 # Projected Yukawa Line and Generation-Level Assignment
 
+*Functorial Closure of $L_Y = \wedge^2(\mathcal{S}_\Pi)$ and Spectral Ordering on $C^3_{\mathrm{gen}}$*
+
+J. Beau, Independent Researcher, France
+
+## Status
+
+Working paper, v2.0. DOI: [10.5281/zenodo.20767265](https://doi.org/10.5281/zenodo.20767265)
+
+## Summary
+
 Companion note of the Cosmochrony fermionic-matter sub-programme. It opens the mass-sector frontier and closes only
 its first stage: the functorial Yukawa coupling line and the generation-level ordering. It does **not** derive masses.
 
@@ -15,7 +25,9 @@ Two structural propositions, both verified by exact symbolic computation (no sam
 
 2. **Generation-level assignment.** On the gauge-singlet triplet `C³_gen = span(e₀, e₊, e₋)`, the squared projective
    residue takes the closed normal form `E_Π²|gen = diag(1, ½+u, ½−u)`, whose exit deficits `{0, ½−u, ½+u}` order the
-   three generation levels: `e₀` lightest (central, non-exiting), `e₋` heaviest (for `u > 0`).
+   three generation levels: `e₀` lightest (central, non-exiting), `e₋` heaviest (for `u > 0`). The even sector
+   `diag(1, ½, ½)` is the algebraic value of `(C₂ − J₃²)/C₂` at `C₂ = 2`; reading it as the Born–Infeld even sector
+   would require an identification with the conditional `3×3` model of O30 that is not available and is not used.
 
 ## Method lock
 
@@ -25,8 +37,7 @@ mass value is claimed.
 
 ## Anchors
 
-Q14 (Theorem A, exit-deficit dictionary), PRS (the `E_Π²` normal form), A4-note (radial factor), Born–Infeld parity
-(even-sector closure). See the bibliography in `tex/cosmochrony-bibliography.bib`.
+Q14 (Theorem A, exit-deficit dictionary), PRS (the `E_Π²` normal form), A4-note (radial factor). See the bibliography in `tex/cosmochrony-bibliography.bib`.
 
 ## Build
 
@@ -36,4 +47,4 @@ bash compile.sh   # -> out/ProjectedYukawaLine.pdf
 
 ## Audit
 
-`simulation/fermionic-matter/front3_yukawa_line.py` (exact symbolic, 15 checks).
+`code/front3_yukawa_line.py` (exact symbolic, 15 checks): `python3 code/front3_yukawa_line.py`.
