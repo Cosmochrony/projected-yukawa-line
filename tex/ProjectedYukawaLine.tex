@@ -8,6 +8,15 @@
 \usepackage{amsthm}
 \usepackage[hidelinks]{hyperref}
 \usepackage{doi}
+\hypersetup{
+  unicode,
+  pdftitle={Projected Yukawa Line and Generation-Level Assignment: Functorial Closure of the Determinant Line
+            and Spectral Ordering on the Generation Triplet},
+  pdfauthor={Jérôme Beau},
+  pdfkeywords={projected Yukawa sector; determinant line; admissible spinor bundle; tensor functors; hypercharge line;
+               generation ordering; exit deficit; squared projective residue; spectral level assignment;
+               non-injective projection}
+}
 
 \input{glyphtounicode}
 \pdfgentounicode=1
@@ -63,13 +72,13 @@ Independent Researcher, France\\
     It isolates two structural results that the admissible spinor carrier already determines, and separates them sharply
     from the mass normalisation that does not yet follow.
     First, on the rank-two admissible spinor bundle $\Sbundle$ produced by the Lorentzian complexification of the
-    metaplectic Weil carrier~\cite{Beau2026q14}, the determinant line $\LY := \wedge^{2}(\Sbundle)$ is the unique
+    metaplectic Weil carrier of Q14, the determinant line $\LY := \wedge^{2}(\Sbundle)$ is the unique
     functorial line of $\Sbundle$ that is invisible to the adjoint sector $\Sym^{2}(\Sbundle) \simeq \adC(P_{\Pi})$, and
     it is the carrier of the abelian electroweak weight; the projected Yukawa sector is therefore the determinant-line
     sector of the admissible spinor functorial closure, not an external bundle datum.
     Second, on the gauge-singlet generation triplet $\Cgen = \mathrm{span}(e_{0}, e_{+}, e_{-})$ the squared projective
-    residue takes the closed normal form $\Epi^{2}|_{\Cgen} = \diag(1, \tfrac12 + u, \tfrac12 - u)$~\cite{Beau2026prs},
-    whose exit deficits $\{0, \tfrac12 - u, \tfrac12 + u\}$ order the three generation levels~\cite{Beau2026q14}.
+    residue takes the closed normal form $\Epi^{2}|_{\Cgen} = \diag(1, \tfrac12 + u, \tfrac12 - u)$ of the Schur
+    reduction (PRS), whose exit deficits $\{0, \tfrac12 - u, \tfrac12 + u\}$ order the three generation levels (Q14).
     The single split coefficient $u$ fixes the dimensionless level structure but not the absolute scale: the projected
     Yukawa operator, its norm, the sign of $u$, and the complex mixing phase remain downstream open data, so no mass
     value is claimed.
@@ -259,7 +268,7 @@ Independent Researcher, France\\
     \label{sec:repro}
 
     All representation-theoretic and spectral identities are verified by exact symbolic computation, with no
-    floating-point sampling, in \texttt{simulation/fermionic-matter/front3\_yukawa\_line.py}.
+    floating-point sampling, in \texttt{code/front3\_yukawa\_line.py} of this repository.
     The functorial dimensions $\dim \Sym^{2}(\mathbb{C}^{2}) = 3$ and $\dim \wedge^{2}(\mathbb{C}^{2}) = 1$, the
     $\SL(2,\mathbb{C})$ action on the line $\wedge^{2}(\mathbb{C}^{2})$ as $\det = 1$, and the abelian weight as the trace
     $y_{1} + y_{2}$ are checked symbolically (Proposition~\ref{prop:yukawa-line}).
