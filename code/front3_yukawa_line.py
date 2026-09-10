@@ -20,7 +20,8 @@ Seven results are verified.
       abelian (hypercharge) weight, the U(1)_Y factor being the structure group GL(1) of the line.
   (D) Normal form and levels: E_Pi^2|gen = (C2 - J3^2)/C2 + u J3 (v = 0, CP-even) with C2 = 2,
       J3 = diag(0,1,-1) gives exactly diag(1, 1/2+u, 1/2-u) on (e_0, e_+, e_-).
-  (E) Even-sector closure: at u = 0 this reduces to diag(1, 1/2, 1/2) (Born-Infeld parity, Beau2026a34).
+  (E) Even sector: at u = 0 this reduces to diag(1, 1/2, 1/2), the algebraic value of (C2 - J3^2)/C2 at
+      C2 = 2 (PRS eq:even); its Born-Infeld reading through O30 is not used.
   (F) Exit-deficit ordering (Q14 prop:dg-dictionary): d(e_i) = s_0 - s_i with s_0 = 1 gives d(e_0) = 0,
       d(e_+) = 1/2 - u, d(e_-) = 1/2 + u; for u > 0 the ordering 0 < d(e_+) < d(e_-) maps e_0 -> lightest,
       e_- -> heaviest. The assignment e_0, e_+, e_- -> three ordered generation LEVELS is structural.
@@ -84,8 +85,8 @@ def main():
     Epi2_even = Epi2.subs({u: 0, v: 0})
     checks["D_normalform_diag"] = sp.simplify(Epi2.subs(v, 0) - sp.diag(1, sp.Rational(1, 2) + u,
                                                                        sp.Rational(1, 2) - u)) == sp.zeros(3)
-    # ---- (E) even-sector closure ----------------------------------------------------------------
-    checks["E_even_closure"] = sp.simplify(Epi2_even - sp.diag(1, sp.Rational(1, 2), sp.Rational(1, 2))) \
+    # ---- (E) algebraic even sector ---------------------------------------------------------------
+    checks["E_even_algebraic"] = sp.simplify(Epi2_even - sp.diag(1, sp.Rational(1, 2), sp.Rational(1, 2))) \
         == sp.zeros(3)
 
     # ---- (F) exit-deficit ordering --------------------------------------------------------------
@@ -110,7 +111,7 @@ def main():
     print("  (B) wedge^2 action = det = 1 on SL(2,C) => L_Y invisible to SU(2)_L (no SU(2) charge)")
     print("  (C) abelian diag(y1,y2) acts on L_Y by trace y1+y2 => L_Y carries the U(1)_Y weight")
     print("  (D) E_Pi^2|gen = (C2-J3^2)/C2 + u J3 = diag(1, 1/2+u, 1/2-u)   (v=0, CP-even)")
-    print("  (E) u=0 reduces to diag(1, 1/2, 1/2)  (Born-Infeld parity, Beau2026a34)")
+    print("  (E) u=0 reduces to diag(1, 1/2, 1/2)  (algebraic value of (C2-J3^2)/C2 at C2=2; BI reading not used)")
     print("  (F) exit deficits d(e_0)=0, d(e_+)=1/2-u, d(e_-)=1/2+u => e_0 lightest, e_- heaviest")
     print("  (G) level ratio (1/2+u)/(1/2-u) scale-invariant; absolute mass NOT fixed here")
     print("-" * 90)
