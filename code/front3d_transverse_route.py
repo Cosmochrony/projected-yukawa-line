@@ -19,7 +19,9 @@ Two transverse blocks on C^3_gen = Sym^2(C^2), basis (e_0, e_+, e_-):
 
 Corpus anchoring. AAR (Beau2026aar): N_A is the J_3 / Cartan oriented symplectic area alpha = ts -- the DIAGONAL
 channel, with R_mix "a distinct direction". Schur (PRS / schur_transversality_alpha.py): real cascade gives
-alpha != 0 (J_3) and mu = 0 (R_mix). EBJ (Beau2026ebj): mixing needs a complex metaplectic phase. AOG
+alpha != 0 (J_3) and mu = 0 (R_mix). EBJ (Beau2026ebj): every odd-order generation-mixing coefficient of E_Pi^2
+vanishes by antiunitary parity in every covariant family, with or without complex phases; even orders are not excluded.
+AOG
 (Beau2026aog, prop:spinrigidity, lem:rigidity): the spin-stratum type-rigidity fixes sqrt(5) and closes
 [H-orient] -- it constrains the ARITHMETIC TYPE / orientation, not the transverse polar direction.
 

@@ -26,8 +26,9 @@ Two precautions (Jerome, firm).
        orthogonal to zeta_q survives -- but that settles orientation, not the polar class.
   (ii) u != 0 (the diagonal generation split, A4/PRS) is NOT mixing. u lives in the DIAGONAL channel A_diag
        (pure level split / rephasing) and contributes nothing to the off-diagonal moduli or to J_Pi. Mixing
-       requires a NON-DIAGONAL polar class, sourced by the complex metaplectic channel v (EBJ: v != 0 needs the
-       complex metaplectic phase; A4-note: on the derived real cascade the transverse channel vanishes at
+       requires a NON-DIAGONAL polar class, sourced by the complex metaplectic channel v (PYO: v = 0 on the derived
+       real cascade; EBJ: odd-order mixing of E_Pi^2 vanishes by antiunitary parity in every covariant family, with
+       or without complex phases; A4-note: on the derived real cascade the transverse channel vanishes at
        gamma = 0, the complex interior remaining conditional on a non-derived phase and an unprescribed order).
 
 Results (all exact symbolic).
