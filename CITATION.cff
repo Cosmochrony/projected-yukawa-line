@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you cite this work, please use the metadata from this file."
-title: "Projected Yukawa Line and Generation-Level Assignment: Functorial Closure of L_Y = ∧²(S_Π) and Spectral Ordering on C³_gen"
+title: "Toward Projected Yukawa Couplings: A Conditional Weak Determinant Line and Generation-Level Assignment"
 type: article
-version: "2.0"
+version: "3.0"
 authors:
   - family-names: "Beau"
     given-names: "Jérôme"
@@ -12,7 +12,7 @@ doi: "10.5281/zenodo.20767265"
 license: "CC-BY-4.0"
 preferred-citation:
   type: article
-  title: "Projected Yukawa Line and Generation-Level Assignment: Functorial Closure of L_Y = ∧²(S_Π) and Spectral Ordering on C³_gen"
+  title: "Toward Projected Yukawa Couplings: A Conditional Weak Determinant Line and Generation-Level Assignment"
   authors:
     - family-names: "Beau"
       given-names: "Jérôme"
