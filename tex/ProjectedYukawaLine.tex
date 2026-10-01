@@ -76,15 +76,16 @@ Independent Researcher, France\\
     Under the distinct weak factor [H-Weak] of Q14, which is not supplied and not constructed here, the line
     $\LY := \wedge^{2}(\Ew)$ with structure group $\UU(2)$ carries the abelian weight: it is a conditional weak
     determinant line, not a line of the spinor bundle.
-    Second, on the generation triplet $\Cgen$, the model operator $\diag(1, \tfrac12 + u, \tfrac12 - u)$ has exit deficits
-    $\{0, \tfrac12 - u, \tfrac12 + u\}$ that order three levels, with a scale-independent ratio.
-    Reading it as the restriction of the squared projective residue $\Epi^{2}$ is a named hypothesis, not supplied, and the
-    map from levels to generations is not established.
-    The Yukawa operator, which needs a further carrier, its norm, the sign of $u$, and the mixing remain open, so no mass
-    value is claimed.
-    Interpretive outlook (a reading, not a result): where the Yukawa coupling attaches to hypercharge becomes the question
-    of where a distinct weak factor comes from, and the levels are a dimensionless pattern whose reading as a hierarchy
-    awaits the missing identifications.
+    Second, on the generation triplet $\Cgen$, the model operator $\diag(1, \tfrac12 + u, \tfrac12 - u)$ has exit
+    deficits $\{0, \tfrac12 - u, \tfrac12 + u\}$ that order three levels for $0 < u < \tfrac12$, with a
+    scale-independent ratio.
+    Reading it as the restriction of the squared projective residue $\Epi^{2}$ is a named hypothesis, [H-Res], not
+    supplied, and the map from levels to generations is not established.
+    The Yukawa operator, which needs a further carrier and a chirality-flip structure, its norm, the sign of $u$, and
+    the mixing remain open, so no mass value is claimed.
+    Interpretive outlook (a reading, not a result): where the Yukawa coupling attaches to hypercharge becomes the
+    question of where a distinct weak factor comes from, and the levels are a dimensionless pattern whose reading as a
+    hierarchy awaits the missing identifications.
   \end{abstract}
 
   \noindent{\small\textbf{Keywords:}
@@ -111,14 +112,18 @@ Independent Researcher, France\\
     $\mathfrak{su}(2)_{L}$ sits in $\Sym^{2}(\Ew)$ and $\LY := \wedge^{2}(\Ew)$ carries $\UU(1)_{Y}$.
     Neither hypothesis is supplied by a source, and $\Ew$ is not constructed.
     The $V-A$ structure is the representation content of [H-Weak] and is not derived from the left-admissibility of the
-    projected Dirac residue $\Epi$, which is a statement about the Lorentz chirality on the orientation-compatible
-    branch.
+    projected Dirac residue $\Epi$.
+    Left-admissibility is an input of Q14 (Proposition~3.8 of~\cite{Beau2026q14}): it is a statement about the Lorentz
+    chirality on the orientation-compatible branch, conditional on [H-Spin] and on the Born--Infeld datum (H1)--(H2) of
+    O30~\cite{Beau2026a34}.
     The generation factor $\Cgen$ is a gauge-singlet multiplicity space, conditional on the supplied rank-three
     selection
     rule, and is the symmetric square of a distinct supplied doublet, not of the soldered spinor doublet.
-    The split coefficient of $\Cgen$ is a single real number $u$, whose existence $u \neq 0$ is treated in the
-    projective-residue Schur analysis~\cite{Beau2026prs} and the radial factor of whose modulus is treated in the
-    Born--Infeld margin note~\cite{Beau2026bim}.
+    The split coefficient of $\Cgen$ is a single real number $u$.
+    The projective-residue Schur analysis~\cite{Beau2026prs} reduces the question $u \neq 0$ to a chiral defect, taking
+    the model operator of Section~\ref{sec:levels} as its normal form, that is, under [H-Res].
+    The Born--Infeld margin note~\cite{Beau2026bim} analyses the radial factor of the modulus of $u$ and does not
+    predict $|u|$.
     The sub-programme note states plainly that the mass spectrum and the Yukawa couplings are not yet derived, and lists
     them among the open deliverables~\cite{Beau2026fmnote}.
 
@@ -127,9 +132,10 @@ Independent Researcher, France\\
     It records two structural statements, the weak determinant line and the generation-level ordering, each with its
     hypothesis, and it isolates, as the genuinely open downstream object, the projected Yukawa operator whose norm and
     mixing carry the absolute mass scale and the flavour structure.
-    The method lock is stated once and held throughout: under [H-Weak] the determinant line $\LY$ fixes the weight datum
-    of the coupling, the squared residue $\Epi^{2}|_{\Cgen}$, read through the named identification of
-    Section~\ref{sec:levels}, fixes the generation levels, and the mass comes after.
+    The method is stated once and held throughout: under [H-Weak] the determinant line $\LY$ supplies the line from
+    which the weights of the coupling are built, the exponents being open; the model operator on $\Cgen$, read as the
+    squared residue $\Epi^{2}|_{\Cgen}$ through the named identification [H-Res] of Section~\ref{sec:levels}, carries
+    the generation levels; and the mass comes after.
 
   \section{The determinant line $\LY$}
     \label{sec:line}
@@ -141,7 +147,7 @@ Independent Researcher, France\\
     distinct
     from the soldered factor.
     By Schur's lemma the admissible doublet can supply at most one of the two~\cite{Beau2026q14}, and $\Ew$ is not
-    constructed in the corpus.
+    constructed in~\cite{Beau2026q14} nor in any other paper cited here.
     The tensor functors are taken on a rank-two fibre, $\SW$ or $\Ew$, not on the doubled Dirac space
     $\Sbundle = S_{L} \oplus S_{R}$, so that no cross-chiral components are manufactured.
 
@@ -151,39 +157,42 @@ Independent Researcher, France\\
         \item[\emph{(a)}] \emph{(algebra, proved on model data.)}
         Let $E$ be a rank-two bundle with fibre $\mathbb{C}^{2}$ and structure group $G \subset \GL(2,\mathbb{C})$.
         Among the functors $\Sym^{k}$ and $\wedge^{k}$ with $k \geq 1$, the determinant line $\wedge^{2}(E)$ is the only
-        one of
-        dimension one, and the $\SL(2,\mathbb{C})$ adjoint sector $\Sym^{2}(E) \simeq \mathfrak{sl}_{2}(\mathbb{C})$
-        does not
-        see it.
-        If $G \subset \SL(2,\mathbb{C})$, then $\wedge^{2}(E)$ is a trivial line.
+        one of dimension one.
+        (The powers $\det^{b}$ with $b \geq 2$ and the dual lines are also one-dimensional and lie outside this
+        family.)
+        If $G \subset \SL(2,\mathbb{C})$, then $\wedge^{2}(E)$ is a trivial line, and the adjoint sector
+        $\Sym^{2}(E) \simeq \mathfrak{sl}_{2}(\mathbb{C})$ does not see it.
         In particular, under [H-Spin], $\wedge^{2}(\SW)$ is trivial and carries no hypercharge.
         \item[\emph{(b)}] \emph{(under [H-Weak].)}
         For the rank-two bundle $\Ew$ with structure group $\UU(2)$, the line $\LY := \wedge^{2}(\Ew) = \det \Ew$ is
         acted on
         by $\UU(2)$ through the determinant character.
-        It is trivial on the subgroup $\SU(2)$ whose algebra $\mathfrak{su}(2)_{L}$ lies in $\Sym^{2}(\Ew)$, and it
-        carries
-        the abelian weight of the central $\UU(1) \subset \UU(2)$.
+        It is trivial on the subgroup $\SU(2)$ whose algebra $\mathfrak{su}(2)_{L}$ acts on $\Sym^{2}(\Ew)$ by the
+        adjoint, and it carries the abelian weight of the central $\UU(1) \subset \UU(2)$.
+        As a $\UU(2)$-bundle, $\Sym^{2}(\Ew) \simeq \mathfrak{sl}(\Ew) \otimes \LY$ is the weak adjoint twisted by
+        $\LY$.
       \end{enumerate}
       Consequently a hypercharge line is available only under [H-Weak], as a line of $\Ew$; it is not a line of the
       spinor bundle.
     \end{proposition}
 
     \begin{proof}
-      (a) On the fibre $\mathbb{C}^{2}$ the polynomial functors are the symmetric and exterior powers $\Sym^{k}$ and
-      $\wedge^{k}$.
+      (a) On the fibre $\mathbb{C}^{2}$ consider the symmetric and exterior powers $\Sym^{k}$ and $\wedge^{k}$,
+      $k \geq 1$.
       Their dimensions are $\dim \Sym^{k}(\mathbb{C}^{2}) = k+1 \geq 2$ for $k \geq 1$,
       $\dim \wedge^{1}(\mathbb{C}^{2}) = 2$,
       $\dim \wedge^{2}(\mathbb{C}^{2}) = 1$, and $\wedge^{k} = 0$ for $k \geq 3$, so $\wedge^{2}$ is the only
-      one-dimensional
-      instance.
+      one-dimensional instance of this family.
+      The powers $\det^{b}$, $b \geq 2$, and the dual lines are one-dimensional too but are not of the form $\Sym^{k}$
+      or $\wedge^{k}$, so uniqueness is a statement within the family and is not claimed beyond it.
       For $g \in \GL(2,\mathbb{C})$ the induced action on $\wedge^{2}(\mathbb{C}^{2})$ is multiplication by $\det g$.
       For $\SL(2,\mathbb{C})$ the symmetric square is the three-dimensional irreducible representation, the adjoint
       $\mathfrak{sl}_{2}(\mathbb{C})$, and $\det g = 1$, so $\wedge^{2}$ is the trivial representation, invisible to the
       adjoint sector.
       This holds for every subgroup $G \subset \SL(2,\mathbb{C})$, in particular for the structure group of $\SW$ under
       [H-Spin] and for any compact real form $\SU(2)$.
-      The algebraic identities are those of Theorem~2.1(a) of~\cite{Beau2026q14}.
+      The algebraic identities are those of Theorem~2.1(a) of~\cite{Beau2026q14}, which asserts the two identities and
+      not the uniqueness.
       (b) The determinant $\det\colon \UU(2) \to \UU(1)$ is surjective with kernel $\SU(2)$, so $\LY = \det \Ew$ is
       trivial
       under $\SU(2)$.
@@ -194,11 +203,13 @@ Independent Researcher, France\\
       because
       the structure group of $\Ew$ is taken to be $\UU(2)$ rather than $\SU(2)$, which is part of
       [H-Weak]~\cite{Beau2026q14}.
+      For the diagonal element $\diag(a, b)$ of $\UU(2)$ the weights of $\Sym^{2}(\mathbb{C}^{2})$ are
+      $a^{2}, ab, b^{2}$, which are those of $\mathfrak{sl}_{2} \otimes \det$.
       The same typing of $\LY$ is Theorem~2.1(c) of~\cite{Beau2026q14}, under [H-Weak].
     \end{proof}
 
     The determinant line of the spinor factor is thus trivial, and the hypercharge line is tied to $\Ew$.
-    The symmetric half of the functorial closure of $\Ew$ contains the weak adjoint and its abelian half is $\LY$.
+    The symmetric square of $\Ew$ is the weak adjoint twisted by $\LY$, and the determinant line of $\Ew$ is $\LY$.
     [H-Weak] is a missing identification, not a refutation: the corpus does not supply the factor $\Ew$, and nothing
     proves that it cannot be supplied.
 
@@ -209,24 +220,37 @@ Independent Researcher, France\\
     Under [H-Weak] the fermion fields are sections of
     $P_{L}\,\Sbundle \otimes \Ew \otimes \LY^{k} \oplus P_{R}\,\Sbundle \otimes
     \LY^{m}$ with integer exponents $k$, $m$ not fixed by the hypothesis~\cite{Beau2026q14}.
-    The line $\LY$ is the weight datum of the Yukawa coupling; the mass matrix is a distinct object, a projected
-    morphism
-    of the admissible spinor sectors of the schematic form
+    The line $\LY$ supplies the determinant line from which the weights of a coupling are built; the weight itself
+    depends on $k$ and $m$, which are open.
+    The mass matrix is a distinct object, a projected morphism of the admissible spinor sectors of the schematic form
     \begin{equation}
       \label{eq:yukawa-operator}
       Y_{\Pi}:\ P_{L}\,\Sbundle \otimes \Ew \otimes \LY^{k} \longrightarrow P_{R}\,\Sbundle \otimes \LY^{m},
     \end{equation}
     or equivalently its spectral avatar after compression by the projective residue $\Epi$.
-    The form~\eqref{eq:yukawa-operator} is schematic: it sends a weak doublet to a weak singlet, so an equivariant
-    morphism needs a further carrier linking the two, which is not supplied here.
-    The line fixes which abelian weight the coupling carries; the operator $Y_{\Pi}$ fixes how strongly, and in which
-    generation directions, the chiralities are tied.
-    This separation is the central guardrail of the note: the line is not the operator, and the closure of the coupling
-    line does not close the operator.
+    The form~\eqref{eq:yukawa-operator} is schematic and its typing has two missing elements.
+    First, it sends a weak doublet to a weak singlet, so an equivariant morphism needs a further carrier linking the
+    two, which is not supplied here.
+    Second, under [H-Spin] the chiral factors $S_{L}$ and $S_{R} \simeq \overline{S_{L}}$ are inequivalent
+    $\SL(2,\mathbb{C})$-modules (Lemma~3.6 of~\cite{Beau2026q14}), so no linear Lorentz-equivariant map
+    $P_{L}\,\Sbundle \to P_{R}\,\Sbundle$ exists, and a chirality flip needs a further structure, such as the antilinear
+    parity lift $\JPi$ that exchanges the two chiral subbundles (Theorem~3.7 of~\cite{Beau2026q14}) or a pairing; none
+    is supplied here.
+    Both are missing elements, not obstructions.
+    Reading $Y_{\Pi}$ as an operator on $\Cgen$ alone is a further premise, the factorisation [H-Fac] stated in the
+    companion note on the Yukawa operator~\cite{Beau2026pyo}, and it is not used here.
+    The line $\LY$ is one ingredient of the abelian weight of the coupling; the operator $Y_{\Pi}$ fixes how strongly,
+    and in which generation directions, the chiralities are tied.
+    This separation is the central guardrail of the note: the line is not the operator, and the choice of the coupling
+    line does not determine the operator.
     The norm of $Y_{\Pi}$, the orientation (sign) of the split coefficient $u$, and the mixing are downstream data,
     recorded as open in the sub-programme inventory~\cite{Beau2026fmnote}; none of them is supplied here.
-    A complex metaplectic phase is ruled out as a source of mixing within the model of~\cite{Beau2026q14}, and mixing
-    would need a generator outside the image of $\mathfrak{sl}_{2}(\mathbb{C})$, which is not supplied.
+    Q14 excludes a complex metaplectic phase as a source of $\Rmix$ within its model (Remark~6.4
+    of~\cite{Beau2026q14}): no generator of the step model reaches $\Rmix$, and a source would need a generator outside
+    the image of $\mathfrak{sl}_{2}(\mathbb{C})$, which is not supplied.
+    That remark concerns $\Rmix$ only.
+    The internal block $e_{0} \leftrightarrow e_{\pm}$ is neither excluded by it nor constructed here; it is treated in
+    the companion note~\cite{Beau2026pyo}.
 
   \section{Generation-level assignment}
     \label{sec:levels}
@@ -243,6 +267,7 @@ Independent Researcher, France\\
     The CP-even real sector imposes $v = 0$.
     The value $(C_{2} - \Jthree^{2})/C_{2} = \diag(1, \tfrac12, \tfrac12)$ is algebraic at
     $C_{2} = 2$.
+    The labelling $e_{\pm}$ ($\Jthree = \pm 1$) is the convention of Section~6 of~\cite{Beau2026q14}.
     The following hypothesis is used wherever the model operator is read as $\Epi^{2}$.
 
     \medskip
@@ -281,10 +306,12 @@ Independent Researcher, France\\
         \qquad
         d_{\mathrm{exit}}(e_{-}) = \tfrac12 + u,
       \]
-      so for $u > 0$ the ordering $0 < d_{\mathrm{exit}}(e_{+}) < d_{\mathrm{exit}}(e_{-})$ assigns $e_{0}$ the smallest
-      and
-      $e_{-}$ the largest exit deficit.
-      The assignment determines three ordered levels.
+      so for $0 < u < \tfrac12$ the ordering $0 < d_{\mathrm{exit}}(e_{+}) < d_{\mathrm{exit}}(e_{-})$ gives $e_{0}$ the
+      smallest and $e_{-}$ the largest exit deficit.
+      The bound $u < \tfrac12$ is needed: it makes the level $\tfrac12 - u$ positive, as is required of an eigenvalue of
+      $\Epi^{2} \succeq 0$, and for $u > \tfrac12$ one has $d_{\mathrm{exit}}(e_{+}) < 0$, so that $e_{0}$ is no longer
+      the smallest deficit.
+      The ordering determines three ordered levels.
       It does not determine the map from levels to generations, which is not established~\cite{Beau2026q14}, nor the
       physical mass normalisation, which still depends on the projected Yukawa norm and the upstream dictionary data.
     \end{proposition}
@@ -295,13 +322,15 @@ Independent Researcher, France\\
       $(e_{0}, e_{+}, e_{-})$ are $(1, \tfrac12 + u, \tfrac12 - u)$, and [H-Res] reads it as $\Epi^{2}|_{\Cgen}$.
       The exit deficits follow from the support-exit definition relative to the non-exiting central level
       $s_{0} = 1$~\cite{Beau2026q14, Beau2026a4}.
-      The ordering for $u > 0$ follows from $d_{\mathrm{exit}}(e_{-}) - d_{\mathrm{exit}}(e_{+}) = 2u > 0$, which places
-      the central direction $e_{0}$ at zero deficit (non-exiting) and $e_{-}$ at the largest deficit.
+      The ordering follows from two inequalities: $d_{\mathrm{exit}}(e_{+}) = \tfrac12 - u > 0$ if and only if
+      $u < \tfrac12$, and $d_{\mathrm{exit}}(e_{-}) - d_{\mathrm{exit}}(e_{+}) = 2u > 0$ if and only if $u > 0$.
+      Together they place the central direction $e_{0}$ at zero deficit (non-exiting) and $e_{-}$ at the largest
+      deficit exactly when $0 < u < \tfrac12$.
     \end{proof}
 
-    The level structure is dimensionless and fixed by $u$ alone: the ratio $(\tfrac12 + u)/(\tfrac12 - u)$ is invariant
-    under the spectral rescaling $\Epi^{2} \mapsto \lambda\,\Epi^{2}$~\cite{Beau2026prs}, so the level ordering does
-    not depend on the absolute spectral normalisation.
+    The level structure is dimensionless and fixed by $u$ alone: the ratio $(\tfrac12 + u)/(\tfrac12 - u)$, positive
+    for $u < \tfrac12$, is invariant under the spectral rescaling $\Epi^{2} \mapsto \lambda\,\Epi^{2}$~\cite{Beau2026prs},
+    so the level ordering does not depend on the absolute spectral normalisation.
     The numerical value of $u$ is itself dictionary-bound through the chiral-frontier normalisation
     $\mathcal{N}_{A}$~\cite{Beau2026aar}, and is not fixed in this note; what is established here is the ordering of the
     three levels $e_{0}, e_{+}, e_{-}$, prior to any identification with the physical $e, \mu, \tau$.
@@ -309,65 +338,71 @@ Independent Researcher, France\\
   \section{Status of results}
     \label{sec:status}
 
-    \paragraph{Derived (algebra, on supplied model data).}
+    \paragraph{Proved (algebra on supplied model data).}
       On a rank-two bundle the determinant line $\wedge^{2}$ is the unique one-dimensional functor among the symmetric
-      and
-      exterior powers, it is invisible to $\Sym^{2}$ and trivial when the structure group lies in $\SL(2,\mathbb{C})$
-      (Proposition~\ref{prop:yukawa-line}(a)).
-      Under [H-Spin] this makes $\wedge^{2}(\SW)$ a trivial line without hypercharge.
-      The exit deficits, the ordering for $u > 0$ and the scale invariance of the level ratio of the model operator
-      $\diag(1, \tfrac12 + u, \tfrac12 - u)$ are algebraic (Proposition~\ref{prop:generation-level-assignment}).
+      and exterior powers, and it is trivial when the structure group lies in $\SL(2,\mathbb{C})$, in which case
+      $\Sym^{2}$ is the adjoint sector (Proposition~\ref{prop:yukawa-line}(a)).
+      The exit deficits, the ordering for $0 < u < \tfrac12$ and the scale invariance of the level ratio of the
+      model operator $\diag(1, \tfrac12 + u, \tfrac12 - u)$ are algebraic
+      (Proposition~\ref{prop:generation-level-assignment}).
       No step invokes the conditional model of~\cite{Beau2026a34}.
 
     \paragraph{Conditional.}
+      Under [H-Spin], the line $\wedge^{2}(\SW)$ is trivial and carries no hypercharge.
       Under [H-Weak], $\LY = \wedge^{2}(\Ew)$ with structure group $\UU(2)$ carries the abelian weight
       (Proposition~\ref{prop:yukawa-line}(b)).
       Under [H-Res], the ordered levels are levels of $\Epi^{2}|_{\Cgen}$.
+      Left-admissibility is an input of Q14, conditional on [H-Spin] and on the Born--Infeld datum (H1)--(H2) of O30,
+      and is not used here beyond the separation from $V-A$.
 
-    \paragraph{Ruled out.}
-      A complex metaplectic phase as a source of mixing, within the model of~\cite{Beau2026q14}.
+    \paragraph{Ruled out (within the model of Q14).}
+      A complex metaplectic phase as a source of $\Rmix$ (Remark~6.4 of~\cite{Beau2026q14}).
 
     \paragraph{Open (missing elements).}
       The factor $\Ew$ and the spin solder [H-Spin], neither supplied by a source; the identification [H-Res]; the
-      further
-      carrier linking the weak doublet to the weak singlets in~\eqref{eq:yukawa-operator}; the map from levels to
-      generations; the projected Yukawa operator $Y_{\Pi}$, its norm, the orientation (sign) of $u$, and the mixing.
+      further carrier linking the weak doublet to the weak singlets and the chirality-flip structure
+      in~\eqref{eq:yukawa-operator}; the exponents $k$ and $m$; the map from levels to generations; the projected Yukawa
+      operator $Y_{\Pi}$, its norm, the orientation (sign) of $u$, and the mixing, including the internal block
+      $e_{0} \leftrightarrow e_{\pm}$, which is neither excluded by Q14 nor constructed here.
       Hence the absolute masses, the mass ratios beyond the dimensionless level structure, and the generation mixing
       remain open, in agreement with the open deliverables of~\cite{Beau2026fmnote}.
 
     \paragraph{Summary.}
-      The note records the algebraic content of the Yukawa line and of the generation ordering together with the
+      The note records the algebraic content of the Yukawa line and of the level ordering together with the
       hypotheses that give them a physical reading, not the mass values.
-      Under [H-Weak] the determinant line $\LY$ fixes the weight datum of the coupling; under [H-Res] the squared
-      residue
-      $\Epi^{2}|_{\Cgen}$ fixes the levels; the mass comes after.
+      Under [H-Weak] the determinant line $\LY$ supplies the line from which the weights are built; under [H-Res] the
+      model operator on $\Cgen$ carries the levels of $\Epi^{2}|_{\Cgen}$; the mass comes after.
 
     \paragraph{Interpretive outlook (a reading, not a result).}
       The hypercharge line is where the Yukawa sector meets the weak interaction: the determinant line of the spinor
-      factor is trivial, so the line that couples to hypercharge must come from a second rank-two factor.
+      factor is trivial, so within the tensor-functor route the line that couples to hypercharge must come from a second
+      rank-two factor.
       The generation levels are a dimensionless pattern fixed by one number $u$; whether that pattern is a mass
-      hierarchy
-      depends on the missing identifications listed above.
+      hierarchy depends on the missing identifications listed above.
 
   \section{Reproducibility}
     \label{sec:repro}
 
-    The algebraic identities are verified by exact symbolic computation, with no floating-point sampling, in
-    \texttt{code/front3\_yukawa\_line.py} of this repository.
-    For Proposition~\ref{prop:yukawa-line}, the script checks the dimensions $\dim \Sym^{2}(\mathbb{C}^{2}) = 3$ and
-    $\dim \wedge^{2}(\mathbb{C}^{2}) = 1$, the action $\det g$ on the line $\wedge^{2}(\mathbb{C}^{2})$ together with
-    $\det g = 1$ on $\SL(2,\mathbb{C})$ (check B), and the weight $y_{1} + y_{2}$ of a diagonal generator $\diag(y_{1},
-    y_{2})$ of $\mathfrak{gl}_{2}$ on that line (check C).
+    The script \texttt{code/front3\_yukawa\_line.py} of this repository verifies the algebraic identities by exact
+    symbolic computation (20 checks).
+    For Proposition~\ref{prop:yukawa-line}, the script computes $\dim \Sym^{2}(\mathbb{C}^{2}) = 3$,
+    $\dim \wedge^{2}(\mathbb{C}^{2}) = 1$ and $\dim \mathfrak{sl}_{2} = 3$ from the defining subspaces of
+    $\mathbb{C}^{2} \otimes \mathbb{C}^{2}$, the action of $g \otimes g$ on $e_{1} \wedge e_{2}$, which equals $\det g$,
+    its triviality on the $\SL(2,\mathbb{C})$ and $\SU(2)$ slices and its non-triviality for $g = 2\,\mathbb{1}$
+    (check B), and the weight $y_{1} + y_{2}$ of a diagonal generator on that line (check C).
     The checks B and C are run separately and on matrices of $\mathbb{C}^{2}$ only: the script does not enumerate the
-    functors $\Sym^{k}$ and $\wedge^{k}$ (the uniqueness of $\wedge^{2}$ rests on the dimension count of the proof), and
-    it
-    does not construct $\Ew$ or test that a generator belongs to the structure group of $\Sbundle$ or of $\Ew$; that
-    membership is an input, [H-Spin] for the spinor factor and [H-Weak] for the weak factor.
+    functors $\Sym^{k}$ and $\wedge^{k}$ (the uniqueness of $\wedge^{2}$ within the family rests on the dimension count
+    of the proof), and it does not construct $\Ew$ or test that a generator belongs to the structure group of
+    $\Sbundle$ or of $\Ew$; that membership is an input, [H-Spin] for the spinor factor and [H-Weak] for the weak
+    factor.
     For Proposition~\ref{prop:generation-level-assignment}, the script checks the normal form
     $(C_{2} - \Jthree^{2})/C_{2} + u\,\Jthree = \diag(1, \tfrac12 + u, \tfrac12 - u)$, its even-sector reduction to
-    $\diag(1, \tfrac12, \tfrac12)$ at $u = 0$, the exit deficits, the ordering for $u > 0$, and the scale invariance of
-    the
-    level ratio.
+    $\diag(1, \tfrac12, \tfrac12)$ at $u = 0$, the exit deficits, and the scale invariance of the level ratio.
+    For the ordering it solves the system $0 < d_{\mathrm{exit}}(e_{+}) < d_{\mathrm{exit}}(e_{-})$ with both outer
+    levels positive and checks that its solution set is exactly $0 < u < \tfrac12$, together with an exact rational
+    grid of $49$ values inside the interval and five values outside it
+    ($u = -\tfrac1{10}$, $0$, $\tfrac12$, $\tfrac7{10}$, $1$);
+    the identity $d_{\mathrm{exit}}(e_{-}) - d_{\mathrm{exit}}(e_{+}) = 2u$ is kept as a separate, labelled identity.
     These are checks on the model operator; the script does not test [H-Res], the reading of the model operator as the
     restriction of $\Epi^{2}$, nor the map from levels to generations.
 
