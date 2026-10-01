@@ -21,15 +21,16 @@ OFF-DIAGONAL part is non-zero. The rephasing-invariant detectors are:
     order in gamma is gamma^3 and is proportional to Im(A_12 A_23 A_31) -- the genuine 3-generation CP datum.
 
 Two precautions (Jerome, firm).
-  (i)  AOG/CHO closed the ORIENTATION caveat [H-orient] and the spin-Galois sqrt(5) factor; they do NOT close
+  (i)  AOG/CHO treat the ORIENTATION caveat [H-orient] and the spin-Galois sqrt(5) factor; they do NOT settle
        the non-triviality of [U_Pi]. The chiral lift carries no action on Q(sqrt 5), so no spin-Galois factor
        orthogonal to zeta_q survives -- but that settles orientation, not the polar class.
   (ii) u != 0 (the diagonal generation split, A4/PRS) is NOT mixing. u lives in the DIAGONAL channel A_diag
        (pure level split / rephasing) and contributes nothing to the off-diagonal moduli or to J_Pi. Mixing
-       requires a NON-DIAGONAL polar class, sourced by the complex metaplectic channel v (PYO: v = 0 on the derived
-       real cascade; EBJ: odd-order mixing of E_Pi^2 vanishes by antiunitary parity in every covariant family, with
-       or without complex phases; A4-note: on the derived real cascade the transverse channel vanishes at
-       gamma = 0, the complex interior remaining conditional on a non-derived phase and an unprescribed order).
+       requires a NON-DIAGONAL polar class, sourced by the complex metaplectic channel v (PYO: v = 0 on the real
+       cascade of the model; EBJ: odd-order mixing of E_Pi^2 vanishes by antiunitary parity in every covariant
+       family, with or without complex phases; A4-note: on the real cascade of the model the transverse channel
+       vanishes at gamma = 0, the complex interior remaining conditional on a phase that is not
+       supplied and an unprescribed order).
 
 Results (all exact symbolic).
   (A) Orbit tangent at I is diagonal anti-hermitian: d/ds [V_R(s) V_L(s)^{-1}]|_0 = i(D_R - D_L), diagonal,
@@ -48,8 +49,9 @@ Results (all exact symbolic).
       off-diagonal modulus first variation and zero to J_Pi -- u != 0 does not produce mixing.
 
 Conclusion (printed). The non-triviality of the polar class is controlled EXACTLY by the off-diagonal
-(transverse) part of the metaplectic generator, i.e. by the complex metaplectic channel v. On the derived real
-cascade v = 0 => [U_Pi] = [I] => no physical mixing at this stratum (a strong conditional result). A non-trivial
+(transverse) part of the metaplectic generator, i.e. by the complex metaplectic channel v. On the real
+cascade of the model v = 0 => [U_Pi] = [I] => no physical mixing at this stratum (a strong conditional
+result). A non-trivial
 [U_Pi] != [I], hence CKM/PMNS-type mixing, requires a genuine complex metaplectic phase -- not derived in the
 present construction, conditional on the same open data (an unprescribed complex phase + ordering, A4-note), and
 observable only relative to a second fermionic sector sharing one generation carrier. No mass and no mixing value
@@ -162,7 +164,8 @@ def main():
     checks["E_complex_off_J_nonzero"] = cp_val != 0 and sp.simplify(J3.subs(sub_cp)) != 0
 
     # ---- (F) u-channel orthogonality: diagonal split (carrier of u) gives no mixing -------------
-    # u enters E_Pi^2|gen = diag(1,1/2+u,1/2-u) -> a DIAGONAL level operator; its generator is in A_diag.
+    # u enters the model operator diag(1,1/2+u,1/2-u) on C^3_gen (E_Pi^2|gen only under [H-Res]):
+    # a DIAGONAL level operator, whose generator is in A_diag.
     checks["F_u_no_offdiag"] = all(sp.simplify(U_diag[i, j]) == 0
                                    for i in range(3) for j in range(3) if i != j)
     checks["F_u_no_J"] = sp.simplify(sp.expand_complex(jarl(U_diag))) == 0
@@ -187,11 +190,11 @@ def main():
         print(f"  [{'PASS' if ok else 'FAIL'}]  {k}")
     print("=" * 100)
     print("RESULT: polar-class non-triviality is controlled EXACTLY by the off-diagonal (transverse) part of the")
-    print("        metaplectic generator = the complex metaplectic channel v. On the derived real cascade v=0 =>")
+    print("        metaplectic generator = the complex metaplectic channel v. On the real cascade of the model v=0 =>")
     print("        [U_Pi]=[I] => NO physical mixing at this stratum (strong conditional). A non-trivial")
     print("        [U_Pi] != [I] / CKM-PMNS-type mixing requires a genuine complex metaplectic phase -- NOT")
-    print("        derived in the present construction (conditional on an unprescribed phase + ordering), and")
-    print("        observable only relative to a second fermionic sector. AOG/CHO closed [H-orient], NOT this.")
+    print("        supplied in the present construction (conditional on an unprescribed phase + ordering), and")
+    print("        observable only relative to a second fermionic sector. AOG/CHO treat [H-orient], not this.")
     print("        No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
     return allok

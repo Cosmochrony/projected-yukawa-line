@@ -6,9 +6,10 @@ metaplectic step M = p E + q F + r H:
 
     A_{e0,e+} = sqrt(2) i (Im p + Im q) / 2     (front3d_transverse_route.py).
 
-Front 3e asks the upstream question the bridge left open: does the present full-tower stratum DERIVE Im p, Im q != 0
-(internal block opens, mixing != 0), or does it FORCE p, q in R (=> A_Pi = 0, mixing closes negatively at this
-stratum)? The decision is a REALITY-STRUCTURE question and must NOT conflate three distinct objects (Jerome's
+Front 3e asks the upstream question the bridge left open: does the surveyed pipeline supply Im p, Im q != 0
+(internal block opens, mixing != 0), or only real coefficients p, q in R (=> A_Pi = 0, no internal mixing from this
+source)? The audit makes the reality condition explicit and does not decide whether a complex non-central phase is
+supplied. The question is a REALITY-STRUCTURE question and must NOT conflate three distinct objects (Jerome's
 caveat):
 
     complexity of the REPRESENTATION matrices  !=  complexity of the COEFFICIENTS p, q  !=  central phase zeta_q.
@@ -36,15 +37,16 @@ Corpus anchoring (the EXHAUSTIVITY control -- structural, surveyed, not a symbol
   * CHO (Beau2026cho, prop. "Arithmetic nature of the inherited phase"): in the Schroedinger--Heisenberg pipeline
     the ONLY phase is the inherited central cyclotomic character zeta_q^{Delta A_c}; there is NO Fourier/Weyl
     generator, hence NO metaplectic Gauss phase. The non-central complex phase that would carry Im p, Im q != 0 is
-    structurally ABSENT from the present pipeline; the full Lorentzian SL(2,C) spin-lift carrying it is "not present
-    in this pipeline".
+    absent from the surveyed pipeline; a Lorentzian SL(2,C) lift carrying it (the [H-Spin] reading) is "not present
+    in this pipeline" and is not supplied.
   * AOG (Beau2026aog, lem:rigidity): the full recursive (all-tower) type-rigidity is structural / OPEN -- the same
     gate as epsilon = 1/10. Introducing a Weil/Fourier generator (a genuinely complex non-central metaplectic
     phase) = a NEW tower stratum.
 
-Verdict (printed). At the present stratum the non-central step is sigma-real (real Heisenberg data + only a central
-phase + no Weil generator): Im p = Im q = 0  =>  A_Pi = 0  =>  [U_Pi] = [I] internal  =>  N_A != 0, u != 0, but no
-internal mixing. NEGATIVE CLOSURE at the present stratum (outcome 1). The positive opening Im p, Im q != 0 requires
+Verdict (printed). If the non-central step is sigma-real (real Heisenberg data + only a central phase + no Weil
+generator, as in the surveyed pipeline): Im p = Im q = 0  =>  A_Pi = 0  =>  [U_Pi] = [I] internal, with N_A != 0 and
+u != 0 and no internal mixing from this source. This is a conditional statement on the reality of the coefficients;
+the internal block is neither excluded nor constructed here. The positive opening Im p, Im q != 0 requires
 a genuinely complex non-central metaplectic phase = a new tower stratum, gated by the SAME AOG lem:rigidity as
 epsilon = 1/10. No mass and no mixing value is produced. No figures. English.
 """
@@ -219,10 +221,10 @@ def main():
     print("EXHAUSTIVITY (structural, surveyed -- PRS/AAR + CHO + AOG): at the present full-tower stratum the only")
     print("  data feeding the non-central step are REAL (Heisenberg translations/modulations, oriented area ts in R)")
     print("  plus a CENTRAL cyclotomic phase zeta_q (CHO: no Fourier/Weyl generator => no metaplectic Gauss phase).")
-    print("  Hence Im p = Im q = 0 is FORCED => A_Pi = 0 => [U_Pi] = [I] internal.")
+    print("  If Im p = Im q = 0 (the surveyed data), then A_Pi = 0 => [U_Pi] = [I] internal: a condition.")
     print()
-    print("VERDICT: outcome 1 -- NEGATIVE CLOSURE at the present stratum. p,q in R forced, A_Pi = 0, no internal")
-    print("  mixing; N_A != 0 and u != 0 stand (diagonal split derived). The positive opening Im p,Im q != 0 needs a")
+    print("VERDICT: conditional on p,q in R (the surveyed data): A_Pi = 0, no internal mixing from this source;")
+    print("  the internal block is neither excluded nor constructed here. The positive opening Im p,Im q != 0 needs a")
     print("  genuinely complex NON-CENTRAL metaplectic phase = a Weil/Fourier generator = a NEW tower stratum, gated")
     print("  by the SAME AOG lem:rigidity as epsilon = 1/10. No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")

@@ -5,15 +5,16 @@ Bias-independent, exact symbolic verification (no sampling). Front 3b left the p
 with H_Pi|gen = lambda_Y^2 diag(1, 1/2+u, 1/2-u) taken as a model operator on C^3_gen (its reading as a restriction of
 E_Pi^2 is not supplied; PYO Beau2026pyo / PRS Beau2026prs / PYL Beau2026pyl),
 but the chiral polar factor U_Pi : P_L S_Pi (x) E_weak (x) L_Y^k -> P_R S_Pi (x) L_Y^m (schematic typing of Q14
-[H-Weak]; a further carrier linking the weak doublet to the singlets is not supplied) undetermined. Front 3c asks the delimiter
-question (Jerome): does the complex metaplectic phase fix a CANONICAL U_Pi, or only a CLASS
+[H-Weak]; a further carrier linking the weak doublet to the singlets is not supplied) undetermined. Front 3c
+asks the delimiter question (Jerome): does the complex metaplectic phase fix a CANONICAL U_Pi, or only a CLASS
 
-    U_Pi  ~  V_R U_Pi V_L^{-1}        (V_L on S_{L,Pi}, V_R on S_{R,Pi}, admissible chiral basis changes) ?
+    U_Pi  ~  V_R U_Pi V_L^{-1}        (V_L, V_R: admissible basis changes of the left and right generation carriers) ?
 
 The audit acts with admissible chiral basis changes and reports which data of U_Pi survive.
 
 Admissibility of the basis changes. The generation triplet C^3_gen carries the LEFT level operator
-H_Pi (= lambda_Y^2 E_Pi^2|gen) and, by the antiunitary J_Pi exchange L<->R (PRS sec:chiral-defect), a RIGHT
+H_Pi (= lambda_Y^2 times the model operator on C^3_gen; reading it as lambda_Y^2 E_Pi^2|gen needs [H-Res] and
+the dictionary premise [H-Sq] of PYO) and, by the antiunitary J_Pi exchange L<->R (PRS sec:chiral-defect), a RIGHT
 level operator Y_Pi Y_Pi^dag = U_Pi H_Pi U_Pi^dag with the SAME spectrum. Both spectra are
 lambda_Y^2 {1, 1/2+u, 1/2-u}, which are DISTINCT for 0 < u < 1/2, u != 1/2. Distinctness pins each carrier to
 its J_3-labelled level eigenbasis up to a diagonal rephasing: the admissible residual group is the diagonal
@@ -34,7 +35,7 @@ Results (all exact symbolic).
   (D) Parameter count: U(3) has 9 real parameters; the rephasings remove 2*3 - 1 = 5; so 4 physical survive
       = 3 mixing magnitudes (angles) + 1 CP phase (Jarlskog). U_Pi is therefore CLASS-only, not canonical.
   (E) CP-real / no-mixing collapse: a real orthogonal U_Pi has Jarlskog J = 0 (no CP phase); the PRS even
-      closure v = 0 forces U_Pi diagonal, i.e. U_Pi ~ I up to rephasing, giving |(U_Pi)_{ij}| = delta_{ij} and
+      CP-even condition v = 0 forces U_Pi diagonal, i.e. U_Pi ~ I up to rephasing, giving |(U_Pi)_{ij}| = delta_{ij} and
       ZERO mixing. A non-trivial U_Pi (the off-diagonal/complex part) requires a complex metaplectic phase gamma.
   (F) Metaplectic source: a one-parameter chiral generator U_Pi(gamma) = exp(gamma (R - R^dag)) with R a
       strictly-upper nilpotent (the L->R off-diagonal induced by the metaplectic phase) gives U_Pi(0) = I
@@ -43,7 +44,7 @@ Results (all exact symbolic).
 
 Conclusion (printed): the complex metaplectic phase fixes U_Pi only up to the rephasing CLASS
 U_Pi ~ V_R U_Pi V_L^{-1}. The physical content of Front 3c is the class invariants: 3 mixing magnitudes
-|(U_Pi)_{ij}| + 1 Jarlskog CP phase. If gamma is real on the derived spin stratum (CHO/AOG sqrt(5)-rigidity,
+|(U_Pi)_{ij}| + 1 Jarlskog CP phase. If gamma is real in the real model of the cascade (CHO/AOG sqrt(5)-rigidity,
 rho_chi = 1) the CP phase vanishes and, with PRS v = 0, U_Pi collapses to I (no mixing at this stratum) -- a
 strong conditional result; a genuine complex phase, hence non-trivial mixing, can enter only via the open
 full-tower stratum, gated by the same AOG lem:rigidity as epsilon = 1/10. No mass and no mixing value is
@@ -146,7 +147,7 @@ def main():
     # real orthogonal U_Pi (phi = 0) => Jarlskog J = 0
     U_real = U_pi.subs(ph, 0)
     checks["E_real_unitary_J_zero"] = sp.simplify(sp.expand_complex(sp.im(jarl(U_real)))) == 0
-    # PRS even closure v = 0 => U_Pi diagonal => ~ I up to rephasing => no mixing (off-diagonals vanish)
+    # PRS CP-even condition v = 0 => U_Pi diagonal => ~ I up to rephasing => no mixing (off-diagonals vanish)
     U_diag = sp.diag(1, 1, sp.exp(sp.I * ph))            # v=0 leaves only diagonal phases
     offdiag_zero = all(sp.simplify(U_diag[i, j]) == 0 for i in range(3) for j in range(3) if i != j)
     checks["E_v0_no_mixing"] = offdiag_zero
@@ -171,13 +172,13 @@ def main():
     print("Front 3c - canonical-vs-class audit of the chiral polar factor U_Pi (exact symbolic, no sampling)")
     print("=" * 100)
     print("  Y_Pi = U_Pi H_Pi^{1/2};  question: does the metaplectic phase fix U_Pi, or only the class")
-    print("  U_Pi ~ V_R U_Pi V_L^{-1} (V_L on S_{L,Pi}, V_R on S_{R,Pi})?")
+    print("  U_Pi ~ V_R U_Pi V_L^{-1} (V_L, V_R basis changes of the left and right carriers)?")
     print("  (A) free-right V_R=U_Pi removes U_Pi -> only Spec(H_Pi) survives the full orbit (no mixing)")
     print("  (B) but right level op YY^dag has the SAME distinct spectrum -> right basis pinned up to phase")
     print("      => admissible V_L,V_R are DIAGONAL rephasings only (commutant of distinct diagonal = diagonal)")
     print("  (C) under diagonal rephasing: |(U_Pi)_{ij}| and the Jarlskog quartet phase are INVARIANT")
     print("  (D) count: 9 - (2*3-1) = 4 physical = 3 mixing angles + 1 CP (Jarlskog) phase => CLASS, not canonical")
-    print("  (E) real U_Pi => J=0; PRS even closure v=0 => U_Pi diagonal ~ I => ZERO mixing")
+    print("  (E) real U_Pi => J=0; PRS CP-even condition v=0 => U_Pi diagonal ~ I => ZERO mixing")
     print("  (F) metaplectic gamma switches mixing on (U_Pi(0)=I, dU/dgamma|_0 != 0); real gamma keeps J=0")
     print("-" * 100)
     allok = True
@@ -188,7 +189,7 @@ def main():
     print("=" * 100)
     print("RESULT: U_Pi is CLASS-only, not canonical. The metaplectic phase fixes U_Pi up to")
     print("        U_Pi ~ V_R U_Pi V_L^{-1} (diagonal rephasings). Surviving invariants: 3 mixing magnitudes")
-    print("        |(U_Pi)_{ij}| + 1 Jarlskog CP phase. If gamma is real on the derived spin stratum")
+    print("        |(U_Pi)_{ij}| + 1 Jarlskog CP phase. If gamma is real in the real model of the cascade")
     print("        (CHO/AOG sqrt(5)-rigidity, rho_chi=1) the CP phase vanishes and, with PRS v=0, U_Pi ~ I:")
     print("        NO mixing at this stratum (strong conditional). A genuine complex phase / non-trivial mixing")
     print("        can enter only via the open full-tower stratum, gated by the same AOG lem:rigidity as eps=1/10.")

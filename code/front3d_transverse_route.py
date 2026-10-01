@@ -2,15 +2,16 @@
 
 Bias-independent, exact symbolic verification (no sampling). Front 3c reduced the non-triviality of the chiral
 polar class to one question: does the metaplectic generator of U_Pi have a non-zero TRANSVERSE (off-diagonal)
-component in T_[I](U(1)^3_R \\ U(3) / U(1)^3_L)? On the derived real cascade the answer is no. The bridge to
+component in T_[I](U(1)^3_R \\ U(3) / U(1)^3_L)? On the real cascade of the model the answer is no. The bridge to
 Front 2 asks whether the FULL-TOWER complex metaplectic phase can produce a transverse component, or whether the
-spin-stratum structure confines the metaplectic datum to the diagonal (Cartan / orientation / N_A) channel.
+structure of the model confines the metaplectic datum to the diagonal (Cartan / orientation / N_A) channel.
 
 Correct U_Pi generator. U_Pi is the CHIRAL (J_Pi swaps L<->R) and UNITARY polar factor, so its generator is the
 J_Pi-ODD and ANTI-HERMITIAN part of the lifted cascade generator:
     A := antiherm( J_Pi-odd( lift(M) ) ),     M in sl_2 (metaplectic step, coefficients possibly complex).
 (The J_Pi-odd part that is HERMITIAN/symmetric is the split-generating, longitudinal piece -- it builds the
-diagonal level operator E_Pi^2 = diag(1, 1/2+u, 1/2-u) and is rotated away in the generation eigenbasis; it is
+diagonal model level operator diag(1, 1/2+u, 1/2-u) (E_Pi^2|gen only under [H-Res]) and is rotated away in
+the generation eigenbasis; it is
 NOT a U_Pi direction. This is why a real cascade, whose J_Pi-odd part is real symmetric, gives U_Pi = I.)
 
 Two transverse blocks on C^3_gen = Sym^2(C^2), basis (e_0, e_+, e_-):
@@ -22,7 +23,7 @@ channel, with R_mix "a distinct direction". Schur (PRS / schur_transversality_al
 alpha != 0 (J_3) and mu = 0 (R_mix). EBJ (Beau2026ebj): every odd-order generation-mixing coefficient of E_Pi^2
 vanishes by antiunitary parity in every covariant family, with or without complex phases; even orders are not excluded.
 AOG
-(Beau2026aog, prop:spinrigidity, lem:rigidity): the spin-stratum type-rigidity fixes sqrt(5) and closes
+(Beau2026aog, prop:spinrigidity, lem:rigidity): the type-rigidity of the model fixes sqrt(5) and treats
 [H-orient] -- it constrains the ARITHMETIC TYPE / orientation, not the transverse polar direction.
 
 Results (all exact symbolic).
@@ -49,8 +50,8 @@ Bridge verdict (printed). NOT outcome 1 (the transverse is not killed): a genuin
 sources INNER-block mixing at the present stratum. Closest to outcome 3 (the transverse datum is INDEPENDENT of
 N_A): N_A is the real oriented area, the inner mixing is the independent imaginary phase of the SAME cascade
 carrier, and the OUTER block needs a separate new-stratum datum; N_A / epsilon can be fixed without predicting
-the mixing. NOT outcome 2 (N_A's real area does not by itself feed the mixing). Whether the derived full-tower
-phase is genuinely complex (-> inner mixing) or real (-> the derived-cascade collapse, no mixing), and whether a
+the mixing. NOT outcome 2 (N_A's real area does not by itself feed the mixing). Whether the full-tower
+phase is genuinely complex (-> inner mixing) or real (-> the real-cascade collapse, no mixing), and whether a
 new stratum opens the outer block, are the open questions -- gated by the same AOG lem:rigidity as epsilon = 1/10.
 No mass and no mixing value is produced. No figures. English.
 """
@@ -183,7 +184,7 @@ def main():
     print("  real oriented area (J_3), the inner mixing is the independent IMAGINARY phase of the same cascade")
     print("  carrier, and the OUTER (e_+<->e_-) block needs a separate NEW-stratum datum; so N_A/epsilon can be")
     print("  fixed without predicting the mixing. NOT outcome 2 -- N_A's real area does not by itself feed it.")
-    print("  Open (gated by the same AOG lem:rigidity as epsilon=1/10): is the derived full-tower phase genuinely")
+    print("  Open (gated by the same AOG lem:rigidity as epsilon=1/10): is the full-tower phase genuinely")
     print("  complex (-> inner mixing) or real (-> collapse, no mixing), and does a new stratum open the outer block?")
     print("  No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
