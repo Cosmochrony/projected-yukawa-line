@@ -2,8 +2,10 @@
 
 Bias-independent, exact symbolic verification (no sampling). Front 3b left the projected Yukawa morphism
     Y_Pi = U_Pi H_Pi^{1/2},   H_Pi := Y_Pi^dag Y_Pi  on the left generation carrier,
-with H_Pi|gen = lambda_Y^2 diag(1, 1/2+u, 1/2-u) closed (PYO Beau2026pyo / PRS Beau2026prs / PYL Beau2026pyl),
-but the chiral polar factor U_Pi : S_{L,Pi} (x) L_Y -> S_{R,Pi} undetermined. Front 3c asks the delimiter
+with H_Pi|gen = lambda_Y^2 diag(1, 1/2+u, 1/2-u) taken as a model operator on C^3_gen (its reading as a restriction of
+E_Pi^2 is not supplied; PYO Beau2026pyo / PRS Beau2026prs / PYL Beau2026pyl),
+but the chiral polar factor U_Pi : P_L S_Pi (x) E_weak (x) L_Y^k -> P_R S_Pi (x) L_Y^m (schematic typing of Q14
+[H-Weak]; a further carrier linking the weak doublet to the singlets is not supplied) undetermined. Front 3c asks the delimiter
 question (Jerome): does the complex metaplectic phase fix a CANONICAL U_Pi, or only a CLASS
 
     U_Pi  ~  V_R U_Pi V_L^{-1}        (V_L on S_{L,Pi}, V_R on S_{R,Pi}, admissible chiral basis changes) ?
