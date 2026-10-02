@@ -52,18 +52,21 @@ is not used here.
 Its norm, the sign of $u$, and the mixing are downstream open data.
 A complex metaplectic phase is ruled out as a source of the external block $R_{\mathrm{mix}}$ within the model of Q14,
 which the image of $\mathfrak{sl}_2(\mathbb{C})$ does not reach (Q14 Remark 6.4).
-For the internal block $e_0 \leftrightarrow e_\pm$: $A_\Pi^{\mathrm{odd}}$, the anti-Hermitian part of the $J_\Pi$-odd part
-of the $\mathfrak{sl}_2$ lift of the step generator, vanishes identically for all complex coefficients, because with the
-internal antilinear parity $J_\Pi$ of Q14 Section 6 (acting on the generation copy, not a spinor-level object) the
-$J_\Pi$-odd part of the lift is its Hermitian part; this is a statement about $A_\Pi^{\mathrm{odd}}$ as defined
-($A_\Pi^{\mathrm{odd}}$ is the projection defined in PYO, not the anomaly density of Q14). It does not determine the polar
-factor: the polar generator of a family of morphisms is $\Omega = U^\dagger\,dU/d\gamma$, defined in PYO by the Sylvester
-equation $\Omega P + P\Omega = U^\dagger dY - dY^\dagger U$, and for the $\mathrm{Sym}^2$ lift at the identity it is the
-anti-Hermitian part of $L(M)$, which is $J_\Pi$-even and non-zero (internal entry $\tfrac{\sqrt2}{2}(q - \bar p)$, non-zero
-for real $p \ne q$). So the image of $\mathfrak{sl}_2$ does reach the internal block through that part. No physical
-exclusion is claimed and nothing is concluded about the polar class or about mixing: no source justifies defining a generator
-through the $J_\Pi$-odd part, this note supplies no family of Yukawa morphisms whose polar factor is at issue, and Q14
-excludes the internal block only by hypothesis (Proposition 6.3 (i)-(ii)).
+For the internal block $e_0 \leftrightarrow e_\pm$: $A_\Pi^{\mathrm{odd}}$, the anti-Hermitian part of the $J_\Pi$-odd
+part of the $\mathfrak{sl}_2$ lift of the step generator, vanishes identically for all complex coefficients, because
+with the internal antilinear parity $J_\Pi$ of Q14 Section 6 (acting on the generation copy, not a spinor-level
+object) the $J_\Pi$-odd part of the lift is its Hermitian part; this is a statement about $A_\Pi^{\mathrm{odd}}$ as
+defined ($A_\Pi^{\mathrm{odd}}$ is the projection defined in PYO, not the anomaly density of Q14).
+It does not determine the polar factor: the polar generator of a family of morphisms is $\Omega =
+U^\dagger\,dU/d\gamma$, defined in PYO by the Sylvester equation $\Omega P + P\Omega = U^\dagger dY - dY^\dagger U$
+for a real-parameter family between fixed orthonormal frames with $P > 0$; singular supports ($P$ not invertible) and
+moving frames are not covered.
+For the $\mathrm{Sym}^2$ lift at the identity $\Omega$ is the anti-Hermitian part of $L(M)$, which is $J_\Pi$-even and
+non-zero (internal entry $\tfrac{\sqrt2}{2}(q - \bar p)$, non-zero for real $p \ne q$).
+So the image of $\mathfrak{sl}_2$ does reach the internal block through that part.
+No physical exclusion is claimed and nothing is concluded about the polar class or about mixing: no source justifies
+defining a generator through the $J_\Pi$-odd part, this note supplies no family of Yukawa morphisms whose polar factor
+is at issue, and Q14 excludes the internal block only by hypothesis (Proposition 6.3 (i)-(ii)).
 No mass value is claimed.
 
 ## Interpretive outlook (a reading, not a result)
