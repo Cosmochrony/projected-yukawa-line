@@ -72,7 +72,7 @@ Independent Researcher, France\\
     First, algebra proved on supplied model data: on a rank-two bundle with structure group in
     $\SL(2,\mathbb{C})$, the determinant line $\wedge^{2}$ is the unique one-dimensional functor among the symmetric and
     exterior powers, and it is trivial.
-    Hence $\wedge^{2}(\SW)$ carries no hypercharge under the spin solder [H-Spin] of Q14.
+    Hence $\wedge^{2}(\SW)$ carries no abelian weight of the spin group under the spin solder [H-Spin] of Q14.
     Under the distinct weak factor [H-Weak] of Q14, which is not supplied and not constructed here, the line
     $\LY := \wedge^{2}(\Ew)$ with structure group $\UU(2)$ carries the abelian weight: within this functor route it is
     a conditional weak determinant line, not a line of the spinor bundle.
@@ -124,8 +124,7 @@ Independent Researcher, France\\
     The projective-residue Schur analysis~\cite{Beau2026prs} states the squared residue on the supplied triplet in the
     normal form of Section~\ref{sec:levels} and reduces the question $u \neq 0$ to a chiral defect.
     This note reads that normal form as $\Epi^{2}|_{\Cgen}$ only under the named identification [H-Res].
-    The Born--Infeld margin note~\cite{Beau2026bim} analyses the radial factor of the modulus of $u$ and does not
-    predict $|u|$.
+    The Born--Infeld margin note~\cite{Beau2026bim} does not predict $|u|$.
     The sub-programme note states plainly that the mass spectrum and the Yukawa couplings are not derived, and lists
     them among the open deliverables~\cite{Beau2026fmnote}.
 
@@ -165,7 +164,7 @@ Independent Researcher, France\\
         family.)
         If $G \subset \SL(2,\mathbb{C})$, then $\wedge^{2}(E)$ is a trivial line, and the adjoint sector
         $\Sym^{2}(E) \simeq \mathfrak{sl}_{2}(\mathbb{C})$ does not see it.
-        In particular, under [H-Spin], $\wedge^{2}(\SW)$ is trivial and carries no hypercharge.
+        In particular, under [H-Spin], $\wedge^{2}(\SW)$ is trivial and carries no abelian weight of the spin group.
         \item[\emph{(b)}] \emph{(under [H-Weak].)}
         For the rank-two bundle $\Ew$ with structure group $\UU(2)$, the line $\LY := \wedge^{2}(\Ew) = \det \Ew$ is
         acted on
@@ -218,15 +217,16 @@ Independent Researcher, France\\
     are not excluded.
     The symmetric square of $\Ew$ is the weak adjoint twisted by $\LY$, and the determinant line of $\Ew$ is $\LY$.
     [H-Weak] is a missing identification, not a refutation: the corpus does not supply the factor $\Ew$.
-    The no-go note excludes two deposited candidates for an independent fermionic weak multiplicity
-    $M_{L} \simeq \mathbb{C}^{2}$, conditionally on [H-Spin]~\cite{Beau2026nsr}; no other candidate is excluded
-    there, and none is supplied.
+    The finite-stratum obstructions of the no-go note~\cite{Beau2026nsr} exclude two deposited candidates for an
+    independent fermionic weak multiplicity $M_{L} \simeq \mathbb{C}^{2}$ without invoking [H-Spin]; its Lorentz-lock
+    input is imported from Q14, where the spinor reading of the carrier is under [H-Spin].
+    No other candidate is excluded there, and none is supplied.
 
   \section{Separation from the Yukawa operator}
     \label{sec:separation}
 
     Proposition~\ref{prop:yukawa-line} fixes a line, not a mass matrix.
-    Under [H-Weak] the fermion fields are sections of
+    Under [H-Spin] and [H-Weak] the fermion fields are sections of
     $P_{L}\,\Sbundle \otimes \Ew \otimes \LY^{k} \oplus P_{R}\,\Sbundle \otimes
     \LY^{m}$ with integer exponents $k$, $m$ not fixed by the hypothesis~\cite{Beau2026q14}.
     The line $\LY$ supplies the determinant line from which the weights of a coupling are built; the weight itself
@@ -241,20 +241,20 @@ Independent Researcher, France\\
     or equivalently its spectral avatar after compression by the projective residue $\Epi$.
     The form~\eqref{eq:yukawa-operator} is schematic, and its typing has one missing element and one ruled-out reading.
     The missing element is a weak linking carrier $K$, a finite-dimensional $\UU(2)$-module linking the weak doublet to
-    the weak singlet, supplied by no source; without it an invariant coupling between the two sectors does not exist as
+    the weak character, supplied by no source; without it an invariant coupling between the two sectors does not
+    exist as
     typed.
-    The Lorentz part is not the missing element: with the antilinear lift $\JPi$ of Theorem~3.7 of~\cite{Beau2026q14},
-    which uses [H-Spin], the sesquilinear pairing $\overline{P_{L}\,\Sbundle} \otimes P_{R}\,\Sbundle$ contains the
-    Lorentz scalar exactly once, as in Section~2 of~\cite{Beau2026pyo}.
+    The Lorentz part is not the missing element: under [H-Spin], since $S_{R} \simeq \overline{S_{L}}$
+    (Lemma~3.6 of~\cite{Beau2026q14}), the sesquilinear pairing $\overline{P_{L}\,\Sbundle} \otimes P_{R}\,\Sbundle$
+    contains the Lorentz scalar exactly once, as in Section~2 of~\cite{Beau2026pyo}.
     The ruled-out reading is a linear Lorentz-equivariant map $P_{L}\,\Sbundle \to P_{R}\,\Sbundle$: under [H-Spin]
     the chiral factors $S_{L}$ and $S_{R} \simeq \overline{S_{L}}$ are inequivalent $\SL(2,\mathbb{C})$-modules
     (Lemma~3.6 of~\cite{Beau2026q14}), so a non-zero equivariant linear map does not exist, by Schur's lemma.
-    Here $\JPi$ is the spinor-level lift exchanging the chiralities; it is not the internal parity of the generation
-    copy that the companion note~\cite{Beau2026pyo} also writes $\JPi$, and Q14 supplies it.
     The factorisation premise [H-Fac] of the companion note~\cite{Beau2026pyo} reads the full morphism $Y_{\Pi}$
     through its generation block alone.
     It has two independent conditions: (F1) a weak linking carrier $K$, supplied by no source, for which the space
-    $I_{K}$ of Lorentz-invariant sesquilinear couplings that are $\UU(2)$-invariant is non-zero; (F2) $\dim I_{K} \leq
+    $I_{K}$ of $K$-valued Lorentz-invariant sesquilinear couplings that are $\UU(2)$-invariant is non-zero; (F2)
+    $\dim I_{K} \leq
     1$, so that the coupling factorises through $\Cgen$.
     It is not used here.
     The line $\LY$ is one ingredient of the abelian weight of the coupling; the operator $Y_{\Pi}$ fixes how strongly,
@@ -267,8 +267,10 @@ Independent Researcher, France\\
     of~\cite{Beau2026q14}): the external block $\Rmix$ is not reached by the image of $\mathfrak{sl}_{2}(\mathbb{C})$.
     That remark concerns $\Rmix$ only.
     The internal block $e_{0} \leftrightarrow e_{\pm}$ is treated in the companion note~\cite{Beau2026pyo}.
+    In that note $\JPi$ denotes the internal antilinear parity of the generation copy of Q14 Section~6, an operator on
+    $\Cgen$ built from the Born--Infeld datum that does not use [H-Spin]; it is not a spinor-level object.
     There $A_{\Pi}$, the anti-Hermitian part of the $\JPi$-odd part of the $\mathfrak{sl}_{2}$ lift of the step
-    generator, vanishes identically for all complex coefficients, because with the antilinear $\JPi$ of Q14 the
+    generator, vanishes identically for all complex coefficients, because with this antilinear $\JPi$ the
     $\JPi$-odd part of the lift is its Hermitian part.
     This is a statement about $A_{\Pi}$ as defined.
     The $\JPi$-even anti-Hermitian part of the lift has the non-zero internal entry $\tfrac{\sqrt{2}}{2}(q -
@@ -375,7 +377,7 @@ Independent Researcher, France\\
     \end{proof}
 
     The level structure is dimensionless and fixed by $u$ alone: the ratio $(\tfrac12 + u)/(\tfrac12 - u)$, positive
-    for $u < \tfrac12$, is invariant under the spectral rescaling $\Epi^{2} \mapsto \lambda\,\Epi^{2}$
+    for $|u| < \tfrac12$, is invariant under the spectral rescaling $\Epi^{2} \mapsto \lambda\,\Epi^{2}$
     of~\cite{Beau2026prs}, so the level ordering does not depend on the absolute spectral normalisation.
     The numerical value of $u$ is itself dictionary-bound through the chiral-frontier normalisation
     $\mathcal{N}_{A}$~\cite{Beau2026aar}, and is not fixed in this note; what is established here is the ordering of the
@@ -394,7 +396,7 @@ Independent Researcher, France\\
       No step invokes the conditional model of~\cite{Beau2026a34}.
 
     \paragraph{Conditional.}
-      Under [H-Spin], the line $\wedge^{2}(\SW)$ is trivial and carries no hypercharge.
+      Under [H-Spin], the line $\wedge^{2}(\SW)$ is trivial and carries no abelian weight of the spin group.
       Under [H-Weak], $\LY = \wedge^{2}(\Ew)$ with structure group $\UU(2)$ carries the abelian weight
       (Proposition~\ref{prop:yukawa-line}(b)).
       Under [H-Res], the ordered levels are levels of $\Epi^{2}|_{\Cgen}$
@@ -412,8 +414,9 @@ Independent Researcher, France\\
 
     \paragraph{Open (missing elements).}
       The factor $\Ew$ and the spin solder [H-Spin], neither supplied by a source; the identification [H-Res]; the
-      weak linking carrier $K$ linking the weak doublet to the weak singlets in~\eqref{eq:yukawa-operator}, the only
-      missing element of the coupling, the Lorentz scalar being available; the exponents $k$ and $m$ beyond their
+      weak linking carrier $K$ linking the weak doublet to the weak character in~\eqref{eq:yukawa-operator}, the only
+      missing element for the existence of an invariant coupling, the Lorentz scalar being available; the
+      exponents $k$ and $m$ beyond their
       conditional
       selection by Q14; the map from levels to generations; the projected Yukawa operator $Y_{\Pi}$, its norm, the
       orientation (sign) of $u$, and the mixing, including the internal block $e_{0} \leftrightarrow e_{\pm}$, which
@@ -462,7 +465,7 @@ Independent Researcher, France\\
     the identity $d_{\mathrm{exit}}(e_{-}) - d_{\mathrm{exit}}(e_{+}) = 2u$ is kept as a separate, labelled identity.
     These are checks on the model operator; the script does not test [H-Res], the reading of the model operator as the
     restriction of $\Epi^{2}$, nor the map from levels to generations.
-    The directory \texttt{code/} also holds four earlier audit scripts of statements of the companion
+    The directory \texttt{code/} also holds four audit scripts of statements of the companion
     note~\cite{Beau2026pyo}, namely the polar class, its non-triviality, the transverse route and the reality
     structure of the step generator; none of them is used by a statement of this note.
     They do not reproduce the companion note: its own scripts, listed in its Reproducibility section, are held in the

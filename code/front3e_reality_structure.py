@@ -8,7 +8,8 @@ complex coefficients (p, q, r), its derived Sym^2 lift L(M) on C^3_gen = Sym^2(V
 of the chiral unitary polar factor. This script tests what that definition yields; it does not test why the
 generator is defined through the J_Pi-ODD part (see the open modelling question below).
 
-Definitions (Q14 Section 6; Q14 Theorem 3.7 for the spinorial lift).
+Definitions (Q14 Section 6). J_Pi below is the internal antilinear parity of the generation copy, an operator on
+C^3_gen that does not use [H-Spin]; it is not the spinor-level lift of Q14 Theorem 3.7.
   * V = C^2 = <v_+, v_->, e_0 = sqrt(2) v_+ v_-, e_+ = v_+ v_+, e_- = v_- v_-, J_3 = diag(0, 1, -1).
   * J_Pi on V is the antilinear map z -> eps conj(z) with eps = [[0, 1], [-1, 0]] (J_Pi^2 = -1 on V). Lifted to
     C^3_gen = Sym^2(V) it is the ANTILINEAR map  J_Pi z = S conj(z)  with S = Sym^2(eps), which maps e_0 to -e_0 and
@@ -249,7 +250,7 @@ def main():
     print("  i Im(r) diag(0, 2, -2) is J_Pi-even. The J_Pi-even anti-hermitian part of the lift has the non-zero")
     print("  internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image of sl_2 does reach the")
     print("  internal block e_0 <-> e_+/- through that part; the external block R_mix is not reached by the image of")
-    print("  sl_2 (Q14 Remark 6.4, Prop. 6.3). The linear involution is not J_Pi; it appears only as a negative")
+    print("  sl_2 (Q14 Remark 6.4). The linear involution is not J_Pi; it appears only as a negative")
     print("  control (condition Im(p+q)).")
     print("OPEN MODELLING QUESTION: no physical exclusion of the internal block is claimed. Whether A_Pi, rather than")
     print("  the J_Pi-even part, is the right object is a modelling choice of the companion note that no source")

@@ -9,7 +9,8 @@ coupling are built (the exponents k, m are not fixed by the hypothesis); the mod
 levels of E_Pi^2 only under the named identification [H-Res]; the mass comes after (Yukawa norm + sign of u + mixing).
 
 Typing (Q14): the rank-two fibre is either the spinor factor S_L, with structure group SL(2,C) under [H-Spin], on which
-wedge^2 is a trivial line with no hypercharge, or the weak factor E_weak of [H-Weak], with structure group U(2), on
+wedge^2 is a trivial line with no abelian weight of the spin group, or the weak factor E_weak of [H-Weak], with
+structure group U(2), on
 which L_Y = wedge^2(E_weak) carries the abelian weight. E_weak is not constructed in Q14. The script works on C^2 and
 does not construct either bundle.
 

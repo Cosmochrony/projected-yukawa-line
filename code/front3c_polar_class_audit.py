@@ -33,7 +33,8 @@ Results (all exact symbolic).
   (E) A real orthogonal U_Pi has J_CP = 0. H_Pi is blind to U_Pi: Y^gen_Pi^dag Y^gen_Pi is the same for every
       unitary U_Pi, so neither H_Pi nor, under [H-Res] and [H-Sq], E_Pi^2|gen constrains U_Pi.
   (F) Illustration with a generator chosen by hand (not the generator of Q14's step model, for which
-      front3e_reality_structure.py shows A_Pi = 0): U_Pi(gamma) = exp(gamma A) with A the real antisymmetric matrix
+      front3e_reality_structure.py shows that A_Pi as defined vanishes):
+      U_Pi(gamma) = exp(gamma A) with A the real antisymmetric matrix
       E_01 - E_10. It has |U_01| = |sin gamma|, non-zero for generic gamma, while every element of the class of I has
       |U_ij| = delta_ij; so a generator with a transverse part moves the class. Real gamma keeps J_CP = 0.
 

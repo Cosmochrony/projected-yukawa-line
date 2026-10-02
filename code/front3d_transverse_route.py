@@ -5,7 +5,8 @@ reduces the non-triviality of the class [U_Pi] to the OFF-DIAGONAL (transverse) 
 of the polar factor. This script asks which transverse blocks the Sym^2 lift of an sl_2(C) step can source.
 
 Generator (definition, taken as given). A_Pi := antiherm( J_Pi-odd( L(M) ) ), M = p E + q F + r H in sl_2(C) with
-complex coefficients, L(M) the derived Sym^2 lift on C^3_gen, and J_Pi the ANTILINEAR parity of Q14 Section 6,
+complex coefficients, L(M) the derived Sym^2 lift on C^3_gen, and J_Pi the ANTILINEAR internal parity of the
+generation copy of Q14 Section 6 (an operator on C^3_gen that does not use [H-Spin]; not a spinor-level object),
 J_Pi z = S conj(z) with S = Sym^2(eps), eps = [[0, 1], [-1, 0]] (J_Pi: e_0 -> -e_0, e_+ <-> e_- antilinearly). The
 conjugation of an operator is X -> S conj(X) S^{-1}. The exact audit of this definition is
 front3e_reality_structure.py; this script reuses it on the blocks.
@@ -20,8 +21,9 @@ Results (all exact symbolic).
       complex (p, q, r). The J_Pi-odd part of L(M) is the hermitian part of L(M).
   (C) The N_A channel: the J_3 coefficient of the J_Pi-odd part is 2 Re r. For the BCH-truncated element
       tE + sF + (ts/2) H of the cascade step g = exp(tE) exp(sF), which is exact to second order in (t, s) only, it is
-      t s; the exact logarithm of g has an H coefficient (ts/2)(1 - ts/12 + ...), so the value t s is not exact beyond
-      second order. It lies in the diagonal channel.
+      t s; the exact logarithm of g has an H coefficient (ts/2)(theta/sinh theta) =
+      (ts/2)(1 - ts/6 + (ts)^2/30 - ...) with cosh theta = 1 + ts/2, so the value t s is not exact beyond second
+      order. It lies in the diagonal channel.
   (D) The lift has identically zero external entries for any complex M (R_mix is not reached by the image of sl_2,
       Q14 Remark 6.4), and R_mix is linearly independent of span{L(E), L(F), L(H), I_3} (rank 4 -> 5). The J_Pi-odd
       anti-hermitian internal-block generator used as a probe is outside the sl_2 image (rank 3 -> 4) and
@@ -128,7 +130,7 @@ def main():
     checks["C_J3_coefficient_is_2Re_r"] = sp.simplify(
         sp.expand_complex(hs_inner(J3, odd_cpx) / hs_inner(J3, J3) - 2 * rR)) == 0
 
-    # ---- (D) external block unreached; J_Pi-odd internal probe outside the image; J_Pi-even part reaches ---------------------------------------------
+    # ---- (D) external block unreached; J_Pi-odd internal probe outside the image; J_Pi-even part reaches
     LE, LF, LH = sym2_lift(E), sym2_lift(F), sym2_lift(H)
     full = sym2_lift(p * E + q * F + r * H)
     checks["D_lift_external_entries_zero"] = sp.simplify(full[1, 2]) == 0 and sp.simplify(full[2, 1]) == 0
