@@ -81,8 +81,8 @@ Independent Researcher, France\\
     scale-independent ratio.
     Reading it as the restriction of the squared projective residue $\Epi^{2}$ is a named hypothesis, [H-Res], not
     supplied, and the map from levels to generations is not established.
-    The Yukawa operator, which needs a further carrier and a chirality-flip structure, its norm, the sign of $u$, and
-    the mixing remain open, so no mass value is claimed.
+    The Yukawa operator, which needs a weak linking carrier supplied by no source, its norm, the sign of $u$, and the
+    mixing remain open, so no mass value is claimed.
     Interpretive outlook (a reading, not a result): where the Yukawa coupling attaches to hypercharge becomes the
     question of where a distinct weak factor comes from, and the levels are a dimensionless pattern whose reading as a
     hierarchy awaits the missing identifications.
@@ -217,8 +217,10 @@ Independent Researcher, France\\
     Lines from other sources, such as the powers $\det^{b}$ or an independent $\UU(1)$ line, are outside the route and
     are not excluded.
     The symmetric square of $\Ew$ is the weak adjoint twisted by $\LY$, and the determinant line of $\Ew$ is $\LY$.
-    [H-Weak] is a missing identification, not a refutation: the corpus does not supply the factor $\Ew$, and nothing
-    proves that it cannot be supplied.
+    [H-Weak] is a missing identification, not a refutation: the corpus does not supply the factor $\Ew$.
+    The no-go note excludes two deposited candidates for an independent fermionic weak multiplicity
+    $M_{L} \simeq \mathbb{C}^{2}$, conditionally on [H-Spin]~\cite{Beau2026nsr}; no other candidate is excluded
+    there, and none is supplied.
 
   \section{Separation from the Yukawa operator}
     \label{sec:separation}
@@ -238,16 +240,23 @@ Independent Researcher, France\\
     \end{equation}
     or equivalently its spectral avatar after compression by the projective residue $\Epi$.
     The form~\eqref{eq:yukawa-operator} is schematic, and its typing has one missing element and one ruled-out reading.
-    The missing element is a further carrier linking the weak doublet to the weak singlet, without which an equivariant
-    morphism between the two sectors does not exist as typed; no source supplies it.
-    The ruled-out reading is a linear Lorentz-equivariant map $P_{L}\,\Sbundle \to P_{R}\,\Sbundle$: under [H-Spin] the
-    chiral factors $S_{L}$ and $S_{R} \simeq \overline{S_{L}}$ are inequivalent $\SL(2,\mathbb{C})$-modules
-    (Lemma~3.6 of~\cite{Beau2026q14}), so no such linear map exists.
-    A Lorentz-invariant coupling between the chiralities is not ruled out in other forms: a sesquilinear pairing of
-    the Dirac type, or the antilinear parity lift $\JPi$ that exchanges the two chiral subbundles
-    (Theorem~3.7 of~\cite{Beau2026q14}), would need a further structure that is not supplied here.
-    Reading the full morphism $Y_{\Pi}$ through its generation block alone is the factorisation premise [H-Fac] of the
-    companion note on the Yukawa operator~\cite{Beau2026pyo}, which states its conditions; it is not used here.
+    The missing element is a weak linking carrier $K$, a finite-dimensional $\UU(2)$-module linking the weak doublet to
+    the weak singlet, supplied by no source; without it an invariant coupling between the two sectors does not exist as
+    typed.
+    The Lorentz part is not the missing element: with the antilinear lift $\JPi$ of Theorem~3.7 of~\cite{Beau2026q14},
+    which uses [H-Spin], the sesquilinear pairing $\overline{P_{L}\,\Sbundle} \otimes P_{R}\,\Sbundle$ contains the
+    Lorentz scalar exactly once, as in Section~2 of~\cite{Beau2026pyo}.
+    The ruled-out reading is a linear Lorentz-equivariant map $P_{L}\,\Sbundle \to P_{R}\,\Sbundle$: under [H-Spin]
+    the chiral factors $S_{L}$ and $S_{R} \simeq \overline{S_{L}}$ are inequivalent $\SL(2,\mathbb{C})$-modules
+    (Lemma~3.6 of~\cite{Beau2026q14}), so a non-zero equivariant linear map does not exist, by Schur's lemma.
+    Here $\JPi$ is the spinor-level lift exchanging the chiralities; it is not the internal parity of the generation
+    copy that the companion note~\cite{Beau2026pyo} also writes $\JPi$, and Q14 supplies it.
+    The factorisation premise [H-Fac] of the companion note~\cite{Beau2026pyo} reads the full morphism $Y_{\Pi}$
+    through its generation block alone.
+    It has two independent conditions: (F1) a weak linking carrier $K$, supplied by no source, for which the space
+    $I_{K}$ of Lorentz-invariant sesquilinear couplings that are $\UU(2)$-invariant is non-zero; (F2) $\dim I_{K} \leq
+    1$, so that the coupling factorises through $\Cgen$.
+    It is not used here.
     The line $\LY$ is one ingredient of the abelian weight of the coupling; the operator $Y_{\Pi}$ fixes how strongly,
     and in which generation directions, the chiralities are tied.
     This separation is the central guardrail of the note: the line is not the operator, and the choice of the coupling
@@ -255,11 +264,19 @@ Independent Researcher, France\\
     The norm of $Y_{\Pi}$, the orientation (sign) of the split coefficient $u$, and the mixing are downstream data,
     recorded as open in the sub-programme inventory~\cite{Beau2026fmnote}; none of them is supplied here.
     Q14 excludes a complex metaplectic phase as a source of $\Rmix$ within its model (Remark~6.4
-    of~\cite{Beau2026q14}): no generator of the step model reaches $\Rmix$, and a source would need a generator outside
-    the image of $\mathfrak{sl}_{2}(\mathbb{C})$, which is not supplied.
+    of~\cite{Beau2026q14}): the external block $\Rmix$ is not reached by the image of $\mathfrak{sl}_{2}(\mathbb{C})$.
     That remark concerns $\Rmix$ only.
-    The internal block $e_{0} \leftrightarrow e_{\pm}$ is not covered by it; it is treated in the companion
-    note~\cite{Beau2026pyo}.
+    The internal block $e_{0} \leftrightarrow e_{\pm}$ is treated in the companion note~\cite{Beau2026pyo}.
+    There $A_{\Pi}$, the anti-Hermitian part of the $\JPi$-odd part of the $\mathfrak{sl}_{2}$ lift of the step
+    generator, vanishes identically for all complex coefficients, because with the antilinear $\JPi$ of Q14 the
+    $\JPi$-odd part of the lift is its Hermitian part.
+    This is a statement about $A_{\Pi}$ as defined.
+    The $\JPi$-even anti-Hermitian part of the lift has the non-zero internal entry $\tfrac{\sqrt{2}}{2}(q -
+    \bar{p})$, non-zero for real $p \neq q$, so the image of $\mathfrak{sl}_{2}$ does reach the internal block through
+    that part.
+    No physical exclusion of the internal block is claimed: whether $A_{\Pi}$, rather than the $\JPi$-even part, is the
+    right object is a modelling choice of the companion note that no source justifies, and Q14 excludes the internal
+    block only by hypothesis (Proposition~6.3(i)--(ii) of~\cite{Beau2026q14}).
 
   \section{Generation-level ordering}
     \label{sec:levels}
@@ -345,11 +362,16 @@ Independent Researcher, France\\
       positivity follows from the ordering.
       The ratio $(\tfrac12 + u)/(\tfrac12 - u)$ is unchanged when both levels are multiplied by $\lambda$.
       (b) Under [H-Res] the model operator is $\Epi^{2}|_{\Cgen}$.
-      The exit deficit of Q14 is $s_{0} - s_{i}$ for the eigenvalues of that restriction, with $s_{0}$ the central
-      $\JPi$-fixed level; Q14 relates it to the support-exit distance from the non-exiting central level
-      of O1~\cite{Beau2026a6}.
+      The exit deficit of Q14 is $s_{0} - s_{i}$ for the eigenvalues of that restriction, with $s_{0}$ the level of the
+      central direction, fixed by the internal parity of the generation copy; Q14 relates it to the support-exit
+      distance from the non-exiting central level of O1~\cite{Beau2026a6}.
       Under [H-Res], $\Epi^{2} = \Epi^{\dagger}\Epi \succeq 0$ with $\Epi = -M^{\dagger}M$~\cite{Beau2026prs}, so the
-      levels are non-negative, which bounds $u \leq \tfrac12$; the strict ordering needs $u < \tfrac12$.
+      levels are non-negative.
+      For $u = \tfrac12$ the level of $e_{-}$ is zero, and for $u > \tfrac12$ it is negative, which is excluded; hence
+      $u \leq \tfrac12$, and the strict ordering needs $u < \tfrac12$.
+      The lower side is symmetric: the level of $e_{+}$ is non-negative only for $u \geq -\tfrac12$.
+      The ordering of~(a) is stated for $u > 0$, where $e_{-}$ has the largest deficit; for $u < 0$ the roles of $e_{+}$
+      and $e_{-}$ exchange.
     \end{proof}
 
     The level structure is dimensionless and fixed by $u$ alone: the ratio $(\tfrac12 + u)/(\tfrac12 - u)$, positive
@@ -383,17 +405,20 @@ Independent Researcher, France\\
       and is not used here beyond the separation from $V-A$.
 
     \paragraph{Ruled out (within the model of Q14).}
-      A complex metaplectic phase as a source of $\Rmix$ (Remark~6.4 of~\cite{Beau2026q14}).
+      A complex metaplectic phase as a source of the external block $\Rmix$, which the image of
+      $\mathfrak{sl}_{2}(\mathbb{C})$ does not reach (Remark~6.4 of~\cite{Beau2026q14}).
       A linear Lorentz-equivariant map $P_{L}\,\Sbundle \to P_{R}\,\Sbundle$ under [H-Spin]
       (Lemma~3.6 of~\cite{Beau2026q14}).
 
     \paragraph{Open (missing elements).}
       The factor $\Ew$ and the spin solder [H-Spin], neither supplied by a source; the identification [H-Res]; the
-      further carrier linking the weak doublet to the weak singlets and a structure for a Lorentz-invariant coupling
-      between the chiralities in~\eqref{eq:yukawa-operator}; the exponents $k$ and $m$ beyond their conditional
+      weak linking carrier $K$ linking the weak doublet to the weak singlets in~\eqref{eq:yukawa-operator}, the only
+      missing element of the coupling, the Lorentz scalar being available; the exponents $k$ and $m$ beyond their
+      conditional
       selection by Q14; the map from levels to generations; the projected Yukawa operator $Y_{\Pi}$, its norm, the
       orientation (sign) of $u$, and the mixing, including the internal block $e_{0} \leftrightarrow e_{\pm}$, which
-      Remark~6.4 of Q14 does not cover and which is treated in the companion note~\cite{Beau2026pyo}.
+      Remark~6.4 of Q14 does not cover and for which the question whether $A_{\Pi}$ is the right object is open in the
+      companion note~\cite{Beau2026pyo}.
       Hence the absolute masses, the mass ratios beyond the dimensionless level structure, and the generation mixing
       remain open, in agreement with the open deliverables of~\cite{Beau2026fmnote}.
 
@@ -437,9 +462,11 @@ Independent Researcher, France\\
     the identity $d_{\mathrm{exit}}(e_{-}) - d_{\mathrm{exit}}(e_{+}) = 2u$ is kept as a separate, labelled identity.
     These are checks on the model operator; the script does not test [H-Res], the reading of the model operator as the
     restriction of $\Epi^{2}$, nor the map from levels to generations.
-    The directory \texttt{code/} also holds four scripts that audit statements of the companion
+    The directory \texttt{code/} also holds four earlier audit scripts of statements of the companion
     note~\cite{Beau2026pyo}, namely the polar class, its non-triviality, the transverse route and the reality
     structure of the step generator; none of them is used by a statement of this note.
+    They do not reproduce the companion note: its own scripts, listed in its Reproducibility section, are held in the
+    \texttt{code/} directory of the repository of that note.
 
   \newpage
 

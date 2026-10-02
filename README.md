@@ -38,12 +38,22 @@ fixed by [H-Weak] alone; Q14 selects them conditionally under both hypotheses, a
 constraints and a minimal normalisation of $L_Y$).
 The model operator on $\mathbb{C}^3_{\mathrm{gen}}$ carries the levels (read as levels of $E_\Pi^2$ under [H-Res]);
 the mass comes after.
-The projected Yukawa operator needs a further carrier linking the weak doublet to the singlets, which is a missing
-element, and a Lorentz-invariant coupling between the chiralities: a linear Lorentz-equivariant map is ruled out under
-[H-Spin], a sesquilinear pairing or an antilinear parity lift is not, and none is supplied here.
+The projected Yukawa operator needs a weak linking carrier $K$ (a $\mathrm{U}(2)$-module linking the weak doublet to the
+singlets, supplied by no source), which is the only missing element: the Lorentz-invariant sesquilinear pairing exists
+(it contains the Lorentz scalar once, PYO Section 2), while a linear Lorentz-equivariant map is ruled out under
+[H-Spin] (non-zero, by Schur). [H-Fac] of PYO states two independent conditions: (F1) such a $K$ for which the space
+$I_K$ of Lorentz-invariant sesquilinear $\mathrm{U}(2)$-invariant couplings is non-zero, and (F2) $\dim I_K \le 1$; it
+is not used here.
 Its norm, the sign of $u$, and the mixing are downstream open data.
-A complex metaplectic phase is ruled out as a source of $R_{\mathrm{mix}}$ within the model of Q14;
-the internal block $e_0 \leftrightarrow e_\pm$ is not covered by that remark and is treated in the companion note PYO.
+A complex metaplectic phase is ruled out as a source of the external block $R_{\mathrm{mix}}$ within the model of Q14,
+which the image of $\mathfrak{sl}_2(\mathbb{C})$ does not reach (Q14 Remark 6.4).
+For the internal block $e_0 \leftrightarrow e_\pm$: $A_\Pi$, the anti-Hermitian part of the $J_\Pi$-odd part of the
+$\mathfrak{sl}_2$ lift of the step generator, vanishes identically for all complex coefficients, because with Q14's
+antilinear $J_\Pi$ the $J_\Pi$-odd part of the lift is its Hermitian part; this is a statement about $A_\Pi$ as
+defined. The $J_\Pi$-even anti-Hermitian part has the non-zero internal entry $\tfrac{\sqrt2}{2}(q - \bar p)$ (non-zero
+for real $p \ne q$), so the image of $\mathfrak{sl}_2$ does reach the internal block through it. No physical exclusion
+is claimed: whether $A_\Pi$ is the right object is a modelling choice of the companion note PYO that no source
+justifies, and Q14 excludes the internal block only by hypothesis (Proposition 6.3 (i)-(ii)).
 No mass value is claimed.
 
 ## Interpretive outlook (a reading, not a result)
@@ -69,7 +79,8 @@ bash compile.sh   # -> out/ProjectedYukawaLine.pdf
 $0 < u < \tfrac12$; it does not test [H-Spin], [H-Weak], [H-Res], or the level-to-generation map):
 `python3 code/front3_yukawa_line.py`.
 
-`code/` also holds four scripts that audit statements of the companion note PYO (not used by a statement of this note):
+`code/` also holds four earlier audit scripts of statements of the companion note PYO (not used by a statement of this
+note; PYO's own scripts, which reproduce PYO, are in the `code/` directory of the PYO repository):
 `front3c_polar_class_audit.py` (polar class under the rephasings that commute with each carrier's $J_3$),
 `front3c_polar_class_nontriviality.py` (transverse part of the generator), `front3d_transverse_route.py` and
 `front3e_reality_structure.py` (the $\mathfrak{sl}_2(\mathbb{C})$ step under the antilinear parity $J_\Pi$ of Q14).

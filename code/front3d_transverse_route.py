@@ -18,21 +18,26 @@ Results (all exact symbolic).
   (A) For a real sl_2 element A_Pi = 0 (both blocks).
   (B) For a complex sl_2 element A_Pi = 0 as well: the internal entry and the external entry vanish for every
       complex (p, q, r). The J_Pi-odd part of L(M) is the hermitian part of L(M).
-  (C) The N_A channel: the J_3 coefficient of the J_Pi-odd part is 2 Re r; on the cascade step
-      g = exp(tE) exp(sF) it is the oriented area alpha = t s (AAR). It lies in the diagonal channel.
-  (D) The lift has identically zero external entries for any complex M, and R_mix is linearly independent of
-      span{L(E), L(F), L(H), I_3} (rank 4 -> 5). The internal-block generator is also outside the sl_2 image
-      (rank 3 -> 4) and Hilbert-Schmidt orthogonal to it. Both blocks need a generator in the spin-2 sector of
-      End(Sym^2 V_gen), outside the sl_2(C) image; none is supplied.
+  (C) The N_A channel: the J_3 coefficient of the J_Pi-odd part is 2 Re r. For the BCH-truncated element
+      tE + sF + (ts/2) H of the cascade step g = exp(tE) exp(sF), which is exact to second order in (t, s) only, it is
+      t s; the exact logarithm of g has an H coefficient (ts/2)(1 - ts/12 + ...), so the value t s is not exact beyond
+      second order. It lies in the diagonal channel.
+  (D) The lift has identically zero external entries for any complex M (R_mix is not reached by the image of sl_2,
+      Q14 Remark 6.4), and R_mix is linearly independent of span{L(E), L(F), L(H), I_3} (rank 4 -> 5). The J_Pi-odd
+      anti-hermitian internal-block generator used as a probe is outside the sl_2 image (rank 3 -> 4) and
+      Hilbert-Schmidt orthogonal to it: a J_Pi-odd anti-hermitian source of the internal block (A_Pi as defined)
+      needs a generator in the spin-2 sector of End(Sym^2 V_gen); none is supplied. The J_Pi-EVEN anti-hermitian part
+      of the lift has the internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image of sl_2 does
+      reach the internal block through that part (check D_even_part_internal_entry).
   (E) A central scalar c I_3: its J_Pi-odd anti-hermitian part is i Im(c) I_3, diagonal, hence class-trivial.
   (F) A diagonal generator diag(d_0, d_+, d_-) (complex) has a zero off-diagonal J_Pi-odd anti-hermitian part.
 
-Verdict (printed, scoped to A_Pi as defined). Within the sl_2 image neither transverse block is sourced, for real or
-complex coefficients. Q14 Remark 6.4 concerns R_mix and rests on the absence of a matrix element between the weights
-+1 and -1; the vanishing of the internal block rests on the antilinear parity (front3e). A source of either block
-needs a generator outside the sl_2 image. Whether the polar generator should be the J_Pi-odd part is a property of the
-definition of A_Pi that is not justified by the sources used here (see front3e). No mass and no mixing value is
-produced. No figures. English.
+Verdict (printed). A_Pi, as defined, vanishes identically for all complex coefficients, because with the antilinear
+J_Pi the J_Pi-odd part of the lift is its Hermitian part; this is a statement about A_Pi as defined. The external block
+R_mix is not reached by the image of sl_2 (Q14 Remark 6.4). The J_Pi-even anti-hermitian part reaches the internal
+block. No physical exclusion of the internal block is claimed: whether A_Pi rather than the J_Pi-even part is the right
+object is a modelling choice that no source justifies (see front3e). No mass and no mixing value is produced. No
+figures. English.
 """
 
 import sympy as sp
@@ -123,7 +128,7 @@ def main():
     checks["C_J3_coefficient_is_2Re_r"] = sp.simplify(
         sp.expand_complex(hs_inner(J3, odd_cpx) / hs_inner(J3, J3) - 2 * rR)) == 0
 
-    # ---- (D) both blocks need a generator outside the sl_2 image -----------------------------------------------
+    # ---- (D) external block unreached; J_Pi-odd internal probe outside the image; J_Pi-even part reaches ---------------------------------------------
     LE, LF, LH = sym2_lift(E), sym2_lift(F), sym2_lift(H)
     full = sym2_lift(p * E + q * F + r * H)
     checks["D_lift_external_entries_zero"] = sp.simplify(full[1, 2]) == 0 and sp.simplify(full[2, 1]) == 0
@@ -138,6 +143,13 @@ def main():
     checks["D_internal_outside_image"] = basis3.rank() == 3 and sp.Matrix.hstack(basis3, vec(internal)).rank() == 4
     checks["D_internal_HS_orthogonal_to_image"] = all(
         sp.simplify(hs_inner(g, internal)) == 0 for g in (LE, LF, LH))
+
+    even_part = (L + S * L.conjugate() * S.inv()) / 2   # J_Pi-even part of the lift
+    even_ah = antiherm(even_part)
+    expected = s2 / 2 * (q - sp.conjugate(p)).subs(rep)
+    checks["D_even_part_internal_entry"] = (
+        is_zero(sp.Matrix([even_ah[0, 1] - expected])) and not is_zero(sp.Matrix([expected.subs({pI: 0, qI: 0,
+                                                                                               pR: 1, qR: 2})])))
 
     # ---- (E) central scalar --------------------------------------------------------------------------------------
     cR, cI = sp.symbols("cR cI", real=True)
@@ -157,8 +169,10 @@ def main():
     print("  transverse blocks: INTERNAL (e_0 <-> e_+/-), EXTERNAL R_mix (e_+ <-> e_-)")
     print("  (A) real step: A_Pi = 0 (both blocks)")
     print("  (B) complex step: A_Pi = 0 as well; the J_Pi-odd part of the lift is its hermitian part")
-    print("  (C) N_A: the J_3 coefficient of the odd part is 2 Re r (= t s on the cascade step), a diagonal channel")
-    print("  (D) R_mix and the internal block are outside the sl_2 image (ranks 4 -> 5, 3 -> 4), HS-orthogonal to it")
+    print("  (C) N_A: the J_3 coefficient of the odd part is 2 Re r (= t s for the BCH-truncated cascade element,")
+    print("      exact to second order only), a diagonal channel")
+    print("  (D) R_mix and the J_Pi-odd anti-hermitian internal probe are outside the sl_2 image (ranks 4->5, 3->4),")
+    print("      HS-orthogonal to it; the J_Pi-even anti-hermitian part has the internal entry (sqrt2/2)(q - conj p)")
     print("  (E) central scalar: i Im(c) I_3, diagonal, class-trivial")
     print("  (F) diagonal data: zero off-diagonal generator")
     print("-" * 100)
@@ -169,12 +183,13 @@ def main():
         print(f"  [{'PASS' if ok else 'FAIL'}]  {k}")
     print("=" * 100)
     print(f"  checks run: {len(checks)}")
-    print("VERDICT (scoped to A_Pi as defined): within the sl_2 image neither transverse block is sourced, for real")
-    print("  or complex coefficients. Q14 Remark 6.4 concerns R_mix only; the vanishing of the internal block rests on")
-    print("  the antilinear parity (front3e). A source of either block needs a generator outside the sl_2 image, in")
-    print("  the spin-2 sector of End(Sym^2 V_gen); none is supplied. Whether the polar generator should be the")
-    print("  J_Pi-odd part is a property of the definition, not justified by the sources used here (front3e).")
-    print("  No mass and no mixing value is produced.")
+    print("VERDICT: A_Pi, as defined, vanishes identically for all complex coefficients, because with the antilinear")
+    print("  J_Pi the J_Pi-odd part of the lift is its Hermitian part; this is a statement about A_Pi as defined. The")
+    print("  external block R_mix is not reached by the image of sl_2 (Q14 Remark 6.4). The J_Pi-even anti-hermitian")
+    print("  part has the internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image of sl_2 does")
+    print("  reach the internal block through that part. No physical exclusion of the internal block is claimed:")
+    print("  whether A_Pi, rather than the J_Pi-even part, is the right object is a modelling choice that no source")
+    print("  justifies. No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
     return allok
 

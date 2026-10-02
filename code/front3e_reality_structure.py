@@ -27,18 +27,22 @@ Results (all exact symbolic, generic complex (p, q, r)).
       Q14's J_Pi. It gives a transverse part proportional to Im(p + q), not "Im p or Im q" (Im p = - Im q gives
       zero), and it coincides with the antilinear parity on real data. The two differ exactly on the imaginary part
       of X, which the antilinear parity exchanges between odd and even.
-  (5) Scope of the vanishing: it is specific to the sl_2 image. The J_Pi-odd anti-hermitian operators of u(3) form a
+  (5) Scope of the vanishing: it is specific to A_Pi as defined. The J_Pi-odd anti-hermitian operators of u(3) form a
       6-dimensional real space that is Hilbert-Schmidt orthogonal to L(sl_2(C)); the internal block e_0 <-> e_+/-
-      and the external block R_mix (e_+ <-> e_-) both live in it, so both need a generator outside the sl_2 image,
-      in the spin-2 sector of End(Sym^2 V_gen). No source supplies such a generator.
+      and the external block R_mix (e_+ <-> e_-) both live in it, so a J_Pi-odd anti-hermitian source of either block
+      (A_Pi as defined) needs a generator outside the sl_2 image, in the spin-2 sector of End(Sym^2 V_gen). No
+      source supplies such a generator. The external block R_mix is not reached by the image of sl_2 at all (Q14
+      Remark 6.4); the internal block is reached through the J_Pi-even part (see the open modelling question).
   (6) Frame covariance: in a complex unitary frame W with the transported antilinear parity S' = W S W^T, the
       generator is W A_Pi W^dagger = 0 (true and vacuous).
   (7) A central imaginary scalar i c I_3 is J_Pi-odd and anti-hermitian; it is diagonal, hence class-trivial.
 
 Open modelling question (not settled here). The J_Pi-EVEN anti-hermitian part of L(M), antiherm(L(M)), is not zero:
 its internal entry is sqrt(2) (q - conj p) / 2, non-zero for real p != q. The script computes it and reports it;
-whether the polar generator is rightly the J_Pi-odd part is a property of the definition of A_Pi that the sources
-used here do not justify, and no statement that the internal block is excluded as a physical matter follows.
+so the image of sl_2 does reach the internal block e_0 <-> e_+/- through that part (the external block R_mix is not
+reached). Whether the polar generator is rightly the J_Pi-odd part is a modelling choice of the companion note that
+the sources used here do not justify; Q14 excludes the internal block only by hypothesis (Prop. 6.3 (i)-(ii)). No
+statement that the internal block is excluded as a physical matter follows.
 
 Not tested: the identification [H-Res], the map from levels to generations, [H-Spin], [H-Weak], the existence of
 any generator in the spin-2 sector. No mass and no mixing value is produced. No figures. English.
@@ -239,17 +243,17 @@ def main():
         print(f"  [{'PASS' if ok else 'FAIL'}]  {k}")
     print("=" * 104)
     print(f"  checks run: {len(checks)}")
-    print("RESULT (proved, exact symbolic, for A_Pi AS DEFINED, the J_Pi-odd anti-hermitian part of the sl_2 lift):")
-    print("  for the antilinear parity J_Pi of Q14, the J_Pi-odd part of the lift is its hermitian part, so A_Pi = 0")
-    print("  for all complex (p, q, r). The reality of the coefficients plays no role, and the diagonal")
-    print("  i Im(r) diag(0, 2, -2) is J_Pi-even. Neither transverse block (internal e_0 <-> e_+/-, external R_mix)")
-    print("  is sourced by the sl_2 image. Both need a generator outside it, in the spin-2 sector of")
-    print("  End(Sym^2 V_gen); no source supplies one, and whether any projects onto that sector is not known.")
-    print("  The linear involution is not J_Pi; it appears only as a negative control (condition Im(p+q)).")
-    print("OPEN MODELLING QUESTION: the J_Pi-even anti-hermitian part of the lift is non-zero (internal entry")
-    print("  sqrt(2)(q - conj p)/2, non-zero for real p != q). That the polar generator is the J_Pi-odd part is the")
-    print("  definition of A_Pi; no source used here justifies it, and no physical exclusion of the internal block")
-    print("  is claimed. No mass and no mixing value is produced.")
+    print("RESULT (proved, exact symbolic): A_Pi, the anti-hermitian part of the J_Pi-odd part of the sl_2 lift of the")
+    print("  step generator, vanishes identically for all complex coefficients, because with Q14's antilinear J_Pi the")
+    print("  J_Pi-odd part of the lift is its hermitian part. This is a statement about A_Pi as defined. The diagonal")
+    print("  i Im(r) diag(0, 2, -2) is J_Pi-even. The J_Pi-even anti-hermitian part of the lift has the non-zero")
+    print("  internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image of sl_2 does reach the")
+    print("  internal block e_0 <-> e_+/- through that part; the external block R_mix is not reached by the image of")
+    print("  sl_2 (Q14 Remark 6.4, Prop. 6.3). The linear involution is not J_Pi; it appears only as a negative")
+    print("  control (condition Im(p+q)).")
+    print("OPEN MODELLING QUESTION: no physical exclusion of the internal block is claimed. Whether A_Pi, rather than")
+    print("  the J_Pi-even part, is the right object is a modelling choice of the companion note that no source")
+    print("  justifies. No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
     return allok
 

@@ -2,7 +2,7 @@
 
 Bias-independent, exact symbolic verification (no sampling). The canonical-vs-class audit
 (front3c_polar_class_audit.py) established that the chiral polar factor U_Pi of the projected Yukawa
-Y_Pi = U_Pi H_Pi^{1/2} is not a canonical observable but a rephasing CLASS
+Y^gen_Pi = U_Pi H_Pi^{1/2} is not a canonical observable but a rephasing CLASS
 
     [U_Pi]  in  U(3) / (U(1)^3_R x U(1)^3_L),     U_Pi ~ V_R U_Pi V_L^{-1}  (V_L,V_R diagonal).
 
@@ -128,8 +128,8 @@ def main():
     A31 = -sp.conjugate(off_full[(0, 2)])
     cp_datum = sp.im(off_full[(0, 1)] * off_full[(1, 2)] * A31)
     ratio = sp.simplify(J3 / cp_datum)
-    checks["C_J3_prop_cpdatum"] = ratio != 0 and sp.simplify(sp.diff(ratio, a12)) == 0 \
-        and sp.simplify(sp.diff(ratio, b23)) == 0
+    # the proportionality constant is computed above and tested against its value (-1), not only for independence
+    checks["C_J3_equals_minus_cpdatum"] = sp.simplify(J3 + cp_datum) == 0
     checks["C_J3_indep_diag"] = all(sp.simplify(sp.diff(J3, d[k])) == 0 for k in range(3))
 
     # ---- (D) diagonal generator: A_off = 0 => series has no off-diagonal entries, J_CP = 0 ----------------------
