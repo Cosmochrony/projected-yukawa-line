@@ -39,8 +39,9 @@ constraints and a minimal normalisation of $L_Y$).
 The model operator on $\mathbb{C}^3_{\mathrm{gen}}$ carries the levels (read as levels of $E_\Pi^2$ under [H-Res]);
 the mass comes after.
 The projected Yukawa operator needs a weak linking carrier $K$ (a $\mathrm{U}(2)$-module linking the weak doublet to the
-right sector, supplied by no source; the right fermion $P_R S \otimes L_Y^m$ has no factor $E_{\mathrm{weak}}$ and is a
-$\mathrm{U}(2)$-character, a weak singlet carrying the hypercharge twist $L_Y^m$), which is the only missing element for
+right sector, supplied by no source; the right fermion $P_R S \otimes L_Y^m$ has no factor $E_{\mathrm{weak}}$;
+$\mathrm{U}(2)$ acts on it through the character $\det^m$, so it is a weak singlet carrying the hypercharge twist
+$L_Y^m$), which is the only missing element for
 the existence of an invariant coupling (given [H-Spin] and [H-Weak]): the
 Lorentz-invariant sesquilinear pairing exists (it contains the Lorentz scalar once, PYO Section 2), while a linear
 Lorentz-equivariant map is ruled out under
