@@ -1,210 +1,236 @@
-"""Front 3e: non-central complex-phase audit (reality structure of the metaplectic step).
+"""Front 3e: reality structure of the metaplectic step under the antilinear parity J_Pi of Q14.
 
-Bias-independent, exact symbolic verification (no sampling). Front 3c -> Front 2 bridge isolated the chiral polar
-class internal block e_0 <-> e_+/- as sourced by the IMAGINARY part of the non-central sl_2 coefficients of the
-metaplectic step M = p E + q F + r H:
+Exact symbolic verification (no sampling). Object under audit: the sl_2(C) step generator M = p E + q F + r H with
+complex coefficients (p, q, r), its derived Sym^2 lift L(M) on C^3_gen = Sym^2(V_gen), and the generator
 
-    A_{e0,e+} = sqrt(2) i (Im p + Im q) / 2     (front3d_transverse_route.py).
+    A_Pi := antiherm( J_Pi-odd( L(M) ) )                                   (definition, taken as given)
 
-Front 3e asks the upstream question the bridge left open: does the surveyed pipeline supply Im p, Im q != 0
-(internal block opens, mixing != 0), or only real coefficients p, q in R (=> A_Pi = 0, no internal mixing from this
-source)? The audit makes the reality condition explicit and does not decide whether a complex non-central phase is
-supplied. The question is a REALITY-STRUCTURE question and must NOT conflate three distinct objects (Jerome's
-caveat):
+of the chiral unitary polar factor. This script tests what that definition yields; it does not test why the
+generator is defined through the J_Pi-ODD part (see the open modelling question below).
 
-    complexity of the REPRESENTATION matrices  !=  complexity of the COEFFICIENTS p, q  !=  central phase zeta_q.
+Definitions (Q14 Section 6; Q14 Theorem 3.7 for the spinorial lift).
+  * V = C^2 = <v_+, v_->, e_0 = sqrt(2) v_+ v_-, e_+ = v_+ v_+, e_- = v_- v_-, J_3 = diag(0, 1, -1).
+  * J_Pi on V is the antilinear map z -> eps conj(z) with eps = [[0, 1], [-1, 0]] (J_Pi^2 = -1 on V). Lifted to
+    C^3_gen = Sym^2(V) it is the ANTILINEAR map  J_Pi z = S conj(z)  with S = Sym^2(eps), which maps e_0 to -e_0 and
+    exchanges e_+ <-> e_- (Q14 Sec. 6). S is computed below from eps, not typed in.
+  * Conjugation of an operator by the antilinear J_Pi:  J_Pi X J_Pi^{-1} = S conj(X) S^{-1}. The J_Pi-odd part is
+    (X - S conj(X) S^{-1}) / 2 and the J_Pi-even part is (X + S conj(X) S^{-1}) / 2. The map X -> S conj(X) S^{-1}
+    is real-linear and not complex-linear in X.
 
-Convention contract (frozen, identical to schur_transversality_alpha.py / front3d_transverse_route.py):
-fundamental V = C^2, sl_2 generators E, F, H (real matrices), [E,F]=H=2 J_3; derived Sym^2 lift on
-C^3_gen = span(e_0, e_+, e_-); chiral involution J_Pi^(2): e_0 -> -e_0, e_+ <-> e_-; chiral unitary polar generator
-A := antiherm( J_Pi-odd( lift(M) ) ).
+Results (all exact symbolic, generic complex (p, q, r)).
+  (1) Key identity: S conj(L(M)) S^{-1} = - L(M)^dagger for every M in sl_2(C).
+  (2) Hence the J_Pi-odd part of L(M) is its hermitian part and the J_Pi-even part is its anti-hermitian part.
+  (3) Hence A_Pi = antiherm(J_Pi-odd(L(M))) = 0 identically in (p, q, r) in C^3: the reality of p, q, r plays no
+      role. The J_3 coefficient of the odd part is 2 Re r, its R_mix coefficient is 0, and the diagonal
+      i Im(r) diag(0, 2, -2) is J_Pi-EVEN, so it is not in A_Pi either.
+  (4) Negative control, the LINEAR involution X -> S X S^{-1} (the matrix S without the conjugation). It is not
+      Q14's J_Pi. It gives a transverse part proportional to Im(p + q), not "Im p or Im q" (Im p = - Im q gives
+      zero), and it coincides with the antilinear parity on real data. The two differ exactly on the imaginary part
+      of X, which the antilinear parity exchanges between odd and even.
+  (5) Scope of the vanishing: it is specific to the sl_2 image. The J_Pi-odd anti-hermitian operators of u(3) form a
+      6-dimensional real space that is Hilbert-Schmidt orthogonal to L(sl_2(C)); the internal block e_0 <-> e_+/-
+      and the external block R_mix (e_+ <-> e_-) both live in it, so both need a generator outside the sl_2 image,
+      in the spin-2 sector of End(Sym^2 V_gen). No source supplies such a generator.
+  (6) Frame covariance: in a complex unitary frame W with the transported antilinear parity S' = W S W^T, the
+      generator is W A_Pi W^dagger = 0 (true and vacuous).
+  (7) A central imaginary scalar i c I_3 is J_Pi-odd and anti-hermitian; it is diagonal, hence class-trivial.
 
-REALITY STRUCTURE. Because E, F, H are REAL matrices, the split real form sl_2(R) = span_R{E,F,H} is the fixed
-locus of the entrywise complex conjugation sigma(M) = conj(M) on sl_2(C); sigma(M) = M  <=>  p, q, r in R. The
-sigma-anti-real part is (M - sigma M)/2 = i (Im p E + Im q F + Im r H). The audit proves the polar-class generator
-A depends ONLY on this sigma-anti-real part, and splits the way the polar class [U_Pi] does:
-  * its TRANSVERSE (off-diagonal, mixing) part is non-zero  <=>  Im p != 0 or Im q != 0  (the NON-CENTRAL phase);
-  * its DIAGONAL part is i Im(r) diag(0,2,-2), a pure J_3/Cartan rephasing lying in the U(1)^3 double-coset
-    quotient that defines [U_Pi] = U(1)^3_R \\ U(3) / U(1)^3_L, hence CLASS-TRIVIAL (the N_A / J_3 channel).
-So [U_Pi] = [I]  <=>  Im p = Im q = 0, irrespective of Im r: the genuine mixing is the failure of sigma-invariance
-in the OFF-DIAGONAL coefficients (leaving the real form transversally), NOT complex matrix entries in a complex
-spinorial frame, and NOT the imaginary Cartan rephasing.
+Open modelling question (not settled here). The J_Pi-EVEN anti-hermitian part of L(M), antiherm(L(M)), is not zero:
+its internal entry is sqrt(2) (q - conj p) / 2, non-zero for real p != q. The script computes it and reports it;
+whether the polar generator is rightly the J_Pi-odd part is a property of the definition of A_Pi that the sources
+used here do not justify, and no statement that the internal block is excluded as a physical matter follows.
 
-Corpus anchoring (the EXHAUSTIVITY control -- structural, surveyed, not a symbolic theorem here):
-  * PRS / AAR (Beau2026prs, Beau2026aar): the cascade metaplectic step is g = exp(tE) exp(sF) with t, s in R; the
-    per-step J_Pi-odd J_3 component is the oriented symplectic area alpha = ts in R. The non-central sl_2 step is
-    fed by REAL Heisenberg data -> real coefficients.
-  * CHO (Beau2026cho, prop. "Arithmetic nature of the inherited phase"): in the Schroedinger--Heisenberg pipeline
-    the ONLY phase is the inherited central cyclotomic character zeta_q^{Delta A_c}; there is NO Fourier/Weyl
-    generator, hence NO metaplectic Gauss phase. The non-central complex phase that would carry Im p, Im q != 0 is
-    absent from the surveyed pipeline; a Lorentzian SL(2,C) lift carrying it (the [H-Spin] reading) is "not present
-    in this pipeline" and is not supplied.
-  * AOG (Beau2026aog, lem:rigidity): the full recursive (all-tower) type-rigidity is structural / OPEN -- the same
-    gate as epsilon = 1/10. Introducing a Weil/Fourier generator (a genuinely complex non-central metaplectic
-    phase) = a NEW tower stratum.
-
-Verdict (printed). If the non-central step is sigma-real (real Heisenberg data + only a central phase + no Weil
-generator, as in the surveyed pipeline): Im p = Im q = 0  =>  A_Pi = 0  =>  [U_Pi] = [I] internal, with N_A != 0 and
-u != 0 and no internal mixing from this source. This is a conditional statement on the reality of the coefficients;
-the internal block is neither excluded nor constructed here. The positive opening Im p, Im q != 0 requires
-a genuinely complex non-central metaplectic phase = a new tower stratum, gated by the SAME AOG lem:rigidity as
-epsilon = 1/10. No mass and no mixing value is produced. No figures. English.
+Not tested: the identification [H-Res], the map from levels to generations, [H-Spin], [H-Weak], the existence of
+any generator in the spin-2 sector. No mass and no mixing value is produced. No figures. English.
 """
 
 import sympy as sp
 
+s2 = sp.sqrt(2)
 
-# ----------------------------------------------------------------------------------------------------------------
-# Frozen convention (matches schur_transversality_alpha.py and front3d_transverse_route.py)
-# ----------------------------------------------------------------------------------------------------------------
-def fundamental_generators():
-    E = sp.Matrix([[0, 1], [0, 0]])
-    F = sp.Matrix([[0, 0], [1, 0]])
-    H = sp.Matrix([[1, 0], [0, -1]])
-    return E, F, H
+
+def zero(X):
+    """Exact zero test of a matrix with symbolic complex entries."""
+    return all(sp.simplify(sp.expand_complex(e)) == 0 for e in X)
+
+
+def herm(X):
+    return (X + X.H) / 2
+
+
+def antiherm(X):
+    return (X - X.H) / 2
+
+
+def sym2_of_matrix(g):
+    """Group action Sym^2(g) of a 2x2 matrix g on the orthonormal basis (e_0, e_+, e_-) of Sym^2(C^2).
+
+    A symmetric tensor is represented by a symmetric 2x2 matrix T (e_+ -> diag(1,0), e_- -> diag(0,1),
+    e_0 -> offdiag(1,1)/sqrt2); g acts by T -> g T g^T.
+    """
+    basis = [sp.Matrix([[0, 1], [1, 0]]) / s2, sp.Matrix([[1, 0], [0, 0]]), sp.Matrix([[0, 0], [0, 1]])]
+    cols = []
+    for T in basis:
+        Tn = g * T * g.T
+        cols.append([Tn[0, 1] * s2, Tn[0, 0], Tn[1, 1]])
+    return sp.Matrix(cols).T
 
 
 def sym2_lift(M):
-    """Derived Sym^2 representation of a 2x2 traceless M, basis (e_0, e_+, e_-), e_0 = sqrt(2) v_+ v_-."""
-    a, b, c, d = M[0, 0], M[0, 1], M[1, 0], M[1, 1]
-    s2 = sp.sqrt(2)
-    return sp.Matrix([
-        [a + d,  s2 * c,  s2 * b],
-        [s2 * b, 2 * a,   0],
-        [s2 * c, 0,       2 * d],
-    ])
-
-
-def J_invol():
-    return sp.Matrix([[-1, 0, 0], [0, 0, 1], [0, 1, 0]])   # e_0 -> -e_0, e_+ <-> e_-
-
-
-def jpi_odd_part(A, J=None):
-    """J_Pi-odd part (A - J A J^{-1})/2.  J defaults to the canonical real involution; a transported J is passed
-    in the spinorial-frame covariance test."""
-    if J is None:
-        J = J_invol()
-    return (A - J * A * J.inv()) / 2
-
-
-def antiherm(A):
-    return (A - A.conjugate().T) / 2
-
-
-def Upi_generator(M, J=None):
-    """Chiral, unitary polar generator A = antiherm( J_Pi-odd( Sym^2 lift of M ) )."""
-    return antiherm(jpi_odd_part(sym2_lift(M), J))
-
-
-def is_zero_matrix(A):
-    return all(sp.simplify(sp.expand_complex(e)) == 0 for e in A)
+    """Derived (Lie algebra) action d/dt Sym^2(1 + t M) at t = 0 of a 2x2 matrix M."""
+    t = sp.Symbol("t")
+    return sp.simplify(sym2_of_matrix(sp.eye(2) + t * M).diff(t).subs(t, 0))
 
 
 def main():
     checks = {}
-    E, F, H = fundamental_generators()
+    E = sp.Matrix([[0, 1], [0, 0]])
+    F = sp.Matrix([[0, 0], [1, 0]])
+    H = sp.Matrix([[1, 0], [0, -1]])
     I3 = sp.eye(3)
+    eps = sp.Matrix([[0, 1], [-1, 0]])
+    S = sym2_of_matrix(eps)                      # Sym^2(eps), the matrix of the antilinear lift z -> S conj(z)
+    Sinv = S.inv()
 
-    # explicit real + imaginary split of generic non-central coefficients
+    def jconj(X):
+        """J_Pi X J_Pi^{-1} for the antilinear J_Pi z = S conj(z)."""
+        return S * X.conjugate() * Sinv
+
+    def lin(X):
+        """The LINEAR involution X -> S X S^{-1} (negative control, not Q14's J_Pi)."""
+        return S * X * Sinv
+
+    def odd(X):
+        return (X - jconj(X)) / 2
+
     pR, pI, qR, qI, rR, rI = sp.symbols("pR pI qR qI rR rI", real=True)
-    p = pR + sp.I * pI
-    q = qR + sp.I * qI
-    r = rR + sp.I * rI
+    p, q, r = pR + sp.I * pI, qR + sp.I * qI, rR + sp.I * rI
     M = p * E + q * F + r * H
-    A = Upi_generator(M)
+    L = sym2_lift(M)
 
-    # ----------------------------------------------------------------------------------------------------------
-    # (1) Real cascade collapse: sigma-real M (p,q,r in R) => A = 0  (recovers Front 3c / PRS v=0)
-    # ----------------------------------------------------------------------------------------------------------
-    A_real = A.subs({pI: 0, qI: 0, rI: 0})
-    checks["1_real_form_gives_zero"] = is_zero_matrix(A_real)
+    # ---- (0) definitions, computed -------------------------------------------------------------------------
+    checks["0a_S_from_eps_is_e0_flip_and_exchange"] = S == sp.Matrix([[-1, 0, 0], [0, 0, 1], [0, 1, 0]])
+    checks["0b_S_real_unitary_involution"] = zero(S * S - I3) and zero(S - S.conjugate()) and zero(S * S.H - I3)
+    checks["0c_J_squared_minus_one_on_V"] = zero(eps * eps.conjugate() + sp.eye(2))   # (z -> eps conj z)^2 = -1
+    checks["0d_lift_explicit_form"] = L == sp.Matrix([[0, s2 * q, s2 * p], [s2 * p, 2 * r, 0], [s2 * q, 0, -2 * r]])
+    checks["0e_lift_is_star_rep"] = zero(L.H - sym2_lift(M.H))
+    checks["0f_H_lifts_to_2J3"] = sym2_lift(H) == sp.diag(0, 2, -2)
 
-    # ----------------------------------------------------------------------------------------------------------
-    # (2) Internal-block coefficient is exactly the sigma-anti-real part:  A_{e0,e+} = sqrt(2) i (Im p+Im q)/2
-    # ----------------------------------------------------------------------------------------------------------
-    inner = sp.expand_complex(A[0, 1])
-    checks["2_internal_is_imag_phase"] = sp.simplify(inner - sp.sqrt(2) * sp.I * (pI + qI) / 2) == 0
+    # ---- (1) key identity ------------------------------------------------------------------------------------
+    checks["1_S_conjL_Sinv_equals_minus_Ldagger"] = zero(jconj(L) + L.H)
 
-    # ----------------------------------------------------------------------------------------------------------
-    # (3) A depends ONLY on the sigma-anti-real (imaginary-coefficient) part: A(M) = A( i Im M ), and the
-    #     Cartan imaginary part Im r contributes NO transverse generator (it lands in the diagonal, projected out).
-    # ----------------------------------------------------------------------------------------------------------
-    A_imag_only = Upi_generator(sp.I * (pI * E + qI * F + rI * H))    # i * Im(M)
-    checks["3a_depends_only_on_anti_real"] = is_zero_matrix(A - A_imag_only)
-    # genuine transverse generator vanishes iff the NON-CENTRAL imaginary parts vanish (Im r alone gives no block):
-    A_cartan_imag = A.subs({pI: 0, qI: 0})        # only Im r kept
-    offdiag_cartan = [A_cartan_imag[i, j] for i in range(3) for j in range(3) if i != j]
-    checks["3b_cartan_imag_no_transverse"] = all(sp.simplify(sp.expand_complex(e)) == 0 for e in offdiag_cartan)
+    # ---- (2) odd part = hermitian part, even part = anti-hermitian part -------------------------------------
+    checks["2a_odd_part_is_hermitian_part"] = zero(odd(L) - herm(L))
+    checks["2b_even_part_is_antihermitian_part"] = zero((L + jconj(L)) / 2 - antiherm(L))
+    expected_odd = sp.Matrix([
+        [0, s2 * (q + sp.conjugate(p)) / 2, s2 * (p + sp.conjugate(q)) / 2],
+        [s2 * (p + sp.conjugate(q)) / 2, 2 * rR, 0],
+        [s2 * (q + sp.conjugate(p)) / 2, 0, -2 * rR]])
+    checks["2c_odd_part_explicit"] = zero(odd(L) - expected_odd)
 
-    # ----------------------------------------------------------------------------------------------------------
-    # (4) Reality lemma for the polar CLASS:  transverse(A) = 0  <=>  Im p = Im q = 0.  The diagonal imaginary
-    #     Cartan part is a pure J_3 rephasing (class-trivial). Witness: one non-central imaginary part opens it.
-    # ----------------------------------------------------------------------------------------------------------
-    def transverse(X):
-        return [X[i, j] for i in range(3) for j in range(3) if i != j]
+    # ---- (3) A_Pi vanishes identically ----------------------------------------------------------------------
+    A_pi = antiherm(odd(L))
+    checks["3a_A_Pi_zero_all_complex_pqr"] = zero(A_pi)
+    checks["3b_A_Pi_zero_real_step"] = zero(A_pi.subs({pI: 0, qI: 0, rI: 0}))
+    J3 = sp.diag(0, 1, -1)
+    Rmix = sp.Matrix([[0, 0, 0], [0, 0, 1], [0, -1, 0]])        # Q14 Sec. 6: antisymmetric on (e_+, e_-)
 
-    A_witness = A.subs({pI: 1, qI: 0, rI: 0, pR: 0, qR: 0, rR: 0})
-    checks["4a_witness_transverse_nonzero"] = any(sp.simplify(sp.expand_complex(e)) != 0
-                                                  for e in transverse(A_witness))
-    A_pq_real = A.subs({pI: 0, qI: 0})            # Im p = Im q = 0, Im r free
-    checks["4b_pq_real_transverse_zero"] = all(sp.simplify(sp.expand_complex(e)) == 0
-                                               for e in transverse(A_pq_real))
-    # the residual diagonal-only generator from Im r is exactly the J_3/Cartan rephasing i Im(r) diag(0,2,-2):
-    A_cartan_only = A.subs({pI: 0, qI: 0, rR: 0, pR: 0, qR: 0})       # keep only rI
-    checks["4c_cartan_is_J3_rephasing"] = sp.simplify(
-        A_cartan_only - sp.I * rI * sp.diag(0, 2, -2)) == sp.zeros(3)
+    def hs(X, Y):
+        return (X.H * Y).trace() / (Y.H * Y).trace()
 
-    # ----------------------------------------------------------------------------------------------------------
-    # (5) Central phase is projectively trivial:  c I_3 (central scalar) gives no polar generator, and adding it
-    #     to a real step leaves A = 0.  (CHO: the inherited phase is central -> zeta_q^{Delta A_c}.)
-    # ----------------------------------------------------------------------------------------------------------
+    checks["3c_J3_coefficient_of_odd_part_is_2Re_r"] = sp.simplify(sp.expand_complex(hs(odd(L), J3) - 2 * rR)) == 0
+    checks["3d_Rmix_coefficient_of_odd_part_zero"] = sp.simplify(sp.expand_complex(hs(odd(L), Rmix))) == 0
+    cartan = sp.I * rI * sp.diag(0, 2, -2)
+    checks["3e_Im_r_diagonal_is_J_even"] = zero(jconj(cartan) - cartan)
+    even_ah = antiherm(L)
+    checks["3f_even_antiherm_internal_entry"] = sp.simplify(
+        sp.expand_complex(even_ah[0, 1] - s2 * (q - sp.conjugate(p)) / 2)) == 0
+    checks["3g_even_antiherm_nonzero_for_real_p_ne_q"] = not zero(even_ah.subs({pI: 0, qI: 0, rI: 0, pR: 1, qR: 0}))
+
+    # ---- (4) negative control: the linear involution (NOT Q14's J_Pi) ---------------------------------------
+    O_lin = (L - lin(L)) / 2
+    A_lin = antiherm(O_lin)
+    checks["4a_linear_internal_entries_are_Im_p_plus_q"] = (
+        sp.simplify(sp.expand_complex(A_lin[0, 1] - sp.I * s2 * (pI + qI) / 2)) == 0
+        and sp.simplify(sp.expand_complex(A_lin[0, 2] - sp.I * s2 * (pI + qI) / 2)) == 0)
+    checks["4b_linear_external_zero"] = zero(sp.Matrix([A_lin[1, 2], A_lin[2, 1]]))
+    checks["4c_linear_diagonal_is_Im_r_rephasing"] = zero(
+        sp.diag(A_lin[0, 0], A_lin[1, 1], A_lin[2, 2]) - sp.I * rI * sp.diag(0, 2, -2))
+    zero_data = {pR: 0, qR: 0, rR: 0, rI: 0}
+    checks["4d_linear_Im_p_nonzero_gives_transverse"] = not zero(
+        sp.Matrix([A_lin[0, 1], A_lin[0, 2]]).subs({**zero_data, pI: 1, qI: 0}))
+    checks["4e_linear_Im_p_equals_minus_Im_q_gives_zero"] = zero(A_lin.subs({**zero_data, pI: 1, qI: -1}))
+    checks["4f_both_parities_agree_on_real_data"] = zero((odd(L) - O_lin).subs({pI: 0, qI: 0, rI: 0}))
+    checks["4g_linear_differs_from_antilinear_off_real_data"] = not zero((lin(L) - jconj(L)).subs({pI: 1}))
+    XR = sp.Matrix(3, 3, sp.symbols("a0:9", real=True))
+    XI = sp.Matrix(3, 3, sp.symbols("b0:9", real=True))
+    X = XR + sp.I * XI
+    odd_anti = (X - jconj(X)) / 2
+    odd_lin = (X - lin(X)) / 2
+    checks["4h_parities_differ_exactly_on_imaginary_part"] = (
+        zero(odd_anti - ((XR - lin(XR)) / 2 + sp.I * (XI + lin(XI)) / 2))
+        and zero(odd_lin - ((XR - lin(XR)) / 2 + sp.I * (XI - lin(XI)) / 2)))
+
+    # ---- (5) the vanishing is specific to the sl_2 image ----------------------------------------------------
+    aR, aI, bR, bI, za, ya = sp.symbols("aR aI bR bI za ya", real=True)
+    a, b = aR + sp.I * aI, bR + sp.I * bI
+    Xoa = sp.Matrix([[sp.I * za, a, sp.conjugate(a)],
+                     [-sp.conjugate(a), sp.I * ya, b],
+                     [-a, -sp.conjugate(b), sp.I * ya]])
+    checks["5a_family_is_antiherm_and_J_odd"] = zero(Xoa + Xoa.H) and zero(Xoa + jconj(Xoa))
+    image = [sym2_lift(E), sym2_lift(F), sym2_lift(H)]
+    checks["5b_family_HS_orthogonal_to_sl2_image"] = all(
+        sp.simplify(sp.expand_complex((g.H * Xoa).trace())) == 0 for g in image)
+    xs = sp.symbols("x0:18", real=True)
+    Xg = sp.Matrix(3, 3, lambda i, j: xs[2 * (3 * i + j)] + sp.I * xs[2 * (3 * i + j) + 1])
+    eqs = []
+    for e in list(Xg + Xg.H) + list(Xg + jconj(Xg)):
+        e = sp.expand_complex(e)
+        eqs += [sp.re(e), sp.im(e)]
+    dim_real = len(xs) - sp.Matrix([[sp.diff(e, x) for x in xs] for e in eqs]).rank()
+    checks["5c_odd_antiherm_space_has_real_dimension_6"] = (dim_real == 6)
+    # the internal block (parameter a) and R_mix (parameter b) are both in that space
+    internal = Xoa.subs({aR: 1, aI: 0, bR: 0, bI: 0, za: 0, ya: 0})
+    external = Xoa.subs({aR: 0, aI: 0, bR: 1, bI: 0, za: 0, ya: 0})
+    checks["5d_internal_block_generator_exists_outside_image"] = (
+        internal[0, 1] != 0 and zero(internal + internal.H) and zero(internal + jconj(internal))
+        and sp.Matrix.hstack(*[sp.Matrix(list(g)) for g in image], sp.Matrix(list(internal))).rank() == 4)
+    checks["5e_external_Rmix_generator_exists_outside_image"] = (
+        zero(external - Rmix) and sp.Matrix.hstack(*[sp.Matrix(list(g)) for g in image],
+                                                     sp.Matrix(list(external))).rank() == 4)
+
+    # ---- (6) frame covariance ---------------------------------------------------------------------------------
+    inv2 = 1 / s2
+    W = sp.Matrix([[1, 0, 0], [0, inv2, sp.I * inv2], [0, sp.I * inv2, inv2]])
+    checks["6a_W_unitary"] = zero(W * W.H - I3)
+    Sp = W * S * W.T                              # transported antilinear parity z -> Sp conj(z)
+    Lp = W * L * W.H
+    odd_p = (Lp - Sp * Lp.conjugate() * Sp.inv()) / 2
+    checks["6b_frame_has_complex_entries"] = any(
+        sp.simplify(sp.im(e)) != 0 for e in (W * sym2_lift(E + F) * W.H))
+    checks["6c_frame_generator_is_W_A_Wdagger_zero"] = zero(odd_p - W * odd(L) * W.H) and zero(antiherm(odd_p))
+
+    # ---- (7) central imaginary scalar -------------------------------------------------------------------------
     cR, cI = sp.symbols("cR cI", real=True)
-    c = cR + sp.I * cI
-    checks["5a_central_scalar_zero"] = is_zero_matrix(Upi_generator_central(c, I3))
-    A_real_plus_central = antiherm(jpi_odd_part(sym2_lift(pR * E + qR * F + rR * H) + c * I3))
-    checks["5b_real_plus_central_zero"] = is_zero_matrix(A_real_plus_central)
+    central = (cR + sp.I * cI) * I3
+    A_central = antiherm(odd(central))
+    checks["7a_central_generator_is_i_Im_c_identity"] = zero(A_central - sp.I * cI * I3)
+    checks["7b_central_generator_diagonal"] = all(sp.simplify(A_central[i, j]) == 0
+                                                  for i in range(3) for j in range(3) if i != j)
 
-    # ----------------------------------------------------------------------------------------------------------
-    # (6) SPINORIAL-FRAME COVARIANCE (the heart of Jerome's caveat: complex matrices != complex coefficients).
-    #     Express a sigma-REAL step in a manifestly COMPLEX unitary spinorial frame W on C^3 (here a complex
-    #     rotation of the outer pair e_+/-). The lift acquires complex entries, BUT transporting J_Pi and the
-    #     hermitian structure by the SAME W gives A_frame = W A W^dagger = 0. So complex representation matrices
-    #     produced by a complex frame do NOT open the block; only sigma-anti-real COEFFICIENTS do.
-    # ----------------------------------------------------------------------------------------------------------
-    inv2 = 1 / sp.sqrt(2)
-    W = sp.Matrix([[1, 0, 0],
-                   [0, inv2, sp.I * inv2],
-                   [0, sp.I * inv2, inv2]])          # complex unitary: e_+/- -> (e_+ +/- i e_-)/sqrt(2)
-    checks["6a_W_unitary"] = sp.simplify(W * W.conjugate().T - I3) == sp.zeros(3)
-    M_realstep = pR * E + qR * F + rR * H            # sigma-real coefficients
-    L = sym2_lift(M_realstep)
-    L_frame = sp.simplify(W * L * W.conjugate().T)
-    # complex entries genuinely appear in the rotated frame (not a no-op):
-    checks["6b_frame_has_complex_entries"] = any(sp.simplify(sp.im(L_frame[i, j])) != 0
-                                                 for i in range(3) for j in range(3))
-    Jt = sp.simplify(W * J_invol() * W.conjugate().T)             # transported involution
-    A_frame = antiherm(jpi_odd_part(L_frame, Jt))
-    checks["6c_frame_generator_zero"] = is_zero_matrix(A_frame)   # complex matrices, still no mixing
-    # ... while a genuine complex COEFFICIENT (sigma-anti-real) is frame-independently non-zero:
-    A_coeff = Upi_generator((pR + sp.I) * E + qR * F + rR * H)    # Im p = 1
-    checks["6d_complex_coeff_nonzero"] = not is_zero_matrix(A_coeff)
-
-    # ----------------------------------------------------------------------------------------------------------
-    # report
-    # ----------------------------------------------------------------------------------------------------------
-    print("Front 3e: non-central complex-phase audit -- reality structure of the metaplectic step")
+    # ---- report -----------------------------------------------------------------------------------------------
+    print("Front 3e: reality structure of the sl_2 step under the antilinear parity J_Pi of Q14 (exact symbolic)")
     print("=" * 104)
-    print("  Caveat (Jerome): rep-matrix complexity  !=  coefficient complexity (p,q)  !=  central phase zeta_q")
-    print("  sigma(M)=conj(M) on sl_2(C); real form sl_2(R)=span_R{E,F,H}; sigma-real <=> p,q,r in R")
-    print("  A := antiherm( J_Pi-odd( Sym^2 lift M ) );  internal block A_{e0,e+} = sqrt(2) i (Im p + Im q)/2")
+    print("  J_Pi z = S conj(z), S = Sym^2(eps); X -> S conj(X) S^{-1};")
+    print("  A_Pi := antiherm(J_Pi-odd(L(M))), M in sl_2(C)")
     print("-" * 104)
-    print("  (1) real form (p,q,r in R)            => A = 0           [Front 3c / PRS v=0]")
-    print("  (2) internal coeff = sqrt2 i (Imp+Imq)/2                 [sigma-anti-real part only]")
-    print("  (3) A depends only on i*Im(M); Im r (Cartan) gives NO transverse block")
-    print("  (4) reality lemma: transverse(A)=0 <=> Im p=Im q=0; Im r = J_3 rephasing (class-trivial)")
-    print("  (5) central phase c I_3 projectively trivial: real+central => A=0   [CHO zeta_q central]")
-    print("  (6) spinorial-frame covariance: complex frame => complex matrices but A_frame=0;")
-    print("      only a sigma-anti-real COEFFICIENT (Im p=1) is frame-independently non-zero")
+    print("  (1) S conj(L(M)) S^{-1} = - L(M)^dagger for every complex (p, q, r)")
+    print("  (2) J_Pi-odd part of L(M) = hermitian part; J_Pi-even part = anti-hermitian part")
+    print("  (3) A_Pi = 0 identically in (p, q, r) in C^3; odd J_3 coefficient 2 Re r; odd R_mix coefficient 0")
+    print("  (4) negative control, LINEAR involution S X S^{-1}: transverse part ~ Im(p+q), differs from J_Pi")
+    print("  (5) odd anti-hermitian operators: 6 real dimensions, HS-orthogonal to the sl_2 image (spin-2 sector)")
+    print("  (6) complex unitary frame with transported parity: W A_Pi W^dagger = 0 (vacuous)")
+    print("  (7) central imaginary scalar: odd, anti-hermitian, diagonal (class-trivial)")
     print("-" * 104)
     allok = True
     for k, val in checks.items():
@@ -212,28 +238,20 @@ def main():
         allok = allok and ok
         print(f"  [{'PASS' if ok else 'FAIL'}]  {k}")
     print("=" * 104)
-    print("REALITY LEMMA (proved, exact symbolic): the chiral polar generator A is a function of the sigma-anti-real")
-    print("  (imaginary-coefficient) part alone; its TRANSVERSE part = 0  <=>  Im p = Im q = 0  <=>  [U_Pi] = [I].")
-    print("  The imaginary Cartan part Im r is a pure J_3 rephasing (class-trivial, the N_A channel). Complex")
-    print("  representation matrices from a complex spinorial frame are frame-covariant (A_frame = W A W^dag) and")
-    print("  DO NOT open the block: rep-matrix complexity != coefficient complexity != central phase.")
-    print()
-    print("EXHAUSTIVITY (structural, surveyed -- PRS/AAR + CHO + AOG): at the present full-tower stratum the only")
-    print("  data feeding the non-central step are REAL (Heisenberg translations/modulations, oriented area ts in R)")
-    print("  plus a CENTRAL cyclotomic phase zeta_q (CHO: no Fourier/Weyl generator => no metaplectic Gauss phase).")
-    print("  If Im p = Im q = 0 (the surveyed data), then A_Pi = 0 => [U_Pi] = [I] internal: a condition.")
-    print()
-    print("VERDICT: conditional on p,q in R (the surveyed data): A_Pi = 0, no internal mixing from this source;")
-    print("  the internal block is neither excluded nor constructed here. The positive opening Im p,Im q != 0 needs a")
-    print("  genuinely complex NON-CENTRAL metaplectic phase = a Weil/Fourier generator = a NEW tower stratum, gated")
-    print("  by the SAME AOG lem:rigidity as epsilon = 1/10. No mass and no mixing value is produced.")
+    print(f"  checks run: {len(checks)}")
+    print("RESULT (proved, exact symbolic, for A_Pi AS DEFINED, the J_Pi-odd anti-hermitian part of the sl_2 lift):")
+    print("  for the antilinear parity J_Pi of Q14, the J_Pi-odd part of the lift is its hermitian part, so A_Pi = 0")
+    print("  for all complex (p, q, r). The reality of the coefficients plays no role, and the diagonal")
+    print("  i Im(r) diag(0, 2, -2) is J_Pi-even. Neither transverse block (internal e_0 <-> e_+/-, external R_mix)")
+    print("  is sourced by the sl_2 image. Both need a generator outside it, in the spin-2 sector of")
+    print("  End(Sym^2 V_gen); no source supplies one, and whether any projects onto that sector is not known.")
+    print("  The linear involution is not J_Pi; it appears only as a negative control (condition Im(p+q)).")
+    print("OPEN MODELLING QUESTION: the J_Pi-even anti-hermitian part of the lift is non-zero (internal entry")
+    print("  sqrt(2)(q - conj p)/2, non-zero for real p != q). That the polar generator is the J_Pi-odd part is the")
+    print("  definition of A_Pi; no source used here justifies it, and no physical exclusion of the internal block")
+    print("  is claimed. No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
     return allok
-
-
-def Upi_generator_central(c, I3):
-    """Central scalar generator c*I_3: J_Pi-even, so the J_Pi-odd anti-hermitian polar generator vanishes."""
-    return antiherm(jpi_odd_part(c * I3))
 
 
 if __name__ == "__main__":

@@ -1,62 +1,43 @@
-"""Front 3c -> Front 2 bridge: transverse metaplectic route audit.
+r"""Front 3c -> Front 2 bridge: transverse route of the metaplectic step generator.
 
-Bias-independent, exact symbolic verification (no sampling). Front 3c reduced the non-triviality of the chiral
-polar class to one question: does the metaplectic generator of U_Pi have a non-zero TRANSVERSE (off-diagonal)
-component in T_[I](U(1)^3_R \\ U(3) / U(1)^3_L)? On the real cascade of the model the answer is no. The bridge to
-Front 2 asks whether the FULL-TOWER complex metaplectic phase can produce a transverse component, or whether the
-structure of the model confines the metaplectic datum to the diagonal (Cartan / orientation / N_A) channel.
+Exact symbolic verification (no sampling). The audit of the chiral polar class (front3c_polar_class_nontriviality.py)
+reduces the non-triviality of the class [U_Pi] to the OFF-DIAGONAL (transverse) part of the anti-hermitian generator A
+of the polar factor. This script asks which transverse blocks the Sym^2 lift of an sl_2(C) step can source.
 
-Correct U_Pi generator. U_Pi is the CHIRAL (J_Pi swaps L<->R) and UNITARY polar factor, so its generator is the
-J_Pi-ODD and ANTI-HERMITIAN part of the lifted cascade generator:
-    A := antiherm( J_Pi-odd( lift(M) ) ),     M in sl_2 (metaplectic step, coefficients possibly complex).
-(The J_Pi-odd part that is HERMITIAN/symmetric is the split-generating, longitudinal piece -- it builds the
-diagonal model level operator diag(1, 1/2+u, 1/2-u) (E_Pi^2|gen only under [H-Res]) and is rotated away in
-the generation eigenbasis; it is
-NOT a U_Pi direction. This is why a real cascade, whose J_Pi-odd part is real symmetric, gives U_Pi = I.)
+Generator (definition, taken as given). A_Pi := antiherm( J_Pi-odd( L(M) ) ), M = p E + q F + r H in sl_2(C) with
+complex coefficients, L(M) the derived Sym^2 lift on C^3_gen, and J_Pi the ANTILINEAR parity of Q14 Section 6,
+J_Pi z = S conj(z) with S = Sym^2(eps), eps = [[0, 1], [-1, 0]] (J_Pi: e_0 -> -e_0, e_+ <-> e_- antilinearly). The
+conjugation of an operator is X -> S conj(X) S^{-1}. The exact audit of this definition is
+front3e_reality_structure.py; this script reuses it on the blocks.
 
 Two transverse blocks on C^3_gen = Sym^2(C^2), basis (e_0, e_+, e_-):
-    INNER block  (e_0 <-> e_+, e_0 <-> e_-): central generation mixing with the outer pair;
-    OUTER block  (e_+ <-> e_-) = R_mix:      mixing of the two outer generations.
-
-Corpus anchoring. AAR (Beau2026aar): N_A is the J_3 / Cartan oriented symplectic area alpha = ts -- the DIAGONAL
-channel, with R_mix "a distinct direction". Schur (PRS / schur_transversality_alpha.py): real cascade gives
-alpha != 0 (J_3) and mu = 0 (R_mix). EBJ (Beau2026ebj): every odd-order generation-mixing coefficient of E_Pi^2
-vanishes by antiunitary parity in every covariant family, with or without complex phases; even orders are not excluded.
-AOG
-(Beau2026aog, prop:spinrigidity, lem:rigidity): the type-rigidity of the model fixes sqrt(5) and treats
-[H-orient] -- it constrains the ARITHMETIC TYPE / orientation, not the transverse polar direction.
+    INTERNAL block (e_0 <-> e_+, e_0 <-> e_-): central generation mixing with the outer pair;
+    EXTERNAL block (e_+ <-> e_-) = R_mix:      mixing of the two outer generations (antisymmetric, Q14 Sec. 6).
 
 Results (all exact symbolic).
-  (A) Real-cascade collapse: for a real sl_2 element the generator A = antiherm(J_Pi-odd(lift)) is identically
-      zero (both blocks), so [U_Pi] = [I] -- no mixing (recovers the Front 3c corollary and PRS v = 0).
-  (B) Complex phase sources the INNER block: for a complex metaplectic element the inner component
-      A_{e_0,e_+} = sqrt(2)\,i\,(Im p + Im q)/2 != 0 (carried by the imaginary part = the complex phase), while
-      the OUTER component A_{e_+,e_-} (R_mix) = 0 for ANY complex sl_2 element. So a complex metaplectic phase
-      DOES produce transverse mixing, but only in the inner (e_0 <-> e_+/-) block.
-  (C) Inner mixing vs N_A -- same carrier, independent components: the SAME metaplectic step M carries both the
-      N_A oriented area (alpha = J_3 projection, sourced by the REAL part) and the inner mixing (sourced by the
-      IMAGINARY part); alpha depends only on the real product, the inner mixing only on the imaginary phase, so
-      fixing N_A does NOT fix the inner mixing. The two SEPARATE as data (N_A real area vs the complex phase).
-  (D) OUTER block needs a new stratum: the Sym^2 lift has identically zero outer (e_+, e_-) entries for ANY
-      complex M, and R_mix is linearly independent of span{lift(E), lift(F), lift(H), I_3} (rank 4 -> 5). The
-      e_+ <-> e_- mixing therefore requires a generator outside sl_2 (+) centre -- a genuinely new tower stratum.
-  (E) Central metaplectic phase is even and projectively trivial (scalar c I_3): no alpha, no mixing, removed by
-      the common-phase quotient. So the CHO central phase zeta_q^{Delta A_c} alone produces no mixing.
-  (F) Orientation / sqrt(5) data give no transverse: any diagonal generator diag(d_0, d_+, d_-) (complex), the
-      home of the orientation / sqrt(5) arithmetic that AOG fixes, has zero off-diagonal generator -- the AOG
-      rigidity channel cannot produce mixing in either block.
+  (A) For a real sl_2 element A_Pi = 0 (both blocks).
+  (B) For a complex sl_2 element A_Pi = 0 as well: the internal entry and the external entry vanish for every
+      complex (p, q, r). The J_Pi-odd part of L(M) is the hermitian part of L(M).
+  (C) The N_A channel: the J_3 coefficient of the J_Pi-odd part is 2 Re r; on the cascade step
+      g = exp(tE) exp(sF) it is the oriented area alpha = t s (AAR). It lies in the diagonal channel.
+  (D) The lift has identically zero external entries for any complex M, and R_mix is linearly independent of
+      span{L(E), L(F), L(H), I_3} (rank 4 -> 5). The internal-block generator is also outside the sl_2 image
+      (rank 3 -> 4) and Hilbert-Schmidt orthogonal to it. Both blocks need a generator in the spin-2 sector of
+      End(Sym^2 V_gen), outside the sl_2(C) image; none is supplied.
+  (E) A central scalar c I_3: its J_Pi-odd anti-hermitian part is i Im(c) I_3, diagonal, hence class-trivial.
+  (F) A diagonal generator diag(d_0, d_+, d_-) (complex) has a zero off-diagonal J_Pi-odd anti-hermitian part.
 
-Bridge verdict (printed). NOT outcome 1 (the transverse is not killed): a genuinely complex metaplectic phase
-sources INNER-block mixing at the present stratum. Closest to outcome 3 (the transverse datum is INDEPENDENT of
-N_A): N_A is the real oriented area, the inner mixing is the independent imaginary phase of the SAME cascade
-carrier, and the OUTER block needs a separate new-stratum datum; N_A / epsilon can be fixed without predicting
-the mixing. NOT outcome 2 (N_A's real area does not by itself feed the mixing). Whether the full-tower
-phase is genuinely complex (-> inner mixing) or real (-> the real-cascade collapse, no mixing), and whether a
-new stratum opens the outer block, are the open questions -- gated by the same AOG lem:rigidity as epsilon = 1/10.
-No mass and no mixing value is produced. No figures. English.
+Verdict (printed, scoped to A_Pi as defined). Within the sl_2 image neither transverse block is sourced, for real or
+complex coefficients. Q14 Remark 6.4 concerns R_mix and rests on the absence of a matrix element between the weights
++1 and -1; the vanishing of the internal block rests on the antilinear parity (front3e). A source of either block
+needs a generator outside the sl_2 image. Whether the polar generator should be the J_Pi-odd part is a property of the
+definition of A_Pi that is not justified by the sources used here (see front3e). No mass and no mixing value is
+produced. No figures. English.
 """
 
 import sympy as sp
+
+s2 = sp.sqrt(2)
 
 
 def fundamental_generators():
@@ -66,37 +47,41 @@ def fundamental_generators():
     return E, F, H
 
 
+def sym2_of_matrix(g):
+    """Group action Sym^2(g) on the orthonormal basis (e_0, e_+, e_-); T -> g T g^T on symmetric 2x2 matrices."""
+    basis = [sp.Matrix([[0, 1], [1, 0]]) / s2, sp.Matrix([[1, 0], [0, 0]]), sp.Matrix([[0, 0], [0, 1]])]
+    cols = []
+    for T in basis:
+        Tn = g * T * g.T
+        cols.append([Tn[0, 1] * s2, Tn[0, 0], Tn[1, 1]])
+    return sp.Matrix(cols).T
+
+
 def sym2_lift(M):
-    """Derived Sym^2 representation of a 2x2 traceless M, basis (e_0, e_+, e_-), e_0 = sqrt(2) v_+ v_-."""
-    a, b, c, d = M[0, 0], M[0, 1], M[1, 0], M[1, 1]
-    s2 = sp.sqrt(2)
-    return sp.Matrix([
-        [a + d,  s2 * c,  s2 * b],
-        [s2 * b, 2 * a,   0],
-        [s2 * c, 0,       2 * d],
-    ])
+    """Derived Sym^2 representation of a 2x2 matrix M: d/dt Sym^2(1 + t M) at t = 0."""
+    t = sp.Symbol("t")
+    return sp.simplify(sym2_of_matrix(sp.eye(2) + t * M).diff(t).subs(t, 0))
 
 
-def hs_inner(A, B):
-    return sp.trace(A.conjugate().T * B)
-
-
-def J_invol():
-    return sp.Matrix([[-1, 0, 0], [0, 0, 1], [0, 1, 0]])   # e_0 -> -e_0, e_+ <-> e_-
+S = sym2_of_matrix(sp.Matrix([[0, 1], [-1, 0]]))      # Sym^2(eps)
 
 
 def jpi_odd_part(A):
-    J = J_invol()
-    return (A - J * A * J.inv()) / 2
+    """J_Pi-odd part (A - S conj(A) S^{-1}) / 2 for the antilinear J_Pi z = S conj(z)."""
+    return (A - S * A.conjugate() * S.inv()) / 2
 
 
 def antiherm(A):
-    return (A - A.conjugate().T) / 2
+    return (A - A.H) / 2
 
 
 def Upi_generator(M):
-    """The chiral, unitary U_Pi generator: J_Pi-odd AND anti-hermitian part of the Sym^2 lift of M."""
+    """A_Pi: J_Pi-odd AND anti-hermitian part of the Sym^2 lift of M."""
     return antiherm(jpi_odd_part(sym2_lift(M)))
+
+
+def hs_inner(A, B):
+    return sp.trace(A.H * B)
 
 
 def vec(M):
@@ -110,68 +95,72 @@ def main():
     Rmix = sp.Matrix([[0, 0, 0], [0, 0, 1], [0, -1, 0]])
     I3 = sp.eye(3)
     p, q, r = sp.symbols("p q r")                       # generic COMPLEX sl_2 coefficients
-
-    def offdiag_zero(A):
-        return all(sp.simplify(sp.expand_complex(A[i, j])) == 0
-                   for i in range(3) for j in range(3) if i != j)
-
-    # ---- (A) real-cascade collapse: A = 0 (both blocks) => [U_Pi] = [I] --------------------------
-    pr, qr, rr = sp.symbols("pr qr rr", real=True)
-    A_real = Upi_generator(pr * E + qr * F + rr * H)
-    checks["A_real_generator_zero"] = all(sp.simplify(sp.expand_complex(e)) == 0 for e in A_real)
-
-    # ---- (B) complex phase sources the INNER block, never the OUTER block ------------------------
-    # split each coefficient into explicit real + imaginary parts
     pR, pI, qR, qI, rR, rI = sp.symbols("pR pI qR qI rR rI", real=True)
     rep = {p: pR + sp.I * pI, q: qR + sp.I * qI, r: rR + sp.I * rI}
-    A_cpx = Upi_generator(p * E + q * F + r * H)
-    inner = sp.simplify(sp.expand_complex(A_cpx[0, 1].subs(rep)))     # (e_0, e_+)
-    outer = sp.simplify(sp.expand_complex(A_cpx[1, 2].subs(rep)))     # (e_+, e_-) = R_mix
-    checks["B_inner_is_imaginary_phase"] = sp.simplify(inner - sp.sqrt(2) * sp.I * (pI + qI) / 2) == 0
-    checks["B_inner_nonzero_for_phase"] = inner.subs({pI: 1, qI: 1, pR: 0, qR: 0, rR: 0, rI: 0}) != 0
-    checks["B_outer_zero_any_M"] = outer == 0
 
-    # ---- (C) inner mixing vs N_A: same carrier, independent (Re vs Im) components ----------------
-    # N_A channel = J_3 projection of the J_Pi-odd part (the oriented area alpha), real cascade:
+    def is_zero(X):
+        return all(sp.simplify(sp.expand_complex(e)) == 0 for e in X)
+
+    # ---- (A) real step: A_Pi = 0 -------------------------------------------------------------------------------
+    A_real = Upi_generator(pR * E + qR * F + rR * H)
+    checks["A_real_generator_zero"] = is_zero(A_real)
+
+    # ---- (B) complex step: A_Pi = 0 as well (both blocks) ------------------------------------------------------
+    A_cpx = Upi_generator((p * E + q * F + r * H).subs(rep))
+    checks["B_internal_entries_zero_any_complex_M"] = is_zero(sp.Matrix([A_cpx[0, 1], A_cpx[0, 2], A_cpx[1, 0],
+                                                                         A_cpx[2, 0]]))
+    checks["B_external_entries_zero_any_complex_M"] = is_zero(sp.Matrix([A_cpx[1, 2], A_cpx[2, 1]]))
+    checks["B_whole_generator_zero_any_complex_M"] = is_zero(A_cpx)
+    L = sym2_lift((p * E + q * F + r * H).subs(rep))
+    checks["B_odd_part_is_hermitian_part"] = is_zero(jpi_odd_part(L) - (L + L.H) / 2)
+
+    # ---- (C) N_A channel: J_3 coefficient of the J_Pi-odd part -------------------------------------------------
     t, s = sp.symbols("t s", real=True)
-    odd_real = jpi_odd_part(sym2_lift(t * E + s * F + (t * s / 2) * H))
-    alpha = sp.simplify(hs_inner(odd_real, J3) / hs_inner(J3, J3))   # the N_A / oriented-area datum
-    checks["C_NA_is_real_area"] = sp.simplify(alpha - t * s) == 0    # alpha = ts, real product (AAR)
-    # inner mixing depends ONLY on the imaginary parts; it is invariant under the real parts pR, qR:
-    checks["C_inner_indep_of_NA"] = (sp.simplify(sp.diff(inner, pR)) == 0
-                                     and sp.simplify(sp.diff(inner, qR)) == 0
-                                     and sp.simplify(inner.subs({pI: 0, qI: 0})) == 0)
-    checks["C_NA_real_no_inner"] = sp.simplify(sp.expand_complex(A_real[0, 1])) == 0  # real carrier => no mixing
+    odd_step = jpi_odd_part(sym2_lift(t * E + s * F + (t * s / 2) * H))
+    alpha = sp.simplify(hs_inner(J3, odd_step) / hs_inner(J3, J3))
+    checks["C_NA_is_real_area_ts"] = sp.simplify(alpha - t * s) == 0
+    odd_cpx = jpi_odd_part(L)
+    checks["C_J3_coefficient_is_2Re_r"] = sp.simplify(
+        sp.expand_complex(hs_inner(J3, odd_cpx) / hs_inner(J3, J3) - 2 * rR)) == 0
 
-    # ---- (D) OUTER block needs a new stratum -----------------------------------------------------
+    # ---- (D) both blocks need a generator outside the sl_2 image -----------------------------------------------
     LE, LF, LH = sym2_lift(E), sym2_lift(F), sym2_lift(H)
-    checks["D_lift_outer_zero"] = sp.simplify(sym2_lift(p * E + q * F + r * H)[1, 2]) == 0 \
-        and sp.simplify(sym2_lift(p * E + q * F + r * H)[2, 1]) == 0
+    full = sym2_lift(p * E + q * F + r * H)
+    checks["D_lift_external_entries_zero"] = sp.simplify(full[1, 2]) == 0 and sp.simplify(full[2, 1]) == 0
     basis4 = sp.Matrix.hstack(vec(LE), vec(LF), vec(LH), vec(I3))
     basis5 = sp.Matrix.hstack(basis4, vec(Rmix))
     checks["D_Rmix_outside_image"] = basis4.rank() == 4 and basis5.rank() == 5
     checks["D_J3_perp_Rmix"] = sp.simplify(hs_inner(J3, Rmix)) == 0
+    internal = sp.Matrix([[0, 1, 1], [-1, 0, 0], [-1, 0, 0]])          # J_Pi-odd, anti-hermitian, internal block
+    checks["D_internal_generator_is_odd_antiherm"] = (
+        is_zero(internal + internal.H) and is_zero(internal + S * internal.conjugate() * S.inv()))
+    basis3 = sp.Matrix.hstack(vec(LE), vec(LF), vec(LH))
+    checks["D_internal_outside_image"] = basis3.rank() == 3 and sp.Matrix.hstack(basis3, vec(internal)).rank() == 4
+    checks["D_internal_HS_orthogonal_to_image"] = all(
+        sp.simplify(hs_inner(g, internal)) == 0 for g in (LE, LF, LH))
 
-    # ---- (E) central metaplectic phase: even, projectively trivial -------------------------------
-    c = sp.symbols("c")
-    checks["E_central_generator_zero"] = all(sp.simplify(sp.expand_complex(e)) == 0
-                                             for e in Upi_generator_safe_central(c, I3))
+    # ---- (E) central scalar --------------------------------------------------------------------------------------
+    cR, cI = sp.symbols("cR cI", real=True)
+    A_central = antiherm(jpi_odd_part((cR + sp.I * cI) * I3))
+    checks["E_central_generator_is_i_Im_c_identity"] = is_zero(A_central - sp.I * cI * I3)
 
-    # ---- (F) orientation / sqrt(5) diagonal data: no transverse ----------------------------------
+    # ---- (F) diagonal data: no transverse part -------------------------------------------------------------------
     d0, dp, dm = sp.symbols("d0 dp dm")
     A_diag = antiherm(jpi_odd_part(sp.diag(d0, dp, dm)))
-    checks["F_diag_no_transverse"] = offdiag_zero(A_diag)
+    checks["F_diag_no_transverse"] = all(sp.simplify(sp.expand_complex(A_diag[i, j])) == 0
+                                         for i in range(3) for j in range(3) if i != j)
 
-    # ---------------------------------------------------------------------------------------------
-    print("Front 3c -> Front 2 bridge: transverse metaplectic route audit (exact symbolic, no sampling)")
+    # ---- report ----------------------------------------------------------------------------------------------------
+    print("Front 3c -> Front 2 bridge: transverse route of the sl_2 step generator (exact symbolic)")
     print("=" * 100)
-    print("  U_Pi generator A = antiherm(J_Pi-odd(lift(M)));  transverse blocks: INNER (e_0<->e_+/-), OUTER R_mix")
-    print("  (A) real cascade: A = 0 (both blocks) => [U_Pi] = [I], no mixing  (Front 3c / PRS v=0)")
-    print("  (B) complex phase: INNER A_{e0,e+} = sqrt(2) i (Im p + Im q)/2 != 0;  OUTER R_mix = 0 for ANY M")
-    print("  (C) N_A = real oriented area alpha=ts;  inner mixing = imaginary phase => independent data")
-    print("  (D) OUTER R_mix not in sl_2(+)centre (lift outer block = 0; rank 4->5) => needs a NEW stratum")
-    print("  (E) central metaplectic phase c I_3: even, projectively trivial => no mixing")
-    print("  (F) diagonal orientation/sqrt(5) data: zero off-diagonal generator => no mixing")
+    print("  A_Pi = antiherm(J_Pi-odd(L(M))), J_Pi antilinear (z -> S conj z), M in sl_2(C);")
+    print("  transverse blocks: INTERNAL (e_0 <-> e_+/-), EXTERNAL R_mix (e_+ <-> e_-)")
+    print("  (A) real step: A_Pi = 0 (both blocks)")
+    print("  (B) complex step: A_Pi = 0 as well; the J_Pi-odd part of the lift is its hermitian part")
+    print("  (C) N_A: the J_3 coefficient of the odd part is 2 Re r (= t s on the cascade step), a diagonal channel")
+    print("  (D) R_mix and the internal block are outside the sl_2 image (ranks 4 -> 5, 3 -> 4), HS-orthogonal to it")
+    print("  (E) central scalar: i Im(c) I_3, diagonal, class-trivial")
+    print("  (F) diagonal data: zero off-diagonal generator")
     print("-" * 100)
     allok = True
     for k, val in checks.items():
@@ -179,21 +168,15 @@ def main():
         allok = allok and ok
         print(f"  [{'PASS' if ok else 'FAIL'}]  {k}")
     print("=" * 100)
-    print("BRIDGE VERDICT: NOT outcome 1 -- a genuinely complex metaplectic phase sources INNER-block mixing at")
-    print("  the present stratum. Closest to outcome 3 -- the transverse datum is INDEPENDENT of N_A: N_A is the")
-    print("  real oriented area (J_3), the inner mixing is the independent IMAGINARY phase of the same cascade")
-    print("  carrier, and the OUTER (e_+<->e_-) block needs a separate NEW-stratum datum; so N_A/epsilon can be")
-    print("  fixed without predicting the mixing. NOT outcome 2 -- N_A's real area does not by itself feed it.")
-    print("  Open (gated by the same AOG lem:rigidity as epsilon=1/10): is the full-tower phase genuinely")
-    print("  complex (-> inner mixing) or real (-> collapse, no mixing), and does a new stratum open the outer block?")
+    print(f"  checks run: {len(checks)}")
+    print("VERDICT (scoped to A_Pi as defined): within the sl_2 image neither transverse block is sourced, for real")
+    print("  or complex coefficients. Q14 Remark 6.4 concerns R_mix only; the vanishing of the internal block rests on")
+    print("  the antilinear parity (front3e). A source of either block needs a generator outside the sl_2 image, in")
+    print("  the spin-2 sector of End(Sym^2 V_gen); none is supplied. Whether the polar generator should be the")
+    print("  J_Pi-odd part is a property of the definition, not justified by the sources used here (front3e).")
     print("  No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
     return allok
-
-
-def Upi_generator_safe_central(c, I3):
-    # central scalar generator c*I_3: J_Pi-odd part is zero (I_3 is J_Pi-even), so the U_Pi generator vanishes.
-    return antiherm(jpi_odd_part(c * I3))
 
 
 if __name__ == "__main__":

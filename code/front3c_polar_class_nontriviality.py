@@ -1,4 +1,4 @@
-"""Front 3c step 3: polar-class non-triviality audit of the complex metaplectic phase.
+"""Front 3c step 3: polar-class non-triviality audit of the generator of the chiral polar factor.
 
 Bias-independent, exact symbolic verification (no sampling). The canonical-vs-class audit
 (front3c_polar_class_audit.py) established that the chiral polar factor U_Pi of the projected Yukawa
@@ -6,10 +6,9 @@ Y_Pi = U_Pi H_Pi^{1/2} is not a canonical observable but a rephasing CLASS
 
     [U_Pi]  in  U(3) / (U(1)^3_R x U(1)^3_L),     U_Pi ~ V_R U_Pi V_L^{-1}  (V_L,V_R diagonal).
 
-The real observable is therefore not the metaplectic phase gamma but the class [U_Pi]. This audit decides the
-genuine next lock (Jerome's reframing):
+The observable is therefore the class [U_Pi] and not a matrix. This audit asks:
 
-    Does the complex metaplectic phase generate a NON-TRIVIAL polar class  [U_Pi(gamma)] != [I],
+    Does a generator A of U_Pi(gamma) = exp(gamma A) give a NON-TRIVIAL polar class  [U_Pi(gamma)] != [I],
     or only a representative diagonal-rephasing-equivalent to the identity?
 
 Geometric criterion (proved below). The diagonal-rephasing orbit through I has tangent space exactly the
@@ -17,45 +16,38 @@ DIAGONAL anti-hermitian matrices (i d, d real). A unitary generator A := dU_Pi/d
 its class moves off [I] at first order iff A has a component TRANSVERSE to that orbit tangent, i.e. iff its
 OFF-DIAGONAL part is non-zero. The rephasing-invariant detectors are:
   * the first variation of the moduli  d|(U_Pi)_{ij}|  (i != j), which is |A_{ij}|;
-  * the Jarlskog-type invariant  J_Pi = Im( U_11 U_22 conj(U_12) conj(U_21) ), whose leading non-vanishing
+  * the Jarlskog-type invariant  J_CP = Im( U_11 U_22 conj(U_12) conj(U_21) ), whose leading non-vanishing
     order in gamma is gamma^3 and is proportional to Im(A_12 A_23 A_31) -- the genuine 3-generation CP datum.
 
-Two precautions (Jerome, firm).
+Two precautions.
   (i)  AOG/CHO treat the ORIENTATION caveat [H-orient] and the spin-Galois sqrt(5) factor; they do NOT settle
        the non-triviality of [U_Pi]. The chiral lift carries no action on Q(sqrt 5), so no spin-Galois factor
-       orthogonal to zeta_q survives -- but that settles orientation, not the polar class.
-  (ii) u != 0 (the diagonal generation split, A4/PRS) is NOT mixing. u lives in the DIAGONAL channel A_diag
-       (pure level split / rephasing) and contributes nothing to the off-diagonal moduli or to J_Pi. Mixing
-       requires a NON-DIAGONAL polar class, sourced by the complex metaplectic channel v (PYO: v = 0 on the real
-       cascade of the model; EBJ: odd-order mixing of E_Pi^2 vanishes by antiunitary parity in every covariant
-       family, with or without complex phases; A4-note: on the real cascade of the model the transverse channel
-       vanishes at gamma = 0, the complex interior remaining conditional on a phase that is not
-       supplied and an unprescribed order).
+       orthogonal to zeta_q survives -- but that concerns orientation, not the polar class.
+  (ii) u != 0 (the diagonal generation split) is NOT mixing. u lives in the DIAGONAL channel (a level split that
+       commutes with the rephasings) and contributes nothing to the off-diagonal moduli or to J_CP. Mixing
+       needs a generator with a non-zero TRANSVERSE part A_off. Whether the step model supplies one is the
+       question of front3d_transverse_route.py and front3e_reality_structure.py: for the sl_2 lift under the
+       antilinear parity J_Pi of Q14 the generator A_Pi vanishes, so A_off = 0 there.
 
-Results (all exact symbolic).
+Results (all exact symbolic). J_CP denotes the Jarlskog-type phase; J_Pi is reserved for the antilinear parity.
   (A) Orbit tangent at I is diagonal anti-hermitian: d/ds [V_R(s) V_L(s)^{-1}]|_0 = i(D_R - D_L), diagonal,
       anti-hermitian; off-diagonal part identically zero; and every diagonal anti-hermitian is reached.
   (B) Transversality detector: for U(gamma) = exp(gamma A), A anti-hermitian, the second-order coefficient of
       |(U)_{ij}|^2 (i != j) is |A_{ij}|^2; so d|U_{ij}| != 0 iff A_{ij} != 0, i.e. iff A is transverse.
-  (C) Jarlskog order: J_Pi vanishes at orders gamma^0, gamma^1, gamma^2; its leading gamma^3 coefficient is
+  (C) Jarlskog order: J_CP vanishes at orders gamma^0, gamma^1, gamma^2; its leading gamma^3 coefficient is
       proportional to Im(A_12 A_23 A_31), independent of the diagonal phases d_k (rephasing-invariant).
-  (D) Real-cascade collapse: with v = 0 the generator is purely diagonal (A_off = 0), so U_Pi(gamma) stays
-      diagonal => [U_Pi] = [I]: |(U_Pi)_{ij}| = delta_{ij} and J_Pi = 0 to all orders. NO physical mixing at
-      this stratum.
-  (E) Complex channel non-triviality: a generator with A_off != 0 gives off-diagonal moduli != 0 ([U_Pi] != [I],
-      CP-conserving mixing if A_off real); a genuinely complex A_off with Im(A_12 A_23 A_31) != 0 gives
-      J_Pi != 0 at order gamma^3 (a genuine polar mixing class with CP violation).
-  (F) u-channel orthogonality: the diagonal split channel A_diag (carrier of u) contributes zero to every
-      off-diagonal modulus first variation and zero to J_Pi -- u != 0 does not produce mixing.
+  (D) Diagonal generator: if A_off = 0, the exponential series of A has zero off-diagonal entries and J_CP = 0
+      through the computed order, so [U_Pi] = [I]. (The series is computed from A, not typed in.)
+  (E) Transverse generator: A_off != 0 gives off-diagonal moduli != 0 ([U_Pi] != [I], CP-conserving mixing if A_off
+      is real); a complex A_off with Im(A_12 A_23 A_31) != 0 gives J_CP != 0 at order gamma^3.
+  (F) Diagonal level split: the model operator diag(1, 1/2+u, 1/2-u) commutes with every diagonal rephasing, and
+      does not commute with a generic non-diagonal unitary (negative control): the diagonal split is not a class
+      datum of U_Pi.
 
-Conclusion (printed). The non-triviality of the polar class is controlled EXACTLY by the off-diagonal
-(transverse) part of the metaplectic generator, i.e. by the complex metaplectic channel v. On the real
-cascade of the model v = 0 => [U_Pi] = [I] => no physical mixing at this stratum (a strong conditional
-result). A non-trivial
-[U_Pi] != [I], hence CKM/PMNS-type mixing, requires a genuine complex metaplectic phase -- not derived in the
-present construction, conditional on the same open data (an unprescribed complex phase + ordering, A4-note), and
-observable only relative to a second fermionic sector sharing one generation carrier. No mass and no mixing value
-is produced. No figures. English.
+Conclusion (printed). The non-triviality of the polar class is controlled EXACTLY by the off-diagonal (transverse)
+part of the generator of U_Pi. This script is generic in the anti-hermitian generator A and does not say which A the
+step model supplies; that is the object of front3d_transverse_route.py and front3e_reality_structure.py. No mass and
+no mixing value is produced. No figures. English.
 """
 
 import sympy as sp
@@ -140,48 +132,53 @@ def main():
         and sp.simplify(sp.diff(ratio, b23)) == 0
     checks["C_J3_indep_diag"] = all(sp.simplify(sp.diff(J3, d[k])) == 0 for k in range(3))
 
-    # ---- (D) real-cascade collapse: v = 0 => A_off = 0 => diagonal => [U_Pi] = [I] --------------
-    # diagonal channel: the EXACT exponential of a diagonal anti-hermitian is diag(exp(i g d_k)), |.| = 1
-    U_diag = sp.diag(*[sp.exp(sp.I * g * d[k]) for k in range(3)])
-    checks["D_diag_offdiag_zero"] = all(sp.simplify(U_diag[i, j]) == 0
-                                        for i in range(3) for j in range(3) if i != j)
-    checks["D_diag_moduli_identity"] = all(
-        sp.simplify(sp.Abs(U_diag[i, j]) - (1 if i == j else 0)) == 0
-        for i in range(3) for j in range(3))
-    checks["D_diag_J_zero"] = sp.simplify(sp.expand_complex(jarl(U_diag))) == 0
+    # ---- (D) diagonal generator: A_off = 0 => series has no off-diagonal entries, J_CP = 0 ----------------------
+    sub_zero_off = {a12: 0, b12: 0, a13: 0, b13: 0, a23: 0, b23: 0}
+    A_diag_only = A.subs(sub_zero_off)
+    U_d = expm_series(A_diag_only, g, 3)
+    checks["D_diag_generator_offdiag_series_zero"] = all(sp.simplify(sp.expand_complex(U_d[i, j])) == 0
+                                                         for i in range(3) for j in range(3) if i != j)
+    checks["D_diag_generator_JCP_zero"] = sp.simplify(sp.expand_complex(sp.expand(jarl(U_d)))) == 0
 
-    # ---- (E) complex-channel non-triviality vs CP-conserving real channel -----------------------
-    # real off-diagonal channel (A_off real): [U_Pi] != [I] but J = 0 (CP conserving)
+    # ---- (E) transverse generator vs CP-conserving real channel ------------------------------------------------
+    # real off-diagonal channel (A_off real): [U_Pi] != [I] but J_CP = 0 (CP conserving)
     A_real_off = anti_hermitian([0, 0, 0], {(0, 1): a12, (0, 2): a13, (1, 2): a23})
     U_re = expm_series(A_real_off, g, 2)
     mod_re = sp.expand_complex(sp.expand(U_re[0, 1] * sp.conjugate(U_re[0, 1])))
     checks["E_real_off_mixing"] = sp.simplify(mod_re.coeff(g, 2) - a12**2) == 0
     U_re3 = expm_series(A_real_off, g, 3)
-    checks["E_real_off_J_zero"] = sp.simplify(series_coeff(jarl(U_re3), g, 3)) == 0
-    # genuinely complex channel with Im(A_12 A_23 A_31) != 0 => J != 0 at g^3
+    checks["E_real_off_JCP_zero"] = sp.simplify(series_coeff(jarl(U_re3), g, 3)) == 0
+    # complex channel with Im(A_12 A_23 A_31) != 0 => J_CP != 0 at g^3
     sub_cp = {a12: 1, b12: 0, a23: 1, b23: 0, a13: 0, b13: 1, d[0]: 0, d[1]: 0, d[2]: 0}
     cp_val = sp.simplify(cp_datum.subs(sub_cp))
-    checks["E_complex_off_J_nonzero"] = cp_val != 0 and sp.simplify(J3.subs(sub_cp)) != 0
+    checks["E_complex_off_JCP_nonzero"] = cp_val != 0 and sp.simplify(J3.subs(sub_cp)) != 0
 
-    # ---- (F) u-channel orthogonality: diagonal split (carrier of u) gives no mixing -------------
-    # u enters the model operator diag(1,1/2+u,1/2-u) on C^3_gen (E_Pi^2|gen only under [H-Res]):
-    # a DIAGONAL level operator, whose generator is in A_diag.
-    checks["F_u_no_offdiag"] = all(sp.simplify(U_diag[i, j]) == 0
-                                   for i in range(3) for j in range(3) if i != j)
-    checks["F_u_no_J"] = sp.simplify(sp.expand_complex(jarl(U_diag))) == 0
+    # ---- (F) the diagonal level split commutes with the rephasings --------------------------------------------
+    # u enters the model operator diag(1,1/2+u,1/2-u) on C^3_gen (E_Pi^2|gen only under [H-Res]): a diagonal level
+    # operator. It commutes with every diagonal rephasing; a generic non-diagonal unitary does not (negative control).
+    u = sp.symbols("u", real=True)
+    Hlev = sp.diag(1, sp.Rational(1, 2) + u, sp.Rational(1, 2) - u)
+    Vd = sp.diag(*[sp.exp(sp.I * dl[k]) for k in range(3)])
+    checks["F_level_split_commutes_with_rephasings"] = all(
+        sp.simplify(e) == 0 for e in (Vd * Hlev - Hlev * Vd))
+    th = sp.symbols("theta", real=True)
+    Rot = sp.Matrix([[sp.cos(th), -sp.sin(th), 0], [sp.sin(th), sp.cos(th), 0], [0, 0, 1]])
+    checks["F_level_split_not_invariant_under_generic_rotation"] = not all(
+        sp.simplify(e) == 0 for e in (Rot * Hlev - Hlev * Rot).subs({th: sp.pi / 3, u: sp.Rational(1, 10)}))
 
     # ---------------------------------------------------------------------------------------------
-    print("Front 3c step 3 - polar-class non-triviality of the complex metaplectic phase (exact symbolic)")
+    print("Front 3c step 3 - polar-class non-triviality of the generator of U_Pi (exact symbolic)")
     print("=" * 100)
-    print("  Question: does the metaplectic phase give [U_Pi(gamma)] != [I] in U(3)/(U(1)^3_R x U(1)^3_L)?")
-    print("  Criterion: [U_Pi] moves off [I] at first order  <=>  the generator A = dU_Pi/dgamma|_0 has a")
-    print("             non-zero OFF-DIAGONAL (transverse) part (the orbit tangent at I is diagonal anti-herm).")
+    print("  Question: does a generator A of U_Pi(gamma) = exp(gamma A) give [U_Pi(gamma)] != [I] in")
+    print("  U(3)/(U(1)^3_R x U(1)^3_L)?")
+    print("  Criterion: [U_Pi] moves off [I] at first order  <=>  A has a non-zero OFF-DIAGONAL (transverse) part")
+    print("             (the orbit tangent at I is diagonal anti-hermitian).")
     print("  (A) orbit tangent at I = diagonal anti-hermitian (off-diagonal part identically zero)")
     print("  (B) modulus first variation: coeff of g^2 in |U_{ij}|^2 is |A_{ij}|^2  => detects A_off")
-    print("  (C) Jarlskog: 0 up to g^2; leading g^3 term ~ Im(A_12 A_23 A_31), independent of diagonal phases")
-    print("  (D) real cascade v=0 => A_off=0 => U_Pi diagonal => [U_Pi]=[I]: |U_{ij}|=delta_{ij}, J=0 (no mixing)")
-    print("  (E) complex channel A_off != 0 => [U_Pi] != [I]; Im(A_12 A_23 A_31) != 0 => J_Pi != 0 (CP mixing)")
-    print("  (F) u-channel is DIAGONAL (A_diag): zero off-diagonal moduli, zero J  => u != 0 is NOT mixing")
+    print("  (C) J_CP: 0 up to g^2; leading g^3 term ~ Im(A_12 A_23 A_31), independent of diagonal phases")
+    print("  (D) diagonal generator (A_off = 0): series stays diagonal, J_CP = 0 => [U_Pi] = [I]")
+    print("  (E) transverse generator: [U_Pi] != [I]; Im(A_12 A_23 A_31) != 0 => J_CP != 0")
+    print("  (F) the diagonal level split commutes with the rephasings (negative control: a rotation does not)")
     print("-" * 100)
     allok = True
     for k, val in checks.items():
@@ -189,12 +186,11 @@ def main():
         allok = allok and ok
         print(f"  [{'PASS' if ok else 'FAIL'}]  {k}")
     print("=" * 100)
+    print(f"  checks run: {len(checks)}")
     print("RESULT: polar-class non-triviality is controlled EXACTLY by the off-diagonal (transverse) part of the")
-    print("        metaplectic generator = the complex metaplectic channel v. On the real cascade of the model v=0 =>")
-    print("        [U_Pi]=[I] => NO physical mixing at this stratum (strong conditional). A non-trivial")
-    print("        [U_Pi] != [I] / CKM-PMNS-type mixing requires a genuine complex metaplectic phase -- NOT")
-    print("        supplied in the present construction (conditional on an unprescribed phase + ordering), and")
-    print("        observable only relative to a second fermionic sector. AOG/CHO treat [H-orient], not this.")
+    print("        generator of U_Pi. The script is generic in the anti-hermitian generator A: which A the step model")
+    print("        supplies is the question of front3d_transverse_route.py and front3e_reality_structure.py (for the")
+    print("        sl_2 lift under the antilinear parity J_Pi of Q14, A_Pi = 0). AOG/CHO treat [H-orient], not this.")
     print("        No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
     return allok

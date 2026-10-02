@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you cite this work, please use the metadata from this file."
-title: "Toward Projected Yukawa Couplings: A Conditional Weak Determinant Line and Generation-Level Assignment"
+title: "Toward Projected Yukawa Couplings: A Conditional Weak Determinant Line and Generation-Level Ordering"
 type: article
 version: "3.0"
 authors:
@@ -12,7 +12,7 @@ doi: "10.5281/zenodo.20767265"
 license: "CC-BY-4.0"
 preferred-citation:
   type: article
-  title: "Toward Projected Yukawa Couplings: A Conditional Weak Determinant Line and Generation-Level Assignment"
+  title: "Toward Projected Yukawa Couplings: A Conditional Weak Determinant Line and Generation-Level Ordering"
   authors:
     - family-names: "Beau"
       given-names: "Jérôme"

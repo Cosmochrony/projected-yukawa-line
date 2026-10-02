@@ -1,54 +1,46 @@
-"""Front 3c: canonical-vs-class gauge audit of the chiral polar factor U_Pi.
+"""Front 3c: canonical-vs-class audit of the chiral polar factor U_Pi.
 
-Bias-independent, exact symbolic verification (no sampling). Front 3b left the projected Yukawa morphism
+Exact symbolic verification (no sampling). The projected Yukawa block on the generation carriers is written
     Y_Pi = U_Pi H_Pi^{1/2},   H_Pi := Y_Pi^dag Y_Pi  on the left generation carrier,
 with H_Pi|gen = lambda_Y^2 diag(1, 1/2+u, 1/2-u) taken as a model operator on C^3_gen (its reading as a restriction of
-E_Pi^2 is not supplied; PYO Beau2026pyo / PRS Beau2026prs / PYL Beau2026pyl),
-but the chiral polar factor U_Pi : P_L S_Pi (x) E_weak (x) L_Y^k -> P_R S_Pi (x) L_Y^m (schematic typing of Q14
-[H-Weak]; a further carrier linking the weak doublet to the singlets is not supplied) undetermined. Front 3c
-asks the delimiter question (Jerome): does the complex metaplectic phase fix a CANONICAL U_Pi, or only a CLASS
+E_Pi^2 is not supplied; PYO Beau2026pyo / PRS Beau2026prs / PYL Beau2026pyl). The polar factor
+U_Pi : G_L -> G_R between the left and right generation carriers is not determined by H_Pi. The audit asks: which data
+of U_Pi survive the admissible basis changes,
 
-    U_Pi  ~  V_R U_Pi V_L^{-1}        (V_L, V_R: admissible basis changes of the left and right generation carriers) ?
+    U_Pi  ~  V_R U_Pi V_L^{-1}        (V_L, V_R: admissible rephasings of the left and right generation carriers) ?
 
-The audit acts with admissible chiral basis changes and reports which data of U_Pi survive.
-
-Admissibility of the basis changes. The generation triplet C^3_gen carries the LEFT level operator
-H_Pi (= lambda_Y^2 times the model operator on C^3_gen; reading it as lambda_Y^2 E_Pi^2|gen needs [H-Res] and
-the dictionary premise [H-Sq] of PYO) and, by the antiunitary J_Pi exchange L<->R (PRS sec:chiral-defect), a RIGHT
-level operator Y_Pi Y_Pi^dag = U_Pi H_Pi U_Pi^dag with the SAME spectrum. Both spectra are
-lambda_Y^2 {1, 1/2+u, 1/2-u}, which are DISTINCT for 0 < u < 1/2, u != 1/2. Distinctness pins each carrier to
-its J_3-labelled level eigenbasis up to a diagonal rephasing: the admissible residual group is the diagonal
-torus U(1)^3_L x U(1)^3_R, exactly the generation-rephasing freedom. (If instead the right carrier were a free
-U(3), U_Pi would be removable outright -- see check A -- and there would be no mixing at all; the pinning by the
-distinct-spectrum right level operator is what makes the question non-trivial.)
+Admissible rephasings (as in PYO, Proposition on the polar class). The generation block lives on two carriers, each a
+copy of C^3_gen with its own Cartan generator J_3 = diag(0, 1, -1) on the weight basis (e_0, e_+, e_-). The admissible
+rephasings of a carrier are the unitaries that preserve its J_3 grading, that is, the unitaries commuting with J_3. The
+weights 0, +1, -1 are distinct, so these are the diagonal unitaries, U(1)^3_L and U(1)^3_R. The groups are defined by
+the carriers and their gradings, not by Y_Pi, and not by the eigenbasis of Y_Pi Y_Pi^dag. H_Pi is positive and
+commutes with J_3; for 0 < u < 1/2 its levels are distinct (under [H-Res] and [H-Sq]), so on the left carrier the
+eigenbasis of H_Pi is the weight basis.
 
 Results (all exact symbolic).
-  (A) Free-right triviality: with an UNRESTRICTED V_R in U(3), V_R = U_Pi removes U_Pi entirely
-      (U_Pi^{-1} Y_Pi = H_Pi^{1/2}, diagonal positive). So if the right basis were unconstrained the orbit
-      invariant of U_Pi is empty -- only Spec(H_Pi) survives, no mixing.
-  (B) Right-basis pinning: the right level operator Y Y^dag = U H U^dag has the SAME (distinct) spectrum as H,
-      so its eigenbasis is fixed up to a diagonal phase; any unitary W commuting with diag(distinct) is diagonal
-      ((W D - D W)_{ij} = W_{ij}(d_j - d_i)). Hence the admissible V_R (and V_L) are diagonal rephasings only.
-  (C) Class invariants under diagonal rephasing U_Pi -> V_R U_Pi V_L^{-1}, V_L,V_R in U(1)^3:
-      the moduli |(U_Pi)_{ij}| are invariant, and the Jarlskog-type quartet phase
-      Im( U_11 U_22 conj(U_12) conj(U_21) ) is invariant. These are the surviving (rephasing-invariant) data.
-  (D) Parameter count: U(3) has 9 real parameters; the rephasings remove 2*3 - 1 = 5; so 4 physical survive
-      = 3 mixing magnitudes (angles) + 1 CP phase (Jarlskog). U_Pi is therefore CLASS-only, not canonical.
-  (E) CP-real / no-mixing collapse: a real orthogonal U_Pi has Jarlskog J = 0 (no CP phase); the PRS even
-      CP-even condition v = 0 forces U_Pi diagonal, i.e. U_Pi ~ I up to rephasing, giving |(U_Pi)_{ij}| = delta_{ij} and
-      ZERO mixing. A non-trivial U_Pi (the off-diagonal/complex part) requires a complex metaplectic phase gamma.
-  (F) Metaplectic source: a one-parameter chiral generator U_Pi(gamma) = exp(gamma (R - R^dag)) with R a
-      strictly-upper nilpotent (the L->R off-diagonal induced by the metaplectic phase) gives U_Pi(0) = I
-      (no mixing) and d/dgamma U_Pi|_0 = R - R^dag != 0 (mixing switched on by gamma). Real gamma with a real R
-      keeps J = 0 (CP-conserving); a genuine complex phase is needed for J != 0.
+  (A) Unrestricted right basis: with V_R unrestricted in U(3), V_R = U_Pi removes U_Pi entirely
+      (U_Pi^{-1} Y_Pi = H_Pi^{1/2}, diagonal positive), so only Spec(H_Pi) would survive.
+  (B) Admissible groups: the commutant of J_3 is the set of diagonal matrices ((W J_3 - J_3 W)_{ij} =
+      W_{ij}(J_j - J_i) with J_j - J_i != 0 for i != j). H_Pi is invariant under the left rephasings (a diagonal
+      matrix commutes with a diagonal one), and not under a generic rotation (negative control). The removing choice
+      V_R = U_Pi commutes with J_3 only if U_Pi is diagonal, so it is not admissible for a generic U_Pi (the check
+      fails for a non-diagonal U_Pi and passes for a diagonal one). Y_Pi Y_Pi^dag = U_Pi H_Pi U_Pi^dag has the same
+      spectrum as H_Pi; this is a fact about square matrices and is not used to define the groups.
+  (C) Class invariants under diagonal rephasing U_Pi -> V_R U_Pi V_L^{-1}: the moduli |(U_Pi)_{ij}| and the quartet
+      phase J_CP := Im( U_11 U_22 conj(U_12) conj(U_21) ) are invariant.
+  (D) Parameter count: U(3) has 9 real parameters; the rephasings remove 2*3 - 1 = 5; so 4 survive, three mixing
+      moduli (angles) and one CP phase. U_Pi is a class, not a canonical matrix.
+  (E) A real orthogonal U_Pi has J_CP = 0. H_Pi is blind to U_Pi: Y_Pi^dag Y_Pi is the same for every unitary U_Pi, so
+      neither H_Pi nor, under [H-Res] and [H-Sq], E_Pi^2|gen constrains U_Pi.
+  (F) Illustration with a generator chosen by hand (not the generator of Q14's step model, for which
+      front3e_reality_structure.py shows A_Pi = 0): U_Pi(gamma) = exp(gamma A) with A the real antisymmetric matrix
+      E_01 - E_10. It has |U_01| = |sin gamma|, non-zero for generic gamma, while every element of the class of I has
+      |U_ij| = delta_ij; so a generator with a transverse part moves the class. Real gamma keeps J_CP = 0.
 
-Conclusion (printed): the complex metaplectic phase fixes U_Pi only up to the rephasing CLASS
-U_Pi ~ V_R U_Pi V_L^{-1}. The physical content of Front 3c is the class invariants: 3 mixing magnitudes
-|(U_Pi)_{ij}| + 1 Jarlskog CP phase. If gamma is real in the real model of the cascade (CHO/AOG sqrt(5)-rigidity,
-rho_chi = 1) the CP phase vanishes and, with PRS v = 0, U_Pi collapses to I (no mixing at this stratum) -- a
-strong conditional result; a genuine complex phase, hence non-trivial mixing, can enter only via the open
-full-tower stratum, gated by the same AOG lem:rigidity as epsilon = 1/10. No mass and no mixing value is
-produced. No figures. English.
+Conclusion (printed). The class [U_Pi] of the polar factor, not a matrix, is what the construction carries: three
+moduli and one CP phase. Which generators of the step model move the class off [I] is the transverse-route question
+(front3c_polar_class_nontriviality.py, front3d_transverse_route.py, front3e_reality_structure.py). No mass and no
+mixing value is produced. No figures. English.
 """
 
 import sympy as sp
@@ -67,119 +59,111 @@ def main():
     checks = {}
 
     u = sp.symbols("u", real=True)
-    lam = sp.symbols("lambda", positive=True)
     I3 = sp.eye(3)
 
-    # the polar no-go (A,B,C) is proved for GENERIC positive singular values (a,b,c) so it does not depend
-    # on the particular level values (front3b convention); the level identification enters only via the
-    # distinctness that pins the eigenbases (B_levels_distinct).
+    # the class statements are proved for GENERIC positive singular values (a, b, c); the level identification enters
+    # only through the distinctness of the three levels on the left carrier.
     a, b, c = sp.symbols("a b c", positive=True)
     Hhalf = sp.diag(a, b, c)
     H = Hhalf * Hhalf
     levels = [sp.Integer(1), sp.Rational(1, 2) + u, sp.Rational(1, 2) - u]
     asm = sp.Q.positive(sp.Rational(1, 2) + u) & sp.Q.positive(sp.Rational(1, 2) - u) & sp.Q.positive(u)
 
-    # a generic chiral polar factor (a real generation rotation + a complex phase), unitary
+    # a generic unitary U_Pi (a real generation rotation and a phase); Y_Pi = U_Pi H_Pi^{1/2}
     th, ph = sp.symbols("theta phi", real=True)
     U_rot = sp.Matrix([[sp.cos(th), -sp.sin(th), 0],
-                       [sp.sin(th),  sp.cos(th), 0],
+                       [sp.sin(th), sp.cos(th), 0],
                        [0, 0, 1]])
     U_ph = sp.diag(1, 1, sp.exp(sp.I * ph))
-    U_pi = U_ph * U_rot                                  # a non-trivial unitary U_Pi
-    Y = U_pi * Hhalf                                     # Y_Pi = U_Pi H_Pi^{1/2}
+    U_pi = U_ph * U_rot
+    Y = U_pi * Hhalf
 
-    # ---- (A) free-right triviality: unrestricted V_R = U_Pi removes U_Pi -------------------------
+    # ---- (A) unrestricted right basis removes U_Pi ----------------------------------------------------------
     checks["A_unitary_Upi"] = _zero(dag(U_pi) * U_pi - I3)
-    checks["A_free_right_removes_Upi"] = _zero(U_pi.inv() * Y - Hhalf)   # diagonal positive, no mixing left
-    checks["A_invariant_is_spectrum"] = _zero(dag(Y) * Y - H)           # only Spec(H) survives the full orbit
+    checks["A_free_right_removes_Upi"] = _zero(U_pi.inv() * Y - Hhalf)
+    checks["A_invariant_is_spectrum"] = _zero(dag(Y) * Y - H)
 
-    # ---- (B) right-basis pinning: right level operator has same distinct spectrum ----------------
-    H_right = Y * dag(Y)                                                 # = U_Pi H U_Pi^dag
-    # same characteristic polynomial as H  =>  same spectrum
-    x = sp.symbols("x")
-    cpL = H.charpoly(x).as_expr()
-    cpR = H_right.charpoly(x).as_expr()
-    checks["B_right_same_spectrum"] = sp.simplify(sp.expand(sp.expand_complex(cpL - cpR))) == 0
-    # distinctness of the three levels (pins the eigenbasis up to a diagonal phase)
-    distinct = [sp.refine(sp.simplify(levels[i] - levels[j]), asm)
-                for i, j in [(0, 1), (0, 2), (1, 2)]]
-    checks["B_levels_distinct"] = all(d != 0 for d in distinct)
-    # commutant of a distinct diagonal is diagonal: (W D - D W)_{ij} = W_{ij}(d_j - d_i)
+    # ---- (B) admissible groups: the commutant of each carrier's J_3 ------------------------------------------
+    J3 = sp.diag(0, 1, -1)
     w = sp.symbols("w0:9")
     W = sp.Matrix(3, 3, lambda i, j: w[3 * i + j])
-    d0, d1, d2 = sp.symbols("d0 d1 d2")
-    D = sp.diag(d0, d1, d2)
-    comm = W * D - D * W
-    ds = [d0, d1, d2]
-    checks["B_commutant_offdiag"] = all(
-        sp.simplify(comm[i, j] - W[i, j] * (ds[j] - ds[i])) == 0
-        for i in range(3) for j in range(3))
-
-    # ---- (C) class invariants under diagonal rephasing U -> V_R U V_L^{-1} -----------------------
+    comm = W * J3 - J3 * W
+    j3 = [J3[k, k] for k in range(3)]
+    checks["B_commutant_entries_are_W_ij_times_weight_difference"] = all(
+        sp.simplify(comm[i, j] - W[i, j] * (j3[j] - j3[i])) == 0 for i in range(3) for j in range(3))
+    checks["B_weights_distinct_so_commutant_is_diagonal"] = all(
+        j3[j] - j3[i] != 0 for i in range(3) for j in range(3) if i != j)
+    # H_Pi (diagonal in the weight basis, distinct levels) is invariant under the diagonal rephasings
     pL = sp.symbols("pL0:3", real=True)
     pR = sp.symbols("pR0:3", real=True)
     VL = sp.diag(*[sp.exp(sp.I * pL[i]) for i in range(3)])
     VR = sp.diag(*[sp.exp(sp.I * pR[i]) for i in range(3)])
-    Uent = sp.symbols("U0:9")                                            # abstract entries of a unitary U_Pi
+    checks["B_H_invariant_under_left_rephasing"] = _zero(VL * H * VL.inv() - H)
+    # negative control: a generic rotation of the weight basis does not leave H invariant
+    rot = U_rot.subs(th, sp.pi / 3)
+    H_num = H.subs({a: 1, b: 2, c: 3})
+    checks["B_H_not_invariant_under_generic_rotation"] = not _zero(rot * H_num * rot.T - H_num)
+    checks["B_H_invariant_under_trivial_rotation"] = _zero(U_rot.subs(th, 0) * H_num * U_rot.subs(th, 0).T - H_num)
+    # distinctness of the three levels for 0 < u < 1/2
+    distinct = [sp.refine(sp.simplify(levels[i] - levels[j]), asm) for i, j in [(0, 1), (0, 2), (1, 2)]]
+    checks["B_levels_distinct"] = all(d != 0 for d in distinct)
+    # the removing choice V_R = U_Pi is admissible only when U_Pi commutes with J_3, i.e. is diagonal
+    gen_U = U_pi.subs({th: sp.pi / 3, ph: sp.Rational(1, 2)})
+    checks["B_removing_choice_not_admissible_for_nondiagonal_Upi"] = not _zero(gen_U * J3 - J3 * gen_U)
+    diag_U = U_pi.subs(th, 0)
+    checks["B_removing_choice_admissible_when_Upi_diagonal"] = _zero(diag_U * J3 - J3 * diag_U)
+    # right level operator has the same spectrum as H (fact about square matrices; not used to define the groups)
+    x = sp.symbols("x")
+    H_right = Y * dag(Y)
+    cpL = H.charpoly(x).as_expr()
+    cpR = H_right.charpoly(x).as_expr()
+    checks["B_right_level_operator_same_spectrum"] = sp.simplify(sp.expand(sp.expand_complex(cpL - cpR))) == 0
+
+    # ---- (C) class invariants under diagonal rephasing ---------------------------------------------------------
+    Uent = sp.symbols("U0:9")
     Uabs = sp.Matrix(3, 3, lambda i, j: Uent[3 * i + j])
     Urep = VR * Uabs * VL.inv()
-    # moduli invariance: |(VR U VL^{-1})_{ij}| = |U_{ij}|
     checks["C_moduli_invariant"] = all(
-        sp.simplify(sp.Abs(Urep[i, j]) - sp.Abs(Uabs[i, j])) == 0
-        for i in range(3) for j in range(3))
-    # Jarlskog quartet phase invariance
+        sp.simplify(sp.Abs(Urep[i, j]) - sp.Abs(Uabs[i, j])) == 0 for i in range(3) for j in range(3))
+
     def jarl(M):
         return M[0, 0] * M[1, 1] * sp.conjugate(M[0, 1]) * sp.conjugate(M[1, 0])
-    checks["C_jarlskog_invariant"] = sp.simplify(
-        sp.expand_complex(sp.im(jarl(Urep)) - sp.im(jarl(Uabs)))) == 0
 
-    # ---- (D) parameter count: 9 - (2*3 - 1) = 4 = 3 angles + 1 phase -----------------------------
+    checks["C_JCP_invariant"] = sp.simplify(sp.expand_complex(sp.im(jarl(Urep)) - sp.im(jarl(Uabs)))) == 0
+
+    # ---- (D) parameter count: 9 - (2*3 - 1) = 4 = 3 angles + 1 phase -----------------------------------------
     n = 3
-    dim_U = n * n
-    removed = 2 * n - 1
-    physical = dim_U - removed
+    physical = n * n - (2 * n - 1)
     angles = n * (n - 1) // 2
     phases = (n - 1) * (n - 2) // 2
-    checks["D_param_count"] = (physical == 4 and angles == 3 and phases == 1
-                               and angles + phases == physical)
+    checks["D_param_count"] = (physical == 4 and angles == 3 and phases == 1 and angles + phases == physical)
 
-    # ---- (E) CP-real / no-mixing collapse -------------------------------------------------------
-    # real orthogonal U_Pi (phi = 0) => Jarlskog J = 0
-    U_real = U_pi.subs(ph, 0)
-    checks["E_real_unitary_J_zero"] = sp.simplify(sp.expand_complex(sp.im(jarl(U_real)))) == 0
-    # PRS CP-even condition v = 0 => U_Pi diagonal => ~ I up to rephasing => no mixing (off-diagonals vanish)
-    U_diag = sp.diag(1, 1, sp.exp(sp.I * ph))            # v=0 leaves only diagonal phases
-    offdiag_zero = all(sp.simplify(U_diag[i, j]) == 0 for i in range(3) for j in range(3) if i != j)
-    checks["E_v0_no_mixing"] = offdiag_zero
-    checks["E_v0_moduli_identity"] = all(
-        sp.simplify(sp.Abs(U_diag[i, j]) - (1 if i == j else 0)) == 0
-        for i in range(3) for j in range(3))
+    # ---- (E) real U_Pi has J_CP = 0; H_Pi is blind to U_Pi -----------------------------------------------------
+    checks["E_real_unitary_JCP_zero"] = sp.simplify(sp.expand_complex(sp.im(jarl(U_pi.subs(ph, 0))))) == 0
+    other = sp.Matrix([[0, 0, 1], [1, 0, 0], [0, 1, 0]])      # another unitary polar factor
+    checks["E_Hpi_blind_to_Upi"] = _zero(dag(other * Hhalf) * (other * Hhalf) - H) and \
+        _zero(dag(U_pi * Hhalf) * (U_pi * Hhalf) - H)
 
-    # ---- (F) metaplectic source: gamma switches mixing on -------------------------------------
+    # ---- (F) illustration: a generator chosen by hand moves the class ------------------------------------------
     g = sp.symbols("gamma", real=True)
-    R = sp.Matrix([[0, 1, 0], [0, 0, 0], [0, 0, 0]])    # strictly-upper L->R off-diagonal carrier
-    A = R - R.T                                          # real antisymmetric => exp is orthogonal
-    U_gamma = sp.exp(A * g)                              # one-parameter chiral generator
+    A = sp.Matrix([[0, 1, 0], [-1, 0, 0], [0, 0, 0]])          # real antisymmetric, hand-chosen
+    U_gamma = sp.simplify(sp.exp(A * g))
     checks["F_gamma0_identity"] = _zero(U_gamma.subs(g, 0) - I3)
-    dU = sp.diff(U_gamma, g).subs(g, 0)
-    checks["F_dgamma_nonzero"] = not _zero(dU)           # mixing switched on by gamma
-    checks["F_dgamma_is_A"] = _zero(dU - A)
-    # real gamma + real R keeps J = 0 (CP-conserving); a complex phase is needed for J != 0
-    checks["F_real_gamma_J_zero"] = sp.simplify(
-        sp.expand_complex(sp.im(jarl(U_gamma)))) == 0
+    checks["F_moduli_move_off_class_of_identity"] = sp.simplify(sp.Abs(U_gamma[0, 1]) ** 2 - sp.sin(g) ** 2) == 0 \
+        and sp.simplify(sp.Abs(U_gamma[0, 1]).subs(g, sp.Rational(1, 3))) != 0
+    checks["F_real_gamma_JCP_zero"] = sp.simplify(sp.expand_complex(sp.im(jarl(U_gamma)))) == 0
 
-    # ---------------------------------------------------------------------------------------------
+    # ---- report ------------------------------------------------------------------------------------------------
     print("Front 3c - canonical-vs-class audit of the chiral polar factor U_Pi (exact symbolic, no sampling)")
     print("=" * 100)
-    print("  Y_Pi = U_Pi H_Pi^{1/2};  question: does the metaplectic phase fix U_Pi, or only the class")
-    print("  U_Pi ~ V_R U_Pi V_L^{-1} (V_L, V_R basis changes of the left and right carriers)?")
-    print("  (A) free-right V_R=U_Pi removes U_Pi -> only Spec(H_Pi) survives the full orbit (no mixing)")
-    print("  (B) but right level op YY^dag has the SAME distinct spectrum -> right basis pinned up to phase")
-    print("      => admissible V_L,V_R are DIAGONAL rephasings only (commutant of distinct diagonal = diagonal)")
-    print("  (C) under diagonal rephasing: |(U_Pi)_{ij}| and the Jarlskog quartet phase are INVARIANT")
-    print("  (D) count: 9 - (2*3-1) = 4 physical = 3 mixing angles + 1 CP (Jarlskog) phase => CLASS, not canonical")
-    print("  (E) real U_Pi => J=0; PRS CP-even condition v=0 => U_Pi diagonal ~ I => ZERO mixing")
-    print("  (F) metaplectic gamma switches mixing on (U_Pi(0)=I, dU/dgamma|_0 != 0); real gamma keeps J=0")
+    print("  Y_Pi = U_Pi H_Pi^{1/2};  question: which data of U_Pi survive U_Pi ~ V_R U_Pi V_L^{-1}?")
+    print("  (A) with V_R unrestricted in U(3), V_R = U_Pi removes U_Pi: only Spec(H_Pi) would survive")
+    print("  (B) admissible V_L, V_R = unitaries commuting with each carrier's J_3 = diagonal unitaries (distinct")
+    print("      weights); V_R = U_Pi is admissible only if U_Pi is diagonal; no use of the eigenbasis of Y Y^dag")
+    print("  (C) under diagonal rephasing the moduli |(U_Pi)_{ij}| and the quartet phase J_CP are INVARIANT")
+    print("  (D) count: 9 - (2*3-1) = 4 = 3 mixing moduli + 1 CP phase => a CLASS, not a canonical matrix")
+    print("  (E) real U_Pi => J_CP = 0; H_Pi = Y^dag Y is blind to U_Pi")
+    print("  (F) a hand-chosen generator with a transverse part moves the class (|U_01| = |sin gamma|)")
     print("-" * 100)
     allok = True
     for k, val in checks.items():
@@ -187,12 +171,11 @@ def main():
         allok = allok and ok
         print(f"  [{'PASS' if ok else 'FAIL'}]  {k}")
     print("=" * 100)
-    print("RESULT: U_Pi is CLASS-only, not canonical. The metaplectic phase fixes U_Pi up to")
-    print("        U_Pi ~ V_R U_Pi V_L^{-1} (diagonal rephasings). Surviving invariants: 3 mixing magnitudes")
-    print("        |(U_Pi)_{ij}| + 1 Jarlskog CP phase. If gamma is real in the real model of the cascade")
-    print("        (CHO/AOG sqrt(5)-rigidity, rho_chi=1) the CP phase vanishes and, with PRS v=0, U_Pi ~ I:")
-    print("        NO mixing at this stratum (strong conditional). A genuine complex phase / non-trivial mixing")
-    print("        can enter only via the open full-tower stratum, gated by the same AOG lem:rigidity as eps=1/10.")
+    print(f"  checks run: {len(checks)}")
+    print("RESULT: the construction carries the class [U_Pi] under the rephasings that preserve each carrier's J_3")
+    print("        grading, not a matrix: three moduli |(U_Pi)_{ij}| and one CP phase J_CP. H_Pi, hence E_Pi^2 under")
+    print("        [H-Res] and [H-Sq], does not fix U_Pi. Which generators of the step model move the class off [I]")
+    print("        is the transverse-route question (front3c_polar_class_nontriviality.py, front3d, front3e).")
     print("        No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
     return allok
