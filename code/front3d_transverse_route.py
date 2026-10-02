@@ -126,6 +126,17 @@ def main():
     odd_step = jpi_odd_part(sym2_lift(t * E + s * F + (t * s / 2) * H))
     alpha = sp.simplify(hs_inner(J3, odd_step) / hs_inner(J3, J3))
     checks["C_NA_is_real_area_ts"] = sp.simplify(alpha - t * s) == 0
+    # exact BCH H coefficient of log(exp(tE) exp(sF)): g = exp(tE) exp(sF) has trace 2 + x, x = ts, so
+    # cosh(theta) = 1 + x/2 and log g = (theta / sinh theta) (g - g^{-1}) / 2, whose H coefficient is
+    # (x/2) theta/sinh(theta). The check expands it in x and fails unless it is (x/2)(1 - x/6 + x^2/30 - ...).
+    x = sp.Symbol("x", positive=True)
+    g_mat = sp.Matrix([[1, t], [0, 1]]) * sp.Matrix([[1, 0], [s, 1]])
+    checks["C_BCH_trace_is_2_plus_ts"] = sp.simplify(g_mat.trace() - 2 - t * s) == 0
+    theta_x = sp.acosh(1 + x / 2)
+    h_exact = (x / 2) * theta_x / sp.sqrt((1 + x / 2) ** 2 - 1)      # sinh(theta) = sqrt(cosh^2 - 1)
+    h_ser = sp.series(h_exact, x, 0, 4).removeO()
+    claimed = (x / 2) * (1 - x / 6 + x ** 2 / 30)
+    checks["C_BCH_H_coefficient_series"] = sp.simplify(sp.expand(h_ser - claimed)) == 0
     odd_cpx = jpi_odd_part(L)
     checks["C_J3_coefficient_is_2Re_r"] = sp.simplify(
         sp.expand_complex(hs_inner(J3, odd_cpx) / hs_inner(J3, J3) - 2 * rR)) == 0

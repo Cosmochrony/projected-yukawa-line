@@ -1,4 +1,4 @@
-"""Front 3e: reality structure of the metaplectic step under the antilinear parity J_Pi of Q14.
+"""Front 3e: reality structure of the metaplectic step under the internal antilinear parity J_Pi of Q14 Section 6.
 
 Exact symbolic verification (no sampling). Object under audit: the sl_2(C) step generator M = p E + q F + r H with
 complex coefficients (p, q, r), its derived Sym^2 lift L(M) on C^3_gen = Sym^2(V_gen), and the generator
@@ -224,7 +224,8 @@ def main():
                                                   for i in range(3) for j in range(3) if i != j)
 
     # ---- report -----------------------------------------------------------------------------------------------
-    print("Front 3e: reality structure of the sl_2 step under the antilinear parity J_Pi of Q14 (exact symbolic)")
+    print("Front 3e: reality structure of the sl_2 step under the internal antilinear parity J_Pi of Q14 Sec. 6")
+    print("  (exact symbolic)")
     print("=" * 104)
     print("  J_Pi z = S conj(z), S = Sym^2(eps); X -> S conj(X) S^{-1};")
     print("  A_Pi := antiherm(J_Pi-odd(L(M))), M in sl_2(C)")
@@ -245,8 +246,9 @@ def main():
     print("=" * 104)
     print(f"  checks run: {len(checks)}")
     print("RESULT (proved, exact symbolic): A_Pi, the anti-hermitian part of the J_Pi-odd part of the sl_2 lift of the")
-    print("  step generator, vanishes identically for all complex coefficients, because with Q14's antilinear J_Pi the")
-    print("  J_Pi-odd part of the lift is its hermitian part. This is a statement about A_Pi as defined. The diagonal")
+    print("  step generator, vanishes identically for all complex coefficients, because with the internal antilinear")
+    print("  J_Pi of Q14 Sec. 6 the J_Pi-odd part of the lift is its hermitian part. This is a statement about A_Pi as")
+    print("  defined (A_Pi is the generator defined in PYO, not the anomaly density of Q14). The diagonal")
     print("  i Im(r) diag(0, 2, -2) is J_Pi-even. The J_Pi-even anti-hermitian part of the lift has the non-zero")
     print("  internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image of sl_2 does reach the")
     print("  internal block e_0 <-> e_+/- through that part; the external block R_mix is not reached by the image of")
