@@ -3,10 +3,13 @@
 Exact symbolic verification (no sampling). Object under audit: the sl_2(C) step generator M = p E + q F + r H with
 complex coefficients (p, q, r), its derived Sym^2 lift L(M) on C^3_gen = Sym^2(V_gen), and the generator
 
-    A_Pi := antiherm( J_Pi-odd( L(M) ) )                                   (definition, taken as given)
+    A_Pi^odd := antiherm( J_Pi-odd( L(M) ) )                                   (definition, taken as given)
 
-of the chiral unitary polar factor. This script tests what that definition yields; it does not test why the
-generator is defined through the J_Pi-ODD part (see the open modelling question below).
+This projection is NOT the polar generator of any family of morphisms: the polar generator Omega = U^dagger dU/dgamma
+is defined in the companion note PYO through the Sylvester equation Omega P + P Omega = U^dagger dY - dY^dagger U, and
+at the identity, for dY = L(M), it is antiherm(L(M)), which is J_Pi-EVEN. This script tests what the definition of
+A_Pi^odd yields (it vanishes); it does not test why one would define a generator through the J_Pi-ODD part, and it
+draws no conclusion about the polar factor (see the open modelling question below and check 8).
 
 Definitions (Q14 Section 6). J_Pi below is the internal antilinear parity of the generation copy, an operator on
 C^3_gen that does not use [H-Spin]; it is not the spinor-level lift of Q14 Theorem 3.7.
@@ -21,29 +24,35 @@ C^3_gen that does not use [H-Spin]; it is not the spinor-level lift of Q14 Theor
 Results (all exact symbolic, generic complex (p, q, r)).
   (1) Key identity: S conj(L(M)) S^{-1} = - L(M)^dagger for every M in sl_2(C).
   (2) Hence the J_Pi-odd part of L(M) is its hermitian part and the J_Pi-even part is its anti-hermitian part.
-  (3) Hence A_Pi = antiherm(J_Pi-odd(L(M))) = 0 identically in (p, q, r) in C^3: the reality of p, q, r plays no
+  (3) Hence A_Pi^odd = antiherm(J_Pi-odd(L(M))) = 0 identically in (p, q, r) in C^3: the reality of p, q, r plays no
       role. The J_3 coefficient of the odd part is 2 Re r, its R_mix coefficient is 0, and the diagonal
-      i Im(r) diag(0, 2, -2) is J_Pi-EVEN, so it is not in A_Pi either.
+      i Im(r) diag(0, 2, -2) is J_Pi-EVEN, so it is not in A_Pi^odd either.
   (4) Negative control, the LINEAR involution X -> S X S^{-1} (the matrix S without the conjugation). It is not
       Q14's J_Pi. It gives a transverse part proportional to Im(p + q), not "Im p or Im q" (Im p = - Im q gives
       zero), and it coincides with the antilinear parity on real data. The two differ exactly on the imaginary part
       of X, which the antilinear parity exchanges between odd and even.
-  (5) Scope of the vanishing: it is specific to A_Pi as defined. The J_Pi-odd anti-hermitian operators of u(3) form a
-      6-dimensional real space that is Hilbert-Schmidt orthogonal to L(sl_2(C)); the internal block e_0 <-> e_+/-
-      and the external block R_mix (e_+ <-> e_-) both live in it, so a J_Pi-odd anti-hermitian source of either block
-      (A_Pi as defined) needs a generator outside the sl_2 image, in the spin-2 sector of End(Sym^2 V_gen). No
-      source supplies such a generator. The external block R_mix is not reached by the image of sl_2 at all (Q14
-      Remark 6.4); the internal block is reached through the J_Pi-even part (see the open modelling question).
+  (5) Scope of the vanishing: it is specific to A_Pi^odd as defined. The J_Pi-odd anti-hermitian operators of u(3)
+      form a 6-dimensional real space that is Hilbert-Schmidt orthogonal to L(sl_2(C)); the internal block
+      e_0 <-> e_+/- and the external block R_mix (e_+ <-> e_-) both live in it, so a J_Pi-odd anti-hermitian
+      source of either block (A_Pi^odd as defined) needs a generator outside the sl_2 image, in the spin-2
+      sector of End(Sym^2 V_gen). No source supplies such a generator. The external block R_mix is not reached
+      by the image of sl_2 at all (Q14 Remark 6.4); the internal block is reached through the J_Pi-even part (see
+      the open modelling question).
   (6) Frame covariance: in a complex unitary frame W with the transported antilinear parity S' = W S W^T, the
-      generator is W A_Pi W^dagger = 0 (true and vacuous).
+      generator is W A_Pi^odd W^dagger = 0 (true and vacuous).
   (7) A central imaginary scalar i c I_3 is J_Pi-odd and anti-hermitian; it is diagonal, hence class-trivial.
+
+  (8) Negative control: A_Pi^odd vanishes while the polar generator at the identity, Omega(0) = antiherm(L(M)),
+      does not. For M = E, antiherm(L(E)) is non-zero, J_Pi-even and anti-hermitian, whereas A_Pi^odd(L(E)) = 0; so
+      A_Pi^odd is not the polar generator of the family exp(gamma L(E)).
 
 Open modelling question (not settled here). The J_Pi-EVEN anti-hermitian part of L(M), antiherm(L(M)), is not zero:
 its internal entry is sqrt(2) (q - conj p) / 2, non-zero for real p != q. The script computes it and reports it;
 so the image of sl_2 does reach the internal block e_0 <-> e_+/- through that part (the external block R_mix is not
-reached). Whether the polar generator is rightly the J_Pi-odd part is a modelling choice of the companion note that
-the sources used here do not justify; Q14 excludes the internal block only by hypothesis (Prop. 6.3 (i)-(ii)). No
-statement that the internal block is excluded as a physical matter follows.
+reached). A_Pi^odd is not the polar generator (the latter is defined in PYO and is J_Pi-even at the identity);
+the sources used here do not justify defining a generator through the J_Pi-odd part; Q14 excludes the internal block
+only by hypothesis (Prop. 6.3 (i)-(ii)). No statement that the internal block is excluded, and no statement about the
+polar class, follows.
 
 Not tested: the identification [H-Res], the map from levels to generations, [H-Spin], [H-Weak], the existence of
 any generator in the spin-2 sector. No mass and no mixing value is produced. No figures. English.
@@ -133,10 +142,10 @@ def main():
         [s2 * (q + sp.conjugate(p)) / 2, 0, -2 * rR]])
     checks["2c_odd_part_explicit"] = zero(odd(L) - expected_odd)
 
-    # ---- (3) A_Pi vanishes identically ----------------------------------------------------------------------
+    # ---- (3) A_Pi^odd vanishes identically ----------------------------------------------------------------------
     A_pi = antiherm(odd(L))
-    checks["3a_A_Pi_zero_all_complex_pqr"] = zero(A_pi)
-    checks["3b_A_Pi_zero_real_step"] = zero(A_pi.subs({pI: 0, qI: 0, rI: 0}))
+    checks["3a_A_Pi_odd_zero_all_complex_pqr"] = zero(A_pi)
+    checks["3b_A_Pi_odd_zero_real_step"] = zero(A_pi.subs({pI: 0, qI: 0, rI: 0}))
     J3 = sp.diag(0, 1, -1)
     Rmix = sp.Matrix([[0, 0, 0], [0, 0, 1], [0, -1, 0]])        # Q14 Sec. 6: antisymmetric on (e_+, e_-)
 
@@ -223,20 +232,34 @@ def main():
     checks["7b_central_generator_diagonal"] = all(sp.simplify(A_central[i, j]) == 0
                                                   for i in range(3) for j in range(3) if i != j)
 
+    # ---- (8) negative control: A_Pi^odd = 0 but the polar generator at the identity is not ----------------------
+    LE = sym2_lift(E)
+    omega0 = antiherm(LE)                         # Omega(0) = antiherm(dY(0)) for Y = exp(gamma L(E)), Y(0) = I
+    checks["8a_A_Pi_odd_of_LE_zero"] = zero(antiherm(odd(LE)))
+    checks["8b_antiherm_LE_nonzero"] = not zero(omega0)
+    checks["8c_antiherm_LE_is_J_even_and_antihermitian"] = zero(jconj(omega0) - omega0) and zero(omega0 + omega0.H)
+    gam = sp.Symbol("gam", real=True)
+    Ym = sp.eye(3) + gam * LE
+    Pm = sp.eye(3) + gam * herm(LE)
+    # d/dgamma of U = Y P^{-1} at 0, with P = 1 + O(gamma)
+    omega_first_order = sp.simplify((Ym * Pm.inv()).diff(gam).subs(gam, 0))
+    checks["8d_polar_tangent_at_identity_is_antiherm_L"] = zero(omega_first_order - omega0)
+
     # ---- report -----------------------------------------------------------------------------------------------
     print("Front 3e: reality structure of the sl_2 step under the internal antilinear parity J_Pi of Q14 Sec. 6")
     print("  (exact symbolic)")
     print("=" * 104)
     print("  J_Pi z = S conj(z), S = Sym^2(eps); X -> S conj(X) S^{-1};")
-    print("  A_Pi := antiherm(J_Pi-odd(L(M))), M in sl_2(C)")
+    print("  A_Pi^odd := antiherm(J_Pi-odd(L(M))), M in sl_2(C); NOT the polar generator Omega (defined in PYO)")
     print("-" * 104)
     print("  (1) S conj(L(M)) S^{-1} = - L(M)^dagger for every complex (p, q, r)")
     print("  (2) J_Pi-odd part of L(M) = hermitian part; J_Pi-even part = anti-hermitian part")
-    print("  (3) A_Pi = 0 identically in (p, q, r) in C^3; odd J_3 coefficient 2 Re r; odd R_mix coefficient 0")
+    print("  (3) A_Pi^odd = 0 identically in (p, q, r) in C^3; odd J_3 coefficient 2 Re r; odd R_mix coefficient 0")
     print("  (4) negative control, LINEAR involution S X S^{-1}: transverse part ~ Im(p+q), differs from J_Pi")
     print("  (5) odd anti-hermitian operators: 6 real dimensions, HS-orthogonal to the sl_2 image (spin-2 sector)")
-    print("  (6) complex unitary frame with transported parity: W A_Pi W^dagger = 0 (vacuous)")
+    print("  (6) complex unitary frame with transported parity: W A_Pi^odd W^dagger = 0 (vacuous)")
     print("  (7) central imaginary scalar: odd, anti-hermitian, diagonal (class-trivial)")
+    print("  (8) negative control: A_Pi^odd(L(E)) = 0 while antiherm(L(E)) = Omega(0) is non-zero and J_Pi-even")
     print("-" * 104)
     allok = True
     for k, val in checks.items():
@@ -245,18 +268,20 @@ def main():
         print(f"  [{'PASS' if ok else 'FAIL'}]  {k}")
     print("=" * 104)
     print(f"  checks run: {len(checks)}")
-    print("RESULT (proved, exact symbolic): A_Pi, the anti-hermitian part of the J_Pi-odd part of the sl_2 lift of the")
-    print("  step generator, vanishes identically for all complex coefficients, because with the internal antilinear")
-    print("  J_Pi of Q14 Sec. 6 the J_Pi-odd part of the lift is its hermitian part. This is a statement about A_Pi as")
-    print("  defined (A_Pi is the generator defined in PYO, not the anomaly density of Q14). The diagonal")
-    print("  i Im(r) diag(0, 2, -2) is J_Pi-even. The J_Pi-even anti-hermitian part of the lift has the non-zero")
-    print("  internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image of sl_2 does reach the")
-    print("  internal block e_0 <-> e_+/- through that part; the external block R_mix is not reached by the image of")
-    print("  sl_2 (Q14 Remark 6.4). The linear involution is not J_Pi; it appears only as a negative")
-    print("  control (condition Im(p+q)).")
-    print("OPEN MODELLING QUESTION: no physical exclusion of the internal block is claimed. Whether A_Pi, rather than")
-    print("  the J_Pi-even part, is the right object is a modelling choice of the companion note that no source")
-    print("  justifies. No mass and no mixing value is produced.")
+    print("RESULT (proved, exact symbolic): A_Pi^odd, the anti-hermitian part of the J_Pi-odd part of the sl_2 lift")
+    print("  of the step generator, vanishes identically for all complex coefficients, because with the internal")
+    print("  antilinear J_Pi of Q14 Sec. 6 the J_Pi-odd part of the lift is its hermitian part. This is a statement")
+    print("  about A_Pi^odd as defined (A_Pi^odd is the projection defined in PYO, not the anomaly density of Q14).")
+    print("  The diagonal i Im(r) diag(0, 2, -2) is J_Pi-even. The J_Pi-even anti-hermitian part of the lift has the")
+    print("  non-zero internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image of sl_2 does reach")
+    print("  the internal block e_0 <-> e_+/- through that part; the external block R_mix is not reached by the image")
+    print("  of sl_2 (Q14 Remark 6.4). The linear involution is not J_Pi; it appears only as a negative control")
+    print("  (condition Im(p+q)).")
+    print("  A_Pi^odd does not determine the polar factor: the polar generator Omega (Sylvester equation, defined in")
+    print("  PYO) is antiherm(L(M)) at the identity, J_Pi-even and non-zero (check 8).")
+    print("OPEN: no physical exclusion of the internal block is claimed, nothing is concluded about the polar class.")
+    print("  A_Pi^odd is not the polar generator; no source justifies a generator defined through the J_Pi-odd part.")
+    print("  No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
     return allok
 

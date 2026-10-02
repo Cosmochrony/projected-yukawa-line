@@ -52,15 +52,18 @@ is not used here.
 Its norm, the sign of $u$, and the mixing are downstream open data.
 A complex metaplectic phase is ruled out as a source of the external block $R_{\mathrm{mix}}$ within the model of Q14,
 which the image of $\mathfrak{sl}_2(\mathbb{C})$ does not reach (Q14 Remark 6.4).
-For the internal block $e_0 \leftrightarrow e_\pm$: $A_\Pi$, the anti-Hermitian part of the $J_\Pi$-odd part of the
-$\mathfrak{sl}_2$ lift of the step generator, vanishes identically for all complex coefficients, because with the
+For the internal block $e_0 \leftrightarrow e_\pm$: $A_\Pi^{\mathrm{odd}}$, the anti-Hermitian part of the $J_\Pi$-odd part
+of the $\mathfrak{sl}_2$ lift of the step generator, vanishes identically for all complex coefficients, because with the
 internal antilinear parity $J_\Pi$ of Q14 Section 6 (acting on the generation copy, not a spinor-level object) the
-$J_\Pi$-odd part of the lift is its Hermitian part; this is a statement about $A_\Pi$ as defined ($A_\Pi$ is the
-generator defined in PYO, not the anomaly density of Q14). The $J_\Pi$-even anti-Hermitian part has the non-zero
-internal entry $\tfrac{\sqrt2}{2}(q - \bar p)$ (non-zero for real $p \ne q$), so the image of $\mathfrak{sl}_2$ does
-reach the internal block through it. No physical exclusion is claimed: whether $A_\Pi$ is the right object is a
-modelling choice of the companion note PYO that no source justifies, and Q14 excludes the internal block only by
-hypothesis (Proposition 6.3 (i)-(ii)).
+$J_\Pi$-odd part of the lift is its Hermitian part; this is a statement about $A_\Pi^{\mathrm{odd}}$ as defined
+($A_\Pi^{\mathrm{odd}}$ is the projection defined in PYO, not the anomaly density of Q14). It does not determine the polar
+factor: the polar generator of a family of morphisms is $\Omega = U^\dagger\,dU/d\gamma$, defined in PYO by the Sylvester
+equation $\Omega P + P\Omega = U^\dagger dY - dY^\dagger U$, and for the $\mathrm{Sym}^2$ lift at the identity it is the
+anti-Hermitian part of $L(M)$, which is $J_\Pi$-even and non-zero (internal entry $\tfrac{\sqrt2}{2}(q - \bar p)$, non-zero
+for real $p \ne q$). So the image of $\mathfrak{sl}_2$ does reach the internal block through that part. No physical
+exclusion is claimed and nothing is concluded about the polar class or about mixing: no source justifies defining a generator
+through the $J_\Pi$-odd part, this note supplies no family of Yukawa morphisms whose polar factor is at issue, and Q14
+excludes the internal block only by hypothesis (Proposition 6.3 (i)-(ii)).
 No mass value is claimed.
 
 ## Interpretive outlook (a reading, not a result)
@@ -91,5 +94,6 @@ note; PYO's own scripts, which reproduce PYO, are in the `code/` directory of th
 `front3c_polar_class_audit.py` (polar class under the rephasings that commute with each carrier's $J_3$),
 `front3c_polar_class_nontriviality.py` (transverse part of the generator), `front3d_transverse_route.py` and
 `front3e_reality_structure.py` (the $\mathfrak{sl}_2(\mathbb{C})$ step under the internal antilinear parity $J_\Pi$ of
-Q14 Section 6).
+Q14 Section 6; the vanishing projection $A_\Pi^{\mathrm{odd}}$, with a negative control: it vanishes while the polar
+tangent at the identity, the anti-Hermitian part of $L(E)$, is non-zero and $J_\Pi$-even).
 Dependency: `sympy` (`pip install -r code/requirements.txt`).

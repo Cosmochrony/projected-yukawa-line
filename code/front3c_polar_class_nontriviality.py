@@ -27,9 +27,10 @@ Two precautions.
        commutes with the rephasings) and contributes nothing to the off-diagonal moduli or to J_CP. Mixing
        needs a generator with a non-zero TRANSVERSE part A_off. Whether the step model supplies one is the
        question of front3d_transverse_route.py and front3e_reality_structure.py: for the sl_2 lift under the
-       internal antilinear parity J_Pi of Q14 Section 6 the generator A_Pi, as defined, vanishes, so A_off = 0 for
-       A_Pi as defined (a modelling choice of the companion note, not a physical exclusion; A_Pi is the generator
-       defined in PYO, not the anomaly density of Q14).
+       internal antilinear parity J_Pi of Q14 Section 6 the projection A_Pi^odd vanishes, so its off-diagonal part is
+       zero; A_Pi^odd is not the polar generator (which is defined in PYO and is, at the identity, the J_Pi-even
+       antiherm(L(M)), non-zero), it does not determine the polar factor, and nothing about the polar class or
+       mixing follows (A_Pi^odd is the projection defined in PYO, not the anomaly density of Q14).
 
 Results (all exact symbolic). J_CP denotes the Jarlskog-type phase; J_Pi is reserved for the antilinear parity.
   (A) Orbit tangent at I is diagonal anti-hermitian: d/ds [V_R(s) V_L(s)^{-1}]|_0 = i(D_R - D_L), diagonal,
@@ -192,7 +193,8 @@ def main():
     print("RESULT: polar-class non-triviality is controlled EXACTLY by the off-diagonal (transverse) part of the")
     print("        generator of U_Pi. The script is generic in the anti-hermitian generator A: which A the step model")
     print("        supplies is the question of front3d_transverse_route.py and front3e_reality_structure.py (for the")
-    print("        sl_2 lift under the internal antilinear parity J_Pi of Q14 Sec. 6, A_Pi as defined vanishes).")
+    print("        sl_2 lift under the internal antilinear parity J_Pi of Q14 Sec. 6, the projection A_Pi^odd")
+    print("        vanishes; it is not the polar generator and determines no polar class).")
     print("        AOG/CHO treat [H-orient], not this.")
     print("        No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")

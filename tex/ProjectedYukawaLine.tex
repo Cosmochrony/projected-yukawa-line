@@ -30,6 +30,8 @@
 \newtheorem{remark}{Remark}
 
 \newcommand{\JPi}{J_{\Pi}}
+\newcommand{\AOdd}{A_{\Pi}^{\mathrm{odd}}}
+\newcommand{\Opol}{\Omega}
 \newcommand{\Jthree}{J_{3}}
 \newcommand{\Rmix}{R_{\mathrm{mix}}}
 \newcommand{\Cgen}{\mathbb{C}^{3}_{\mathrm{gen}}}
@@ -271,17 +273,26 @@ Independent Researcher, France\\
     The internal block $e_{0} \leftrightarrow e_{\pm}$ is treated in the companion note~\cite{Beau2026pyo}.
     In that note $\JPi$ denotes the internal antilinear parity of the generation copy of Q14 Section~6, an operator on
     $\Cgen$ built from the Born--Infeld datum that does not use [H-Spin]; it is not a spinor-level object.
-    There $A_{\Pi}$, the anti-Hermitian part of the $\JPi$-odd part of the $\mathfrak{sl}_{2}$ lift of the step
+    There $\AOdd$, the anti-Hermitian part of the $\JPi$-odd part of the $\mathfrak{sl}_{2}$ lift of the step
     generator, vanishes identically for all complex coefficients, because with this antilinear $\JPi$ the
     $\JPi$-odd part of the lift is its Hermitian part.
-    This is a statement about $A_{\Pi}$ as defined; $A_{\Pi}$ is the generator defined in the companion note, not the
-    anomaly density of Q14.
+    This is a statement about $\AOdd$ as defined; $\AOdd$ is the projection defined in the companion note, not the
+    anomaly density of Q14, and it is not the polar generator of a family of morphisms: it does not determine the
+    polar factor.
+    The polar generator is the anti-Hermitian operator $\Opol = U^{\dagger}\,\mathrm{d}U/\mathrm{d}\gamma$ of the
+    polar decomposition $Y = UP$ of a real-parameter family of invertible morphisms between fixed orthonormal frames
+    ($P > 0$); it is defined in the companion note by the Sylvester equation
+    $\Opol P + P \Opol = U^{\dagger}\,\mathrm{d}Y - (\mathrm{d}Y)^{\dagger} U$, and for $\mathrm{d}Y$ the
+    $\mathrm{Sym}^{2}$ lift $L(M)$ at the identity it equals the anti-Hermitian part of $L(M)$, which is
+    $\JPi$-even and generally non-zero.
     The $\JPi$-even anti-Hermitian part of the lift has the non-zero internal entry $\tfrac{\sqrt{2}}{2}(q -
     \bar{p})$, non-zero for real $p \neq q$, so the image of $\mathfrak{sl}_{2}$ does reach the internal block through
     that part.
-    No physical exclusion of the internal block is claimed: whether $A_{\Pi}$, rather than the $\JPi$-even part, is the
-    right object is a modelling choice of the companion note that no source justifies, and Q14 excludes the internal
-    block only by hypothesis (Proposition~6.3(i)--(ii) of~\cite{Beau2026q14}).
+    No physical exclusion of the internal block is claimed, and nothing is concluded here about the polar class or
+    about mixing: $\AOdd$ is not the polar generator, no source justifies defining a generator through the
+    $\JPi$-odd part, no source of this note supplies a family of Yukawa morphisms whose polar factor would be the
+    one under discussion, and Q14 excludes the internal block only by hypothesis (Proposition~6.3(i)--(ii)
+    of~\cite{Beau2026q14}).
 
   \section{Generation-level ordering}
     \label{sec:levels}
@@ -422,7 +433,8 @@ Independent Researcher, France\\
       being available; the exponents $k$ and $m$ beyond their conditional selection by Q14; the map from levels to
       generations; the projected Yukawa operator $Y_{\Pi}$, its norm, the orientation (sign) of $u$, and the mixing,
       including the internal block $e_{0} \leftrightarrow e_{\pm}$, which Remark~6.4 of Q14 does not cover and for
-      which the question whether $A_{\Pi}$ is the right object is open in the companion note~\cite{Beau2026pyo}.
+      which neither the projection $\AOdd$ (a vanishing projection that does not determine the polar factor) nor any
+      supplied family of Yukawa morphisms settles, as recorded in the companion note~\cite{Beau2026pyo}.
       Hence the absolute masses, the mass ratios beyond the dimensionless level structure, and the generation mixing
       remain open, in agreement with the open deliverables of~\cite{Beau2026fmnote}.
 
@@ -468,7 +480,8 @@ Independent Researcher, France\\
     restriction of $\Epi^{2}$, nor the map from levels to generations.
     The directory \texttt{code/} also holds four audit scripts of statements of the companion
     note~\cite{Beau2026pyo}, namely the polar class, its non-triviality, the transverse route and the reality
-    structure of the step generator; none of them is used by a statement of this note.
+    structure of the step generator (the vanishing projection $\AOdd$ and a negative control showing that it is not
+    the polar generator); none of them is used by a statement of this note.
     They do not reproduce the companion note: its own scripts, listed in its Reproducibility section, are held in the
     \texttt{code/} directory of the repository of that note.
 

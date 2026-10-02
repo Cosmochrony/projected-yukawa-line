@@ -1,10 +1,13 @@
 r"""Front 3c -> Front 2 bridge: transverse route of the metaplectic step generator.
 
 Exact symbolic verification (no sampling). The audit of the chiral polar class (front3c_polar_class_nontriviality.py)
-reduces the non-triviality of the class [U_Pi] to the OFF-DIAGONAL (transverse) part of the anti-hermitian generator A
-of the polar factor. This script asks which transverse blocks the Sym^2 lift of an sl_2(C) step can source.
+reduces the first-order (infinitesimal) non-triviality of the class [U_Pi] to the OFF-DIAGONAL (transverse) part of an
+anti-hermitian generator A of the polar factor. This script asks which transverse blocks the Sym^2 lift of an sl_2(C)
+step can source through the J_Pi-odd projection A_Pi^odd. A_Pi^odd is NOT the polar generator of a morphism family
+(that generator Omega is defined in the companion note PYO and equals antiherm(L(M)), J_Pi-even, at the identity), so
+no conclusion about the polar factor or about mixing is drawn here.
 
-Generator (definition, taken as given). A_Pi := antiherm( J_Pi-odd( L(M) ) ), M = p E + q F + r H in sl_2(C) with
+Projection (definition, taken as given). A_Pi^odd := antiherm( J_Pi-odd( L(M) ) ), M = p E + q F + r H in sl_2(C) with
 complex coefficients, L(M) the derived Sym^2 lift on C^3_gen, and J_Pi the ANTILINEAR internal parity of the
 generation copy of Q14 Section 6 (an operator on C^3_gen that does not use [H-Spin]; not a spinor-level object),
 J_Pi z = S conj(z) with S = Sym^2(eps), eps = [[0, 1], [-1, 0]] (J_Pi: e_0 -> -e_0, e_+ <-> e_- antilinearly). The
@@ -16,8 +19,8 @@ Two transverse blocks on C^3_gen = Sym^2(C^2), basis (e_0, e_+, e_-):
     EXTERNAL block (e_+ <-> e_-) = R_mix:      mixing of the two outer generations (antisymmetric, Q14 Sec. 6).
 
 Results (all exact symbolic).
-  (A) For a real sl_2 element A_Pi = 0 (both blocks).
-  (B) For a complex sl_2 element A_Pi = 0 as well: the internal entry and the external entry vanish for every
+  (A) For a real sl_2 element A_Pi^odd = 0 (both blocks).
+  (B) For a complex sl_2 element A_Pi^odd = 0 as well: the internal entry and the external entry vanish for every
       complex (p, q, r). The J_Pi-odd part of L(M) is the hermitian part of L(M).
   (C) The N_A channel: the J_3 coefficient of the J_Pi-odd part is 2 Re r. For the BCH-truncated element
       tE + sF + (ts/2) H of the cascade step g = exp(tE) exp(sF), which is exact to second order in (t, s) only, it is
@@ -27,19 +30,20 @@ Results (all exact symbolic).
   (D) The lift has identically zero external entries for any complex M (R_mix is not reached by the image of sl_2,
       Q14 Remark 6.4), and R_mix is linearly independent of span{L(E), L(F), L(H), I_3} (rank 4 -> 5). The J_Pi-odd
       anti-hermitian internal-block generator used as a probe is outside the sl_2 image (rank 3 -> 4) and
-      Hilbert-Schmidt orthogonal to it: a J_Pi-odd anti-hermitian source of the internal block (A_Pi as defined)
+      Hilbert-Schmidt orthogonal to it: a J_Pi-odd anti-hermitian source of the internal block (A_Pi^odd as defined)
       needs a generator in the spin-2 sector of End(Sym^2 V_gen); none is supplied. The J_Pi-EVEN anti-hermitian part
       of the lift has the internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image of sl_2 does
       reach the internal block through that part (check D_even_part_internal_entry).
   (E) A central scalar c I_3: its J_Pi-odd anti-hermitian part is i Im(c) I_3, diagonal, hence class-trivial.
   (F) A diagonal generator diag(d_0, d_+, d_-) (complex) has a zero off-diagonal J_Pi-odd anti-hermitian part.
 
-Verdict (printed). A_Pi, as defined, vanishes identically for all complex coefficients, because with the antilinear
-J_Pi the J_Pi-odd part of the lift is its Hermitian part; this is a statement about A_Pi as defined. The external block
+Verdict (printed). A_Pi^odd, as defined, vanishes identically for all complex coefficients, because with the antilinear
+J_Pi the J_Pi-odd part of the lift is its Hermitian part; this is a statement about A_Pi^odd as defined, which does
+not determine the polar factor (the polar generator is defined in PYO). The external block
 R_mix is not reached by the image of sl_2 (Q14 Remark 6.4). The J_Pi-even anti-hermitian part reaches the internal
-block. No physical exclusion of the internal block is claimed: whether A_Pi rather than the J_Pi-even part is the right
-object is a modelling choice that no source justifies (see front3e). No mass and no mixing value is produced. No
-figures. English.
+block. No physical exclusion of the internal block is claimed and nothing is concluded about the polar class: A_Pi^odd
+is not the polar generator, and no source justifies a generator defined through the J_Pi-odd part (see front3e,
+check 8). No mass and no mixing value is produced. No figures. English.
 """
 
 import sympy as sp
@@ -83,7 +87,7 @@ def antiherm(A):
 
 
 def Upi_generator(M):
-    """A_Pi: J_Pi-odd AND anti-hermitian part of the Sym^2 lift of M."""
+    """A_Pi^odd: J_Pi-odd AND anti-hermitian part of the Sym^2 lift of M."""
     return antiherm(jpi_odd_part(sym2_lift(M)))
 
 
@@ -108,11 +112,11 @@ def main():
     def is_zero(X):
         return all(sp.simplify(sp.expand_complex(e)) == 0 for e in X)
 
-    # ---- (A) real step: A_Pi = 0 -------------------------------------------------------------------------------
+    # ---- (A) real step: A_Pi^odd = 0 -------------------------------------------------------------------------------
     A_real = Upi_generator(pR * E + qR * F + rR * H)
     checks["A_real_generator_zero"] = is_zero(A_real)
 
-    # ---- (B) complex step: A_Pi = 0 as well (both blocks) ------------------------------------------------------
+    # ---- (B) complex step: A_Pi^odd = 0 as well (both blocks) ------------------------------------------------------
     A_cpx = Upi_generator((p * E + q * F + r * H).subs(rep))
     checks["B_internal_entries_zero_any_complex_M"] = is_zero(sp.Matrix([A_cpx[0, 1], A_cpx[0, 2], A_cpx[1, 0],
                                                                          A_cpx[2, 0]]))
@@ -178,10 +182,10 @@ def main():
     # ---- report ----------------------------------------------------------------------------------------------------
     print("Front 3c -> Front 2 bridge: transverse route of the sl_2 step generator (exact symbolic)")
     print("=" * 100)
-    print("  A_Pi = antiherm(J_Pi-odd(L(M))), J_Pi antilinear (z -> S conj z), M in sl_2(C);")
+    print("  A_Pi^odd = antiherm(J_Pi-odd(L(M))), J_Pi antilinear (z -> S conj z), M in sl_2(C);")
     print("  transverse blocks: INTERNAL (e_0 <-> e_+/-), EXTERNAL R_mix (e_+ <-> e_-)")
-    print("  (A) real step: A_Pi = 0 (both blocks)")
-    print("  (B) complex step: A_Pi = 0 as well; the J_Pi-odd part of the lift is its hermitian part")
+    print("  (A) real step: A_Pi^odd = 0 (both blocks)")
+    print("  (B) complex step: A_Pi^odd = 0 as well; the J_Pi-odd part of the lift is its hermitian part")
     print("  (C) N_A: the J_3 coefficient of the odd part is 2 Re r (= t s for the BCH-truncated cascade element,")
     print("      exact to second order only), a diagonal channel")
     print("  (D) R_mix and the J_Pi-odd anti-hermitian internal probe are outside the sl_2 image (ranks 4->5, 3->4),")
@@ -196,13 +200,14 @@ def main():
         print(f"  [{'PASS' if ok else 'FAIL'}]  {k}")
     print("=" * 100)
     print(f"  checks run: {len(checks)}")
-    print("VERDICT: A_Pi, as defined, vanishes identically for all complex coefficients, because with the antilinear")
-    print("  J_Pi the J_Pi-odd part of the lift is its Hermitian part; this is a statement about A_Pi as defined. The")
-    print("  external block R_mix is not reached by the image of sl_2 (Q14 Remark 6.4). The J_Pi-even anti-hermitian")
-    print("  part has the internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image of sl_2 does")
-    print("  reach the internal block through that part. No physical exclusion of the internal block is claimed:")
-    print("  whether A_Pi, rather than the J_Pi-even part, is the right object is a modelling choice that no source")
-    print("  justifies. No mass and no mixing value is produced.")
+    print("VERDICT: A_Pi^odd, as defined, vanishes identically for all complex coefficients, because with the")
+    print("  antilinear J_Pi the J_Pi-odd part of the lift is its Hermitian part; this is a statement about")
+    print("  A_Pi^odd as defined, which does not determine the polar factor (the polar generator is defined in")
+    print("  PYO). The external block R_mix is not reached by the image of sl_2 (Q14 Remark 6.4). The J_Pi-even")
+    print("  anti-hermitian part has the internal entry (sqrt2/2)(q - conj p), non-zero for real p != q, so the image")
+    print("  of sl_2 does reach the internal block through that part. No physical exclusion of the internal block")
+    print("  is claimed, and nothing is concluded about the polar class: A_Pi^odd is not the polar generator, and no")
+    print("  source justifies a generator defined through the J_Pi-odd part. No mass and no mixing value is produced.")
     print("ALL CHECKS PASS" if allok else "SOME CHECKS FAILED")
     return allok
 
