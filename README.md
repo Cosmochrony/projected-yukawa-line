@@ -4,7 +4,7 @@ J. Beau, Independent Researcher, France
 
 ## Status
 
-Working paper, v3.0. DOI: [10.5281/zenodo.20767265](https://doi.org/10.5281/zenodo.20767265)
+Working paper, v3.0.1. DOI: [10.5281/zenodo.20767265](https://doi.org/10.5281/zenodo.20767265)
 
 ## Summary
 
@@ -76,7 +76,7 @@ generation levels are a dimensionless pattern whose reading as a mass hierarchy 
 
 ## Anchors
 
-Q14 (Theorem 2.1, [H-Spin], [H-Weak], exit-deficit dictionary), PRS (normal form on the supplied triplet), BIM
+Q14 (Theorem 2.1, [H-Spin], [H-Weak], exit-deficit dictionary), PRS (normal form on the supplied triplet through its reading map), BIM
 (which does not predict $|u|$). See
 the bibliography in `tex/cosmochrony-bibliography.bib`.
 

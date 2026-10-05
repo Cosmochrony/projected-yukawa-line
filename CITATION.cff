@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you cite this work, please use the metadata from this file."
 title: "Toward Projected Yukawa Couplings: A Conditional Weak Determinant Line and Generation-Level Ordering"
 type: article
-version: "3.0"
+version: "3.0.1"
 authors:
   - family-names: "Beau"
     given-names: "Jérôme"
