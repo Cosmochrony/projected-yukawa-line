@@ -21,8 +21,8 @@ OFF-DIAGONAL part is non-zero. The rephasing-invariant detectors are:
 
 Two precautions.
   (i)  AOG/CHO treat the ORIENTATION caveat [H-orient] and the spin-Galois sqrt(5) factor; they do NOT settle
-       the non-triviality of [U_Pi]. The chiral lift carries no action on Q(sqrt 5), so no spin-Galois factor
-       orthogonal to zeta_q survives -- but that concerns orientation, not the polar class.
+       the non-triviality of [U_Pi]. Under [H-Spin], [H-WS], [M], [B] and [C] of AOG, the chiral lift induces
+       no action on Q(sqrt 5), so no spin-Galois factor orthogonal to zeta_q survives -- but that concerns orientation, not the polar class.
   (ii) u != 0 (the diagonal generation split) is NOT mixing. u lives in the DIAGONAL channel (a level split that
        commutes with the rephasings) and contributes nothing to the off-diagonal moduli or to J_CP. Mixing
        needs a generator with a non-zero TRANSVERSE part A_off. Whether the step model supplies one is the
