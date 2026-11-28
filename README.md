@@ -9,8 +9,9 @@ Working paper, v3.1. DOI: [10.5281/zenodo.20767265](https://doi.org/10.5281/zeno
 Version 3.1 aligns the statements imported from Q14 with its current contract. The self-adjointness of the projective
 endomorphism is now an explicit hypothesis, [H-SA], which Q14 states only inside its hypothesis $E_\Pi \preceq 0$ and
 which is not inherited from PRS; the non-negativity of the generation levels, and the bound $|u| \leq \tfrac12$ drawn
-from it, hold under [H-SA] and [H-Res]; [H-Res] now states what it presupposes, an extension of the endomorphism acting
-non-trivially on the generation factor (Q14's endomorphism acts trivially on it), while the algebraic ordering of part (a) is unchanged. The conditions of Q14's
+from it, hold under [H-SA] and [H-Res]; [H-Res] now states what it presupposes: since Q14's endomorphism acts
+trivially on the generation factor, a non-scalar level structure needs an extension acting on that factor or a
+restriction map that does not respect the tensor factorisation, a choice included in [H-Res], while the algebraic ordering of part (a) is unchanged. The conditions of Q14's
 Theorem C are stated in full and those of its Proposition 4.5 on matter content and selection are added, and the continuum hypotheses inherited by the connection are named.
 
 ## Summary
