@@ -10,7 +10,7 @@ Version 3.1 aligns the statements imported from Q14 with its current contract. T
 endomorphism is now an explicit hypothesis, [H-SA], which Q14 states only inside its hypothesis $E_\Pi \preceq 0$ and
 which is not inherited from PRS; the non-negativity of the generation levels, and the bound $|u| \leq \tfrac12$ drawn
 from it, hold under [H-SA] and [H-Res], while the algebraic ordering of part (a) is unchanged. The conditions of Q14's
-Theorem C and Proposition 4.5 are stated in full, and the continuum hypotheses inherited by the connection are named.
+Theorem C are stated in full and those of its Proposition 4.5 on matter content and selection are added, and the continuum hypotheses inherited by the connection are named.
 
 ## Summary
 

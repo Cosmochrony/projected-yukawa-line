@@ -121,7 +121,7 @@ Independent Researcher, France\\
     The $V-A$ structure is the representation content of [H-Weak] and is not derived from the left-admissibility of the
     projected Dirac residue $\Epi$.
     The projected Dirac operator uses a supplied gauge connection, whose reading as admissible fibre transport inherits
-    the two unproved continuum hypotheses of~\cite{Beau2026q14}, the spatial continuum being open.
+    the two unproved continuum hypotheses of Q6a that~\cite{Beau2026q14} inherits, the spatial continuum being open.
     Left-admissibility is an input of Q14 (Proposition~3.8 of~\cite{Beau2026q14}): it is a statement about the Lorentz
     chirality on the orientation-compatible branch, conditional on [H-Spin] and on the Born--Infeld datum (H1)--(H2) of
     O30~\cite{Beau2026a34}.
@@ -333,7 +333,9 @@ Independent Researcher, France\\
     \medskip
 
     \noindent\textbf{[H-SA]} (self-adjointness of $\Epi$; not supplied).
-    The projective endomorphism $\Epi$ is self-adjoint for the induced Hermitian structure on $\Sbundle$.
+    The projective endomorphism $\Epi$ is self-adjoint for the induced Hermitian structure, on $\Sbundle$ and on the
+    space carrying $\Cgen$ on which [H-Res] reads it; how $\Epi$ acts on that space is part of the identification
+    [H-Res], which is not supplied.
     \medskip
 
     [H-SA] is not stated in~\cite{Beau2026q14} outside its explicit hypothesis $\Epi \preceq 0$ on the left-admissible
@@ -380,7 +382,8 @@ Independent Researcher, France\\
         and $0 < d_{\mathrm{exit}}(e_{+}) < d_{\mathrm{exit}}(e_{-})$ if and only if $0 < u < \tfrac12$.
         For $0 < u < \tfrac12$, $e_{0}$ has the smallest and $e_{-}$ the largest exit deficit.
         The ratio of the two outer levels is invariant under $s_{i} \mapsto \lambda\,s_{i}$ with $\lambda > 0$.
-        \item[\emph{(b)}] \emph{(under [H-Res].)}
+        \item[\emph{(b)}] \emph{(under [H-Res]; the non-negativity of the levels and the bound on $u$ derived in the
+        proof also use [H-SA].)}
         The levels of the model operator are the levels of $\Epi^{2}|_{\Cgen}$, and the exit deficits of~(a) are the
         exit deficits of Definition~6.6 of~\cite{Beau2026q14} for that restriction.
       \end{enumerate}
@@ -407,13 +410,14 @@ Independent Researcher, France\\
       central direction, fixed by the internal parity of the generation copy; Q14 relates it to the support-exit
       distance from the non-exiting central level of O1~\cite{Beau2026a6}.
       Positivity of the levels, under [H-SA] and [H-Res].
-      Under [H-SA], $\Epi^{2} = \Epi^{\dagger}\Epi \succeq 0$ on $\Sbundle$.
-      [H-Res] reads the model operator as the restriction of $\Epi^{2}$ to the subspace $\Cgen$, that is its compression,
-      and a compression of a positive semi-definite operator is positive semi-definite; so the three levels are
-      non-negative.
-      Both hypotheses are needed: without [H-SA] no source fixes the sign of $\Epi^{2}$, and without [H-Res] the model
-      levels are not levels of $\Epi^{2}$; a reading map that is not a compression would need to be
-      positivity-preserving as well.
+      Under [H-SA], $\Epi^{2} = \Epi^{\dagger}\Epi \succeq 0$ on the space on which [H-Res] reads it.
+      In~\cite{Beau2026q14} the factor $\Cgen$ is a multiplicity factor of the matter space, not a subspace of
+      $\Sbundle$; [H-Res] is therefore read as a positive restriction map onto $\mathrm{End}(\Cgen)$, such as a
+      compression to a copy $\psi \otimes \Cgen$ or a partial trace, and a positive map sends a positive
+      semi-definite operator to a positive semi-definite one; so the three levels are non-negative.
+      Both hypotheses are used, and no source supplies either or a substitute: without [H-SA] (or another source of
+      $\Epi^{2} \succeq 0$) no source fixes the sign of $\Epi^{2}$, and without [H-Res] the model levels are not
+      levels of $\Epi^{2}$; a reading map that is not positive would not carry the sign over.
       The bound on $u$, under [H-SA] and [H-Res] together with the algebra of~(a).
       For $u = \tfrac12$ the level of $e_{-}$ is zero, and for $u > \tfrac12$ it is negative, which positivity excludes;
       hence $u \leq \tfrac12$, and the strict ordering needs $u < \tfrac12$.
