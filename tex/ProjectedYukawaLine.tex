@@ -120,12 +120,13 @@ Independent Researcher, France\\
     Neither hypothesis is supplied by a source, and $\Ew$ is not constructed.
     The $V-A$ structure is the representation content of [H-Weak] and is not derived from the left-admissibility of the
     projected Dirac residue $\Epi$.
+    The projected Dirac operator uses a supplied gauge connection, whose reading as admissible fibre transport inherits
+    the two unproved continuum hypotheses of~\cite{Beau2026q14}, the spatial continuum being open.
     Left-admissibility is an input of Q14 (Proposition~3.8 of~\cite{Beau2026q14}): it is a statement about the Lorentz
     chirality on the orientation-compatible branch, conditional on [H-Spin] and on the Born--Infeld datum (H1)--(H2) of
     O30~\cite{Beau2026a34}.
-    The generation factor $\Cgen$ is a gauge-singlet multiplicity space, conditional on the supplied rank-three
-    selection
-    rule, and is the symmetric square of a distinct supplied doublet, not of the soldered spinor doublet.
+    The generation factor $\Cgen$ is a gauge-singlet multiplicity space, conditional, as in Theorem~C
+    of~\cite{Beau2026q14}, on the supplied rank-three selection rule together with [H-Spin] and [H-Weak], and is the symmetric square of a distinct supplied doublet, not of the soldered spinor doublet.
     Q14 describes the transfer of the identification of O30 to this triplet as a further modelling step.
     The split coefficient of $\Cgen$ is a single real number $u$.
     The projective-residue Schur analysis~\cite{Beau2026prs} reads the squared residue on the supplied triplet through
@@ -242,7 +243,8 @@ Independent Researcher, France\\
     The line $\LY$ supplies the determinant line from which the weights of a coupling are built; the weight itself
     depends on $k$ and $m$, which [H-Weak] alone does not fix.
     Q14 selects them conditionally, under both hypotheses, a supplied colour module, anomaly constraints and a minimal
-    normalisation of $\LY$ (Proposition~4.5 of~\cite{Beau2026q14}).
+    normalisation of $\LY$, for Standard Model content without right-handed neutrino and with $Y_{e} \neq 0$, and only
+    up to sign, common rescaling and the exchange $u_{R} \leftrightarrow d_{R}$ (Proposition~4.5 of~\cite{Beau2026q14}).
     The mass matrix is a distinct object, a projected morphism of the admissible spinor sectors of the schematic form
     \begin{equation}
       \label{eq:yukawa-operator}
@@ -312,8 +314,8 @@ Independent Researcher, France\\
     [H-Spin]~\cite{Beau2026q14}.
     The identification is supplied, not derived, and Q14 describes the transfer of the identification of O30 to this
     triplet as a further modelling step (Section~6 of~\cite{Beau2026q14}).
-    The operators on $\Cgen$ of~\cite{Beau2026q14} are model operators, standing for the restriction of the squared
-    projective residue $\Epi^{2}$, the zero-order spectral residue of non-injective projection in the spinorial
+    The operators on $\Cgen$ of~\cite{Beau2026q14} are model operators, proposed as standing for the restriction of the
+    squared projective residue $\Epi^{2}$, a reading that is not derived there, the zero-order spectral residue of non-injective projection in the spinorial
     sector~\cite{Beau2026q14}.
     The model operator is $(C_{2} - \Jthree^{2})/C_{2} + u\,\Jthree + v\,\Rmix$ with Cartan generator
     $\Jthree = \diag(0, 1, -1)$ and spin-one Casimir $C_{2} = 2$~\cite{Beau2026prs}.
@@ -329,6 +331,19 @@ Independent Researcher, France\\
     the
     restriction of $\Epi^{2}$ to $\Cgen$.
     \medskip
+
+    \noindent\textbf{[H-SA]} (self-adjointness of $\Epi$; not supplied).
+    The projective endomorphism $\Epi$ is self-adjoint for the induced Hermitian structure on $\Sbundle$.
+    \medskip
+
+    [H-SA] is not stated in~\cite{Beau2026q14} outside its explicit hypothesis $\Epi \preceq 0$ on the left-admissible
+    branch, which implies it and which this note does not use.
+    The compression remainder of~\cite{Beau2026prs} is self-adjoint, and equal to $-N_{P}^{\dagger}N_{P} \preceq 0$, under
+    the contraction hypothesis of that note, but it equals $\Epi$ only under the symbol identity
+    $\Pi_{S}\mathcal{D}_{g,A}^{2}\Pi_{S}^{*} = \mathrm{Lich}$, which no source states; [H-SA] is therefore not inherited
+    from~\cite{Beau2026prs}.
+    [H-SA] is used only in the proof of Proposition~\ref{prop:generation-level-assignment}(b), for the non-negativity of
+    the levels and the bound on $u$ drawn from it; no other statement of this note uses it.
 
     [H-Res] is a missing identification, not a refutation: Q14 treats the operators on $\Cgen$ as linear algebra and
     states
@@ -391,11 +406,19 @@ Independent Researcher, France\\
       The exit deficit of Q14 is $s_{0} - s_{i}$ for the eigenvalues of that restriction, with $s_{0}$ the level of the
       central direction, fixed by the internal parity of the generation copy; Q14 relates it to the support-exit
       distance from the non-exiting central level of O1~\cite{Beau2026a6}.
-      Under [H-Res], $\Epi^{2} = \Epi^{\dagger}\Epi \succeq 0$ for the hermitian $\Epi$ (the compression remainder
-      of~\cite{Beau2026prs} is $-N_{P}^{\dagger}N_{P} \preceq 0$), so the levels are non-negative.
-      For $u = \tfrac12$ the level of $e_{-}$ is zero, and for $u > \tfrac12$ it is negative, which is excluded; hence
-      $u \leq \tfrac12$, and the strict ordering needs $u < \tfrac12$.
+      Positivity of the levels, under [H-SA] and [H-Res].
+      Under [H-SA], $\Epi^{2} = \Epi^{\dagger}\Epi \succeq 0$ on $\Sbundle$.
+      [H-Res] reads the model operator as the restriction of $\Epi^{2}$ to the subspace $\Cgen$, that is its compression,
+      and a compression of a positive semi-definite operator is positive semi-definite; so the three levels are
+      non-negative.
+      Both hypotheses are needed: without [H-SA] no source fixes the sign of $\Epi^{2}$, and without [H-Res] the model
+      levels are not levels of $\Epi^{2}$; a reading map that is not a compression would need to be
+      positivity-preserving as well.
+      The bound on $u$, under [H-SA] and [H-Res] together with the algebra of~(a).
+      For $u = \tfrac12$ the level of $e_{-}$ is zero, and for $u > \tfrac12$ it is negative, which positivity excludes;
+      hence $u \leq \tfrac12$, and the strict ordering needs $u < \tfrac12$.
       The lower side is symmetric: the level of $e_{+}$ is non-negative only for $u \geq -\tfrac12$.
+      Part~(a) alone does not bound $u$: it states only that the ordering holds exactly when $0 < u < \tfrac12$.
       The ordering of~(a) is stated for $u > 0$, where $e_{-}$ has the largest deficit; for $u < 0$ the roles of $e_{+}$
       and $e_{-}$ exchange.
     \end{proof}
@@ -423,9 +446,11 @@ Independent Researcher, France\\
       Under [H-Weak], $\LY = \wedge^{2}(\Ew)$ with structure group $\UU(2)$ carries the abelian weight
       (Proposition~\ref{prop:yukawa-line}(b)).
       Under [H-Res], the ordered levels are levels of $\Epi^{2}|_{\Cgen}$
-      (Proposition~\ref{prop:generation-level-assignment}(b)).
+      (Proposition~\ref{prop:generation-level-assignment}(b)); their non-negativity, and the bound $|u| \leq \tfrac12$
+      drawn from it, hold under [H-Res] and the self-adjointness hypothesis [H-SA].
       The exponents $k$ and $m$ are selected by Q14 under both hypotheses, a supplied colour module, anomaly
-      constraints and a minimal normalisation of $\LY$ (Proposition~4.5 of~\cite{Beau2026q14}).
+      constraints and a minimal normalisation of $\LY$, for Standard Model content without right-handed neutrino and with
+      $Y_{e} \neq 0$, up to sign, rescaling and $u_{R} \leftrightarrow d_{R}$ (Proposition~4.5 of~\cite{Beau2026q14}).
       Left-admissibility is an input of Q14, conditional on [H-Spin] and on the Born--Infeld datum (H1)--(H2) of O30,
       and is not used here beyond the separation from $V-A$.
 
@@ -436,7 +461,7 @@ Independent Researcher, France\\
       (Lemma~3.6 of~\cite{Beau2026q14}).
 
     \paragraph{Open (missing elements).}
-      The factor $\Ew$ and the spin solder [H-Spin], neither supplied by a source; the identification [H-Res]; the
+      The factor $\Ew$ and the spin solder [H-Spin], neither supplied by a source; the identification [H-Res] and the self-adjointness [H-SA]; the
       weak linking carrier $K$ linking the weak doublet to the right sector in~\eqref{eq:yukawa-operator}, the only
       missing element for the existence of an invariant coupling (given [H-Spin] and [H-Weak]), the Lorentz scalar
       being available; the exponents $k$ and $m$ beyond their conditional selection by Q14; the map from levels to

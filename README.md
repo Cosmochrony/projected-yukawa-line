@@ -4,7 +4,13 @@ J. Beau, Independent Researcher, France
 
 ## Status
 
-Working paper, v3.0.1. DOI: [10.5281/zenodo.20767265](https://doi.org/10.5281/zenodo.20767265)
+Working paper, v3.1. DOI: [10.5281/zenodo.20767265](https://doi.org/10.5281/zenodo.20767265)
+
+Version 3.1 aligns the statements imported from Q14 with its current contract. The self-adjointness of the projective
+endomorphism is now an explicit hypothesis, [H-SA], which Q14 states only inside its hypothesis $E_\Pi \preceq 0$ and
+which is not inherited from PRS; the non-negativity of the generation levels, and the bound $|u| \leq \tfrac12$ drawn
+from it, hold under [H-SA] and [H-Res], while the algebraic ordering of part (a) is unchanged. The conditions of Q14's
+Theorem C and Proposition 4.5 are stated in full, and the continuum hypotheses inherited by the connection are named.
 
 ## Summary
 
